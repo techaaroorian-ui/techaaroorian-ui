@@ -665,7 +665,7 @@ export default function HeadlessGuide({
                       <span className="aar-text-0-95rem aar-w-1-25rem aar-text-align-center aar-display-inline-flex aar-items-center aar-justify-center aar-flex-shrink-0">
                         {item.icon}
                       </span>
-                      <span>{item.label}</span>
+                      <span className="aar-nav-label">{item.label}</span>
                       {item.badge && (
                         <span className="aar-badge" data-size="xs">
                           {item.badge}

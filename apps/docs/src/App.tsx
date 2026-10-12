@@ -125,12 +125,11 @@ export default function App() {
           </span>
         </a>
 
-        <nav aria-label="Documentation packages">
+        <nav className="aar-tabs" data-variant="paper" aria-label="Documentation packages">
           {pages.map(([path, label]) => (
             <a
               key={path}
-              className="aar-button"
-              data-variant="quiet"
+              className="aar-tab"
               href={path}
               aria-current={route === path ? "page" : undefined}
             >
@@ -292,7 +291,7 @@ export default function App() {
             </div>
 
             {/* Architecture Ribbon */}
-            <div className="aar-card aar-cycle-ribbon aar-p-1-25rem-1-5rem aar-mb-8 aar-border-1px-solid-border-strong aar-bg-surface-raised aar-radius-radius-md">
+            <div className="aar-card aar-cycle-ribbon aar-paper aar-p-1-25rem-1-5rem aar-mb-8 aar-bg-surface-raised aar-radius-radius-md">
               <div className="aar-cluster aar-justify-space-between aar-flex-wrap-wrap aar-gap-4">
                 <div className="aar-cluster aar-gap-6 aar-flex-wrap-wrap">
                   <div className="aar-cluster aar-gap-2">
@@ -348,8 +347,8 @@ export default function App() {
             {/* Core Package Grid */}
             <div className="aar-card-grid">
               <article
-                className="aar-panel aar-feature-card"
-                data-corner-brackets="true"
+                className="aar-panel aar-feature-card aar-paper"
+                data-paper="lavender"
               >
                 <div className="aar-wordmark">
                   <img
@@ -374,7 +373,7 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="sage">
                 <span
                   className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
                   aria-hidden="true"
@@ -393,7 +392,7 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="clay">
                 <span
                   className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
                   aria-hidden="true"
@@ -412,7 +411,7 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="ochre">
                 <span
                   className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
                   aria-hidden="true"
@@ -431,7 +430,7 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="brand">
                 <span
                   className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
                   aria-hidden="true"

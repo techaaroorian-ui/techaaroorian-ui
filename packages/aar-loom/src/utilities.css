@@ -1,5 +1,24 @@
 /* Composition utilities. Runtime dimensions use explicit --aar-* inputs. */
 @layer utilities {
+  /* Surface accents, not extra themes. Apply to any ordinary HTML region. */
+  [data-paper="sage"] { --aar-paper-color: var(--aar-paper-sage); }
+  [data-paper="clay"] { --aar-paper-color: var(--aar-paper-clay); }
+  [data-paper="lavender"] { --aar-paper-color: var(--aar-paper-lavender); }
+  [data-paper="ochre"] { --aar-paper-color: var(--aar-paper-ochre); }
+  [data-paper="brand"] {
+    --aar-paper-color: color-mix(in srgb, var(--aar-primary) 12%, var(--aar-surface));
+  }
+  .aar-paper {
+    background: var(--aar-paper-color, var(--aar-surface));
+    color: var(--aar-text);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
+  }
+  /* Borderless regions still expose selection and keyboard focus. */
+  .aar-paper:is([data-selected="true"], [aria-selected="true"]):not(:focus-visible) {
+    outline: 2px solid var(--aar-primary);
+    outline-offset: -2px;
+  }
   .aar-display-inline-flex {
     display: inline-flex;
   }

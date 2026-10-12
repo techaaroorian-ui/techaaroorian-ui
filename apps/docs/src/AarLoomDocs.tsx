@@ -1,5 +1,6 @@
 import loomPackage from "../../../packages/aar-loom/package.json";
 import AarSelect from "./AarSelect";
+import NavigationDocs from "./NavigationDocs";
 import CodeBlock from "./CodeBlock";
 import quickstartHtml from "./examples/aar-loom/index.html?raw";
 import quickstartCss from "./examples/aar-loom/styles.css?raw";
@@ -292,7 +293,7 @@ function SizeScaleSpecimen() {
         </div>
       </div>
 
-      <div className="aar-mt-6 aar-p-5 aar-bg-surface-subtle aar-radius-radius-md aar-border-1px-solid-border">
+      <div className="aar-mt-6 aar-p-5 aar-bg-surface-subtle aar-radius-radius-md">
         <p className="aar-eyebrow aar-mb-4">
           Live Dynamic Specimen · Active Size:{" "}
           <strong>data-size=&quot;{size}&quot;</strong> ({sizeLabels[size]})
@@ -596,7 +597,7 @@ function FormVariantsSpecimen() {
           </div>
         </div>
 
-        <div className="aar-p-5 aar-bg-surface aar-border-1px-solid-border aar-radius-radius-md">
+        <div className="aar-p-5 aar-bg-surface aar-radius-radius-md">
           {layout === "floating" ? (
             <div className="aar-stack" data-gap="3">
               <div className="aar-field-floating">
@@ -2301,6 +2302,7 @@ function ButtonsDocSection() {
 }
 
 function InputsDocSection() {
+  const [viewportScale, setViewportScale] = useState(100);
   const [emailVal, setEmailVal] = useState("hello@atelier");
   const [showPassword, setShowPassword] = useState(false);
   const [inputSize, setInputSize] = useState<"xs" | "sm" | "md" | "lg" | "xl">(
@@ -2425,16 +2427,48 @@ function InputsDocSection() {
             {/* Range Slider */}
             <label className="aar-field">
               <span className="aar-field-label">
-                Canvas Viewport Scale (100%)
+                Canvas Viewport Scale ({viewportScale}%)
               </span>
               <input
                 type="range"
                 className="aar-range"
                 min="50"
                 max="200"
-                defaultValue="100"
+                value={viewportScale}
+                aria-valuetext={`${viewportScale}%`}
+                onChange={(event) => setViewportScale(Number(event.target.value))}
               />
             </label>
+            <div className="aar-panel aar-overflow-hidden aar-mt-4" aria-label="Canvas scale preview">
+              <div className="aar-paper aar-panel aar-bind-transform" style={{ "--aar-transform": `scale(${viewportScale / 100})` } as CSSProperties}>
+                <h3 className="aar-heading">Project canvas</h3>
+                <p>This sample scales from 50% to 200%. The controls stay at their normal size.</p>
+              </div>
+            </div>
+            <p className="aar-hint aar-mt-2">Preview only: this form control does not change your browser zoom.</p>
+            <CodeBlock title="Live scale preview (React)" language="tsx" code={`import { useState, type CSSProperties } from "react";
+import "@techaaroorian-ui/aar-loom/index.css";
+
+export function ScalePreview() {
+  const [scale, setScale] = useState(100);
+  return (
+    <div className="aar-root aar-stack">
+      <label className="aar-field">
+        <span>Canvas Viewport Scale ({scale}%)</span>
+        <input type="range" className="aar-range" min="50" max="200"
+          value={scale} aria-valuetext={scale + "%"}
+          onChange={(event) => setScale(Number(event.target.value))} />
+      </label>
+      <div className="aar-panel aar-overflow-hidden" aria-label="Canvas scale preview">
+        <div className="aar-paper aar-panel aar-bind-transform"
+          style={{ "--aar-transform": "scale(" + scale / 100 + ")" } as CSSProperties}>
+          <h3 className="aar-heading">Project canvas</h3>
+          <p>This sample scales from 50% to 200%.</p>
+        </div>
+      </div>
+    </div>
+  );
+}`} />
 
             <div className="aar-cluster aar-gap-6 aar-mt-5 aar-flex-wrap-wrap">
               <label className="aar-checkbox">
@@ -3218,6 +3252,12 @@ const DOC_NAV_GROUPS: DocNavGroup[] = [
         badge: "HTML",
       },
       {
+        id: "navigation",
+        label: "Tabs, Side Navigation & Headers",
+        icon: <Layout size={15} />,
+        badge: "New",
+      },
+      {
         id: "scale",
         label: "Universal Size Scale",
         icon: <Ruler size={15} />,
@@ -3468,7 +3508,7 @@ function AarLoomDocs({
                         <span className="aar-text-0-95rem aar-w-1-25rem aar-text-align-center aar-display-inline-flex aar-items-center aar-justify-center aar-flex-shrink-0">
                           {item.icon}
                         </span>
-                        <span>{item.label}</span>
+                        <span className="aar-nav-label">{item.label}</span>
                         {item.badge && (
                           <span className="aar-badge" data-size="xs">
                             {item.badge}
@@ -3525,6 +3565,7 @@ function AarLoomDocs({
                   {view === "aar-intro" && <IntroDocSection />}
                   {view === "quickstart" && <QuickstartDocSection />}
                   {view === "layout" && <LayoutDocSection />}
+                  {view === "navigation" && <NavigationDocs />}
                   {view === "buttons" && <ButtonsDocSection />}
                   {view === "inputs" && <InputsDocSection />}
                   {view === "selects" && <SelectsDocSection />}
@@ -3561,6 +3602,7 @@ function AarLoomDocs({
                     <div className="aar-stack" data-gap="4">
                       <IntroDocSection />
                       <QuickstartDocSection />
+                      <NavigationDocs />
                       <ButtonsDocSection />
                       <InputsDocSection />
                       <SelectsDocSection />

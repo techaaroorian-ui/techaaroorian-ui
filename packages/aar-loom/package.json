@@ -20,6 +20,7 @@
     "./components.css": "./src/components.css",
     "./tailwind-v3.css": "./dist/tailwind-v3.css",
     "./layouts.css": "./src/layouts.css",
+    "./navigation.css": "./src/navigation.css",
     "./utilities.css": "./src/utilities.css",
     "./compositions.css": "./src/compositions.css",
     "./expression.css": "./src/expression.css",

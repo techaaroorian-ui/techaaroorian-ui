@@ -4,6 +4,16 @@ A CSS-only design and layout language. Use plain HTML, your own components, or a
 
 ## Start with HTML
 
+Navigation patterns are public CSS: `aar-app-header` and `aar-app-header-actions` group identity and commands; `aar-app-shell` places `aar-sidenav` beside content and stacks below 54rem. Use `aar-sidenav-group`, `aar-sidenav-label`, and route anchors with `aar-sidenav-link` plus `aria-current="page"`. Native `details.aar-nav-disclosure` provides a collapsible navigation region. `aar-tabs` supports default underline, `data-variant="pills"`, or `data-variant="paper"`; `aar-tabpanel` respects `hidden`. Real tabs require application selection and keyboard behavior. Breadcrumbs use the existing `aar-breadcrumb-*` classes. The module is included by `index.css`; a selective `navigation.css` import also needs the token/base component foundations.
+
+Read the [alpha design rules](../../docs/design-rules.md) for typography, spacing, surface, state, motion, and adaptive-layout decisions. They distinguish implemented CSS foundations from application guidance and future spatial work.
+
+Paper regions are borderless: their fill and spacing establish the boundary. Inputs, outlined buttons, and overlays retain borders. Selected paper regions receive an inset outline; keyboard focus retains its separate visible outline.
+
+The core surface language is smooth colored paper: warm off-white sheets, muted sage/clay/lavender/ochre accents, and ink-like text. Add `aar-paper` to any region with `data-paper="sage"`, `"clay"`, `"lavender"`, `"ochre"`, or `"brand"`. Brand sheets derive from `--aar-primary`; surface tokens `--aar-paper-sage` and the corresponding color names can also be overridden. These are region colors, not additional theme modes. Light, Dark, and System remain the appearance choices. Dark appearance uses muted tinted sheets with light ink. Texture is omitted to keep small text clear.
+
+Core styling is flat: solid surfaces, modest corners, thin borders, and spacing establish hierarchy. Hover uses color and border feedback without lifting cards. Selected cards receive a subtle tint. Focus outlines remain visible, while menus and dialogs retain a small separation shadow. Optional Magic Art can add expressive elevation and glow.
+
 ```css
 @import "@techaaroorian-ui/aar-loom/index.css";
 ```

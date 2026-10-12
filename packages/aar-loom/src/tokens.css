@@ -11,9 +11,9 @@
     --aar-space-4: 1rem;
     --aar-space-6: 1.5rem;
     --aar-space-8: 2rem;
-    --aar-radius-sm: 0.375rem;
-    --aar-radius-md: 0.75rem;
-    --aar-radius-lg: 1.25rem;
+    --aar-radius-sm: 0.25rem;
+    --aar-radius-md: 0.25rem;
+    --aar-radius-lg: 0.5rem;
     --aar-control-height-xs: 1.75rem;
     --aar-control-padding-xs: 0.5rem;
     --aar-control-height-sm: 2.25rem;
@@ -29,27 +29,40 @@
     --aar-duration-enter: 220ms;
     --aar-stagger-step: 35ms;
     --aar-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-    --aar-hover-offset: -1px;
+    --aar-hover-offset: 0px;
     --aar-press-scale: 0.98;
     --aar-enter-offset: 6px;
 
+    /* Core surfaces stay flat; only overlapping content needs elevation. */
+    --aar-shadow-sm: 0 0 transparent;
+    --aar-shadow-md: 0 0 transparent;
+    --aar-shadow-lg: 2px 3px 0 color-mix(in srgb, var(--aar-text) 14%, transparent);
+    --aar-feedback-shadow: 0 0 transparent;
+    --aar-glow: 0 0 transparent;
+  }
+  [data-magic-art="true"] {
+    --aar-glow: 0 0 0 3px color-mix(in srgb, var(--aar-focus) 18%, transparent);
     --aar-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.08);
     --aar-shadow-md: 0 4px 12px rgb(0 0 0 / 0.14);
     --aar-shadow-lg: 0 12px 28px rgb(0 0 0 / 0.2);
-    --aar-glow: 0 0 0 3px color-mix(in srgb, var(--aar-focus) 18%, transparent);
+    --aar-feedback-shadow: var(--aar-glow);
   }
   :root,
   [data-theme="light"],
   [data-theme="system"] {
-    --aar-background: #f4f3ef;
-    --aar-surface: #ffffff;
-    --aar-surface-subtle: #eceaf0;
-    --aar-surface-raised: #ffffff;
-    --aar-surface-overlay: #ffffff;
-    --aar-text: #292630;
-    --aar-text-muted: #625d6d;
-    --aar-border: #d1ccd8;
-    --aar-border-strong: #81788e;
+    --aar-background: #eee8dc;
+    --aar-surface: #faf6ed;
+    --aar-surface-subtle: #e9e0d2;
+    --aar-surface-raised: #fffbf3;
+    --aar-surface-overlay: #fffbf3;
+    --aar-paper-sage: #dce5d5;
+    --aar-paper-clay: #f0d9cd;
+    --aar-paper-lavender: #e6dff0;
+    --aar-paper-ochre: #efdfb1;
+    --aar-text: #302d29;
+    --aar-text-muted: #625b51;
+    --aar-border: #cdc2b1;
+    --aar-border-strong: #897b68;
     --aar-primary: #65468b;
     --aar-on-primary: #ffffff;
     --aar-focus: #65468b;
@@ -66,15 +79,19 @@
     --aar-syntax-comment: #626a70;
   }
   [data-theme="dark"] {
-    --aar-background: #15151d;
-    --aar-surface: #1d1d28;
-    --aar-surface-subtle: #30283f;
-    --aar-surface-raised: #252432;
-    --aar-surface-overlay: #292736;
-    --aar-text: #f0ede8;
-    --aar-text-muted: #b1abbf;
-    --aar-border: #44404f;
-    --aar-border-strong: #958aab;
+    --aar-background: #1d1b18;
+    --aar-surface: #28251f;
+    --aar-surface-subtle: #373229;
+    --aar-surface-raised: #302c25;
+    --aar-surface-overlay: #302c25;
+    --aar-paper-sage: #2d392c;
+    --aar-paper-clay: #423029;
+    --aar-paper-lavender: #363040;
+    --aar-paper-ochre: #403821;
+    --aar-text: #f4eee2;
+    --aar-text-muted: #c0b6a7;
+    --aar-border: #51493e;
+    --aar-border-strong: #a69782;
     --aar-primary: #c9b6fb;
     --aar-on-primary: #211932;
     --aar-focus: #c9b6fb;
@@ -93,15 +110,19 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme]),
     [data-theme="system"] {
-      --aar-background: #15151d;
-      --aar-surface: #1d1d28;
-      --aar-surface-subtle: #30283f;
-      --aar-surface-raised: #252432;
-      --aar-surface-overlay: #292736;
-      --aar-text: #f0ede8;
-      --aar-text-muted: #b1abbf;
-      --aar-border: #44404f;
-      --aar-border-strong: #958aab;
+      --aar-background: #1d1b18;
+      --aar-surface: #28251f;
+      --aar-surface-subtle: #373229;
+      --aar-surface-raised: #302c25;
+      --aar-surface-overlay: #302c25;
+      --aar-paper-sage: #2d392c;
+      --aar-paper-clay: #423029;
+      --aar-paper-lavender: #363040;
+      --aar-paper-ochre: #403821;
+      --aar-text: #f4eee2;
+      --aar-text-muted: #c0b6a7;
+      --aar-border: #51493e;
+      --aar-border-strong: #a69782;
       --aar-primary: #c9b6fb;
       --aar-on-primary: #211932;
       --aar-focus: #c9b6fb;
