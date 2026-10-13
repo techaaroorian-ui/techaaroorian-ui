@@ -60,10 +60,9 @@ try {
  }
  await page.goto(url+'/#/guides/brand');
  assert.equal(await page.getByRole('img',{name:/color mark$/}).count(),11,'All package color identities');
- assert.equal(await page.getByRole('img',{name:/monochrome mark$/}).count(),11,'All theme-aware identities');
+ assert.equal(await page.locator('.aar-grid article .aar-brand-wordmark').count(),11,'One wordmark per identity');
  const downloads=await page.getByRole('link',{name:/^Download .* SVG$/}).evaluateAll(links=>links.map(link=>link.href));
  assert.equal(downloads.length,44);
- assert.equal(await page.getByRole('img',{name:/color wordmark$/}).count(),11,'Primary text identities');
  for(const asset of downloads) {
   const response=await page.request.get(asset);
   assert.equal(response.ok(),true,'Identity asset loads');

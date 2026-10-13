@@ -1,4 +1,3 @@
-import BrandMark from "./BrandMark";
 import BrandWordmark from "./BrandWordmark";
 import CodeBlock from "./CodeBlock";
 
@@ -27,10 +26,8 @@ export default function BrandGuide() {
     <div className="aar-grid" data-min="18">
       {identities.map(([slug, label, meaning, status]) => <article key={slug} className="aar-panel aar-stack aar-gap-4">
         <h2 className="aar-heading"><BrandWordmark label={label} /></h2>
-        <span className="aar-brand-swatch"><img className="aar-brand-wordmark-image" src={`${import.meta.env.BASE_URL}brand/wordmarks/${slug}.svg`} alt={`${label} color wordmark`} /></span>
         <div className="aar-cluster aar-items-center aar-gap-4">
           <span className="aar-brand-swatch"><img className="aar-brand-symbol" src={`${import.meta.env.BASE_URL}brand/marks/${slug}.svg`} alt={`${label} color mark`} /></span>
-          <BrandMark name={slug} label={`${label} monochrome mark`} />
           <span className="aar-badge">{status}</span>
         </div>
         <p className="aar-hint">Secondary symbol: {meaning.toLowerCase()}.</p>
