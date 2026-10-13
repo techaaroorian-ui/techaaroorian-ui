@@ -1,5 +1,7 @@
 # Learning Aar Loom while building it
 
+The alpha [design rules](design-rules.md) define the current contract. This page explains the concepts behind those rules.
+
 ## 1. Semantic tokens
 
 A raw token names a value; a semantic token names its purpose. `green-700` is a value; `primary` is a role. Components use roles so consumers can change values without redesigning every component.
@@ -14,7 +16,7 @@ Look at the workbench without reading every word. Locate the main action. Then c
 
 ## 3. Surfaces
 
-Grouping should explain relationships. Our background is the workspace, surfaces contain related content, and borders separate groups. Future overlays may use elevation to explain overlap; ordinary panels do not need it.
+Grouping should explain relationships. Our background is the workspace, colored paper surfaces contain related content, and spacing separates groups. Borders identify controls and overlapping regions rather than framing every sheet. Ordinary panels do not need elevation.
 
 Switch between light and dark. A dark theme needs a new surface hierarchy, not merely inverted hex colors.
 
@@ -40,6 +42,6 @@ The initial browser smoke check covers theme switching, custom color propagation
 
 Responsiveness includes how quickly an interface acknowledges an action. A 140 ms transition gives controls quick feedback; a 220 ms entrance lets new content settle. Easing controls how speed changes: our curve starts promptly and slows toward the final position.
 
-Hover lifts a button by 1 px, pressing compresses it slightly, and keyboard focus remains immediately visible. New content can opt into a short fade and 6 px movement with `aar-enter`. Translation and scaling do not reflow neighboring elements.
+Core hover changes color or boundaries without lifting controls. Pressing compresses a control slightly, and keyboard focus remains immediately visible. New content can opt into a short fade and 6 px movement with `aar-enter`. Translation and scaling do not reflow neighboring elements.
 
 Try New project, filter to an empty result, and switch playground sections. Then enable reduced motion in your OS or browser emulation. Movement and entrance animations should stop while focus and selection remain clear. Motion should communicate change without delaying use.

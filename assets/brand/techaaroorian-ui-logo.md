@@ -1,8 +1,8 @@
 # TechAaroorian UI logo · concept 1
 
-Created with the built-in image-generation tool. Transparent raster icon for the collection, distinct from Aar Loom's lowercase a mark. The collection header and favicon use this icon; Aar Loom's wordmark belongs within its package page.
+Created with the built-in image-generation tool. Transparent raster icon for the collection, distinct from Aar Loom's lowercase a mark. This historical concept informed the collection identity; Aar Loom's wordmark belongs within its package page.
 
-Master: `techaaroorian-ui-logo-concept-v1.png`. Documentation copy: `apps/docs/public/brand/techaaroorian-ui.png`. This remains a raster concept; monochrome, dark-background, favicon-specific, and editable vector refinements remain future identity work.
+Master: `techaaroorian-ui-logo-concept-v1.png`. Documentation copy: `apps/docs/public/brand/techaaroorian-ui.png`. This remains a historical raster concept. The current editable vector and monochrome masters are marks/techaaroorian-ui.svg and marks/techaaroorian-ui-mono.svg; the docs header uses the theme-aware silhouette and the favicon uses the color vector.
 
 ## Generation prompt
 

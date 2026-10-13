@@ -5,6 +5,8 @@ import AarLoomDocs from "./AarLoomDocs";
 import HeadlessGuide from "./HeadlessGuide";
 import IconGuide from "./IconGuide";
 import VersioningGuide from "./VersioningGuide";
+import BrandGuide from "./BrandGuide";
+import BrandWordmark from "./BrandWordmark";
 import PhilosophyGuide from "./PhilosophyGuide";
 import AarSelect from "./AarSelect";
 import {
@@ -15,10 +17,6 @@ import {
   Building2,
   ArrowRight,
   LayoutGrid,
-  Move,
-  FolderArchive,
-  Layers,
-  UploadCloud,
 } from "lucide-react";
 
 import MagicArtGuide from "./MagicArtGuide";
@@ -36,6 +34,7 @@ const pages = [
   ["#/guides/philosophy", "Philosophy"],
   ["#/guides/magic-art", "Magic Art"],
   ["#/guides/icons", "Icons"],
+  ["#/guides/brand", "Brand"],
   ["#/guides/versioning", "Versioning"],
 ];
 
@@ -114,23 +113,14 @@ export default function App() {
 
       <header className="aar-site-header">
         <a className="aar-brand" href="#/">
-          <span className="aar-brand-icon">
-            <img
-              src={`${import.meta.env.BASE_URL}brand/techaaroorian-ui.png`}
-              alt=""
-            />
-          </span>
-          <span>
-            TechAaroorian <b>UI</b>
-          </span>
+          <BrandWordmark label="TechAaroorian UI" size="sm" />
         </a>
 
-        <nav aria-label="Documentation packages">
+        <nav className="aar-tabs" data-variant="paper" aria-label="Documentation packages">
           {pages.map(([path, label]) => (
             <a
               key={path}
-              className="aar-button"
-              data-variant="quiet"
+              className="aar-tab"
               href={path}
               aria-current={route === path ? "page" : undefined}
             >
@@ -250,6 +240,8 @@ export default function App() {
           <HeadlessGuide />
         ) : route === "#/guides/icons" ? (
           <IconGuide />
+        ) : route === "#/guides/brand" ? (
+          <BrandGuide />
         ) : route === "#/guides/versioning" ? (
           <VersioningGuide />
         ) : route === "#/aar-loom" ? (
@@ -292,7 +284,7 @@ export default function App() {
             </div>
 
             {/* Architecture Ribbon */}
-            <div className="aar-card aar-cycle-ribbon aar-p-1-25rem-1-5rem aar-mb-8 aar-border-1px-solid-border-strong aar-bg-surface-raised aar-radius-radius-md">
+            <div className="aar-card aar-cycle-ribbon aar-paper aar-p-1-25rem-1-5rem aar-mb-8 aar-bg-surface-raised aar-radius-radius-md">
               <div className="aar-cluster aar-justify-space-between aar-flex-wrap-wrap aar-gap-4">
                 <div className="aar-cluster aar-gap-6 aar-flex-wrap-wrap">
                   <div className="aar-cluster aar-gap-2">
@@ -348,17 +340,11 @@ export default function App() {
             {/* Core Package Grid */}
             <div className="aar-card-grid">
               <article
-                className="aar-panel aar-feature-card"
-                data-corner-brackets="true"
+                className="aar-panel aar-feature-card aar-paper"
+                data-paper="lavender"
               >
-                <div className="aar-wordmark">
-                  <img
-                    src={`${import.meta.env.BASE_URL}brand/aar-loom.svg`}
-                    alt="Aar Loom logo"
-                  />
-                </div>
                 <p className="aar-eyebrow">Pure CSS Design Language</p>
-                <h2 className="aar-heading">Aar Loom</h2>
+                <h2 className="aar-heading"><BrandWordmark label="Aar Loom" /></h2>
                 <p>
                   CSS-only layout, typography, surfaces, and state styling.
                   Use plain HTML or your own components. Choose Light, Dark,
@@ -374,15 +360,9 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
-                <span
-                  className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
-                  aria-hidden="true"
-                >
-                  <FolderArchive size={26} />
-                </span>
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="sage">
                 <p className="aar-eyebrow">Headless Studio Component</p>
-                <h2 className="aar-heading">Contextual Empty</h2>
+                <h2 className="aar-heading"><BrandWordmark label="Contextual Empty" /></h2>
                 <p>
                   Explain first use, empty canvas stages, and recovery flows
                   with a clear next action instead of dead-end placeholders.
@@ -393,15 +373,9 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
-                <span
-                  className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
-                  aria-hidden="true"
-                >
-                  <Move size={26} />
-                </span>
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="clay">
                 <p className="aar-eyebrow">Headless Studio Viewport Math</p>
-                <h2 className="aar-heading">Pan &amp; Zoom</h2>
+                <h2 className="aar-heading"><BrandWordmark label="Pan & Zoom" /></h2>
                 <p>
                   Calculates auto-fit dimensions, boundary constraints, and zoom
                   stepping for creative canvas stages with zero framework bloat.
@@ -412,15 +386,9 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
-                <span
-                  className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
-                  aria-hidden="true"
-                >
-                  <Layers size={26} />
-                </span>
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="ochre">
                 <p className="aar-eyebrow">Deterministic Sequence Engine</p>
-                <h2 className="aar-heading">Ordered Collection</h2>
+                <h2 className="aar-heading"><BrandWordmark label="Ordered Collection" /></h2>
                 <p>
                   Deterministic state machine for multi-slide presentations,
                   canvas layers, and undoable timelines with zero UI lock-in.
@@ -431,15 +399,9 @@ export default function App() {
                 </a>
               </article>
 
-              <article className="aar-panel aar-feature-card">
-                <span
-                  className="aar-empty-package-mark aar-display-inline-flex aar-items-center aar-justify-center"
-                  aria-hidden="true"
-                >
-                  <UploadCloud size={26} />
-                </span>
+              <article className="aar-panel aar-feature-card aar-paper" data-paper="brand">
                 <p className="aar-eyebrow">Atomic Batch Intake</p>
-                <h2 className="aar-heading">File Intake</h2>
+                <h2 className="aar-heading"><BrandWordmark label="File Intake" /></h2>
                 <p>
                   Validates batches of images or creative assets atomically
                   before allocating object URLs or GPU memory.

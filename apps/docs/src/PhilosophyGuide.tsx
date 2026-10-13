@@ -18,9 +18,10 @@ import {
 import AarSelect from "./AarSelect";
 import { sparkMagicStars } from "./magic-spark";
 import CodeBlock from "./CodeBlock";
+import DesignRules from "./DesignRules";
 
 export default function PhilosophyGuide() {
-  const [magicArtEnabled, setMagicArtEnabled] = useState(true);
+  const [magicArtEnabled, setMagicArtEnabled] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [activeNav, setActiveNav] = useState("dashboard");
   const [sampleOption, setSampleOption] = useState("production");
@@ -51,7 +52,7 @@ export default function PhilosophyGuide() {
         <p className="aar-eyebrow">
           Aar Loom · Design Philosophy &amp; Architecture
         </p>
-        <h1 className="aar-title">Clean Foundation, Optional Magic</h1>
+        <h1 className="aar-title">Colored Paper, Optional Magic</h1>
         <p className="aar-subtitle aar-text-1-25rem aar-ink-text-muted aar-font-style-italic aar-m-0-5rem-0-1rem">
           &ldquo;Precision design for all applications. Subtle enchantment on
           demand.&rdquo;
@@ -64,6 +65,13 @@ export default function PhilosophyGuide() {
           studios like Yuwbrndr.
         </p>
         <p>
+          Warm paper surfaces, muted color, ink-like text, and spacing establish hierarchy. Cards
+          stay still on hover; color changes show interaction. Selection remains
+          visible through a tinted surface and distinct border, while keyboard
+          focus keeps an explicit outline. Menus and dialogs use a small shadow
+          to separate overlapping content.
+        </p>
+        <p>
           The <strong>magic-art philosophy is optional</strong>. Clean business
           applications need zero visual distraction, honest functional
           typography, and robust layout structures. When you choose to extend
@@ -74,8 +82,25 @@ export default function PhilosophyGuide() {
         </p>
       </div>
 
+      <section className="aar-section aar-stack aar-gap-4" aria-label="Colored paper surfaces">
+        <h2 className="aar-heading">A surface language, not another theme</h2>
+        <p>Use colored sheets to group related work. Sage, clay, lavender, and ochre are surface accents; they do not replace status labels or your brand colors. The brand sheet follows your custom primary color. Smooth fills keep small text clear without decorative texture.</p>
+        <div className="aar-grid" data-min="14">
+          {(["sage", "clay", "lavender", "ochre", "brand"] as const).map((tone) => (
+            <article className="aar-panel aar-paper aar-stack aar-gap-2" data-paper={tone} key={tone}>
+              <h3 className="aar-heading">{tone === "brand" ? "Your brand" : tone[0].toUpperCase() + tone.slice(1)}</h3>
+              <p>Readable ink on a smooth sheet. Clear edges, quiet color.</p>
+              <p className="aar-hint">Supporting text stays legible too.</p>
+            </article>
+          ))}
+        </div>
+        <CodeBlock title="Colored paper with ordinary HTML" language="html" code={'<section class="aar-panel aar-paper aar-stack" data-paper="sage">\n  <h2 class="aar-heading">Project notes</h2>\n  <p>Readable content on a colored paper surface.</p>\n  <button class="aar-button" type="button">Open notes</button>\n</section>\n\n<section class="aar-panel aar-paper" data-paper="brand">\n  <p>This sheet follows your custom --aar-primary color.</p>\n</section>'} />
+      </section>
+
+      <DesignRules />
+
       {/* Mode Comparison Banner */}
-      <div className="aar-panel aar-mt-8 aar-display-flex aar-flex-wrap-wrap aar-items-center aar-justify-space-between aar-gap-4 aar-border-1px-solid-border-strong aar-bg-surface-raised">
+      <div className="aar-panel aar-mt-8 aar-display-flex aar-flex-wrap-wrap aar-items-center aar-justify-space-between aar-gap-4 aar-bg-surface-raised">
         <div>
           <span className="aar-badge aar-mb-2" data-variant="primary">
             Interactive Demo Control

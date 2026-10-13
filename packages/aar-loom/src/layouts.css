@@ -1,4 +1,46 @@
 @layer components {
+  .aar-brand-wordmark {
+    display: inline-block;
+    max-width: 100%;
+    padding: 0.25em 0.5em;
+    border: 1px solid var(--aar-border);
+    border-radius: var(--aar-radius-sm);
+    background: var(--aar-surface);
+    font-family: var(--aar-font-sans);
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    color: var(--aar-brand-ink);
+    overflow-wrap: anywhere;
+  }
+  .aar-brand-wordmark strong { font-weight: 600; }
+  .aar-brand-wordmark > span { font-weight: 400; color: var(--aar-brand-accent); }
+  .aar-brand-wordmark[data-size="sm"] { font-size: 1.0625rem; }
+  .aar-brand-wordmark[data-size="lg"] { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .aar-brand-wordmark-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 3.5rem;
+    object-fit: contain;
+    object-position: left center;
+  }
+  .aar-package-symbol {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    background: var(--aar-text);
+    mask: var(--aar-symbol) center / contain no-repeat;
+  }
+  .aar-brand-symbol { display: block; width: 4rem; height: 4rem; }
+  .aar-brand-swatch {
+    display: inline-grid;
+    place-items: center;
+    padding: var(--aar-space-3);
+    background: #faf6ed;
+    border-radius: var(--aar-radius-sm);
+  }
   /* Reusable page, guide, workbench, and specimen compositions. */
   .aar-page-scroll {
     scroll-behavior: smooth;
@@ -29,7 +71,7 @@
     font-size: 0.9375rem;
     letter-spacing: -0.025em;
   }
-  .aar-brand > span:last-child {
+  .aar-brand > span:last-child:not(.aar-brand-wordmark) {
     color: var(--aar-text-muted);
   }
   .aar-brand-mark {
@@ -58,7 +100,7 @@
     margin-top: 1rem;
     font-size: clamp(3rem, 6vw, 5.5rem);
   }
-  .aar-intro .aar-title span {
+  .aar-intro .aar-title > span:not(.aar-brand-wordmark) {
     color: var(--aar-text-muted);
   }
   .aar-intro-copy {
@@ -79,7 +121,6 @@
     gap: 1rem;
     padding: 0.875rem 1.25rem;
     background: var(--aar-surface);
-    backdrop-filter: blur(12px);
     border: 1px solid var(--aar-border);
     border-radius: var(--aar-radius-md);
     box-shadow: var(--aar-shadow-sm);
@@ -431,7 +472,7 @@
     .aar-motion-study {
       grid-template-columns: 1fr;
     }
-    .aar-brand > span:last-child {
+    .aar-brand > span:last-child:not(.aar-brand-wordmark) {
       display: none;
     }
     .aar-lab-header > .aar-eyebrow {
@@ -511,12 +552,12 @@
     align-items: flex-start;
   }
   .aar-guide-sidebar {
-    position: sticky;
+    position: static;
     top: 4.75rem;
     max-height: calc(100vh - 5.5rem);
     background: var(--aar-surface);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     box-shadow: var(--aar-shadow-sm);
     display: flex;
     flex-direction: column;
@@ -528,7 +569,7 @@
     flex-shrink: 0;
     padding: 0.75rem 0.875rem 0.625rem;
     background: var(--aar-surface);
-    border-bottom: 1px solid var(--aar-border);
+    border-bottom: 0;
   }
   .aar-guide-sidebar-content {
     flex: 1;
@@ -564,9 +605,8 @@
     margin-top: 1rem;
     margin-bottom: 0.35rem;
     padding-left: 0.5rem;
-    font-size: 0.6875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
     font-weight: 700;
     color: var(--aar-text-muted);
   }
@@ -574,10 +614,12 @@
     margin-top: 0;
   }
   .aar-guide-nav-item {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1.25rem minmax(0, 1fr) auto;
+    align-items: start;
     gap: 0.625rem;
     width: 100%;
+    min-height: 44px;
     padding: 0.5rem 0.75rem;
     border-radius: var(--aar-radius-sm);
     border: 1px solid transparent;
@@ -588,24 +630,35 @@
     text-align: left;
     cursor: pointer;
     transition: all var(--aar-duration) var(--aar-ease);
-    white-space: nowrap;
+    white-space: normal;
+  }
+  .aar-guide-nav-item > :first-child {
+    margin-top: 0.125rem;
+  }
+  .aar-nav-label {
+    min-width: 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
   }
   .aar-guide-nav-item:hover {
     background: var(--aar-surface-subtle);
-    border-color: var(--aar-border);
-    color: var(--aar-primary);
+
+    border-color: transparent;
+
+    color: var(--aar-text);
   }
   .aar-guide-nav-item[data-active="true"] {
-    background: var(--aar-surface-subtle);
-    border-color: var(--aar-primary);
-    color: var(--aar-primary);
+    background: color-mix(in srgb, var(--aar-primary) 12%, var(--aar-surface));
+
+    border-color: transparent;
+
+    color: var(--aar-text);
     font-weight: 600;
-    box-shadow:
-      0 0 0 1px var(--aar-primary),
-      var(--aar-shadow-sm);
+    box-shadow: var(--aar-feedback-shadow);
   }
   .aar-guide-nav-item .aar-badge {
-    margin-left: auto;
+    margin: 0;
+    align-self: start;
     font-size: 0.6875rem;
     white-space: nowrap;
     flex-shrink: 0;
@@ -624,16 +677,16 @@
     scroll-margin-top: 6rem;
   }
   .aar-specimen-box {
-    padding: 1.5rem;
-    background: var(--aar-surface);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    padding: var(--aar-space-4) 0;
+    background: transparent;
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     box-shadow: var(--aar-shadow-sm);
   }
   .aar-specimen-preview {
-    padding: 1.75rem;
+    padding: var(--aar-panel-padding);
     background: var(--aar-surface-subtle);
-    border: 1px dashed var(--aar-border-strong);
+    border: 0;
     border-radius: var(--aar-radius-sm);
     margin-bottom: 1.25rem;
   }
@@ -663,7 +716,6 @@
     padding: 0.875rem 4vw;
     border-bottom: 1px solid var(--aar-border);
     background: var(--aar-surface);
-    backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 20;
@@ -712,8 +764,10 @@
 
   .aar-site-header nav a[aria-current="page"] {
     background: var(--aar-surface-subtle);
-    color: var(--aar-primary);
-    border-color: var(--aar-border-strong);
+
+    color: var(--aar-text);
+
+    border-color: transparent;
     font-weight: 600;
   }
 
@@ -789,8 +843,8 @@
     flex-direction: column;
     gap: 1rem;
     padding: 2.25rem 2rem;
-    border-radius: var(--aar-radius-lg);
-    border: 1px solid var(--aar-border);
+    border-radius: var(--aar-radius-sm);
+    border: 0;
     background: var(--aar-surface);
     transition:
       transform var(--aar-duration) var(--aar-ease),
@@ -825,7 +879,7 @@
 
   .aar-wordmark {
     background: var(--aar-surface-raised);
-    border: 1px solid var(--aar-border);
+    border: 0;
     border-radius: var(--aar-radius-sm);
     padding: 0.5rem 1rem;
     width: 14rem;

@@ -103,7 +103,7 @@
       var(--aar-on-primary)
     );
     border-color: var(--aar-primary);
-    box-shadow: var(--aar-glow);
+    box-shadow: var(--aar-feedback-shadow);
   }
   :is(
       .aar-button,
@@ -145,7 +145,7 @@
     background: var(--aar-primary);
     color: var(--aar-on-primary);
     border-color: var(--aar-primary);
-    box-shadow: var(--aar-glow);
+    box-shadow: var(--aar-feedback-shadow);
   }
   :is(
       .aar-button,
@@ -210,6 +210,7 @@
      -------------------------------------------------------------------------- */
   .aar-field {
     display: grid;
+    min-width: 0;
     gap: var(--aar-space-2);
     font-size: 0.875rem;
     font-weight: 500;
@@ -274,7 +275,7 @@
   .aar-form-row,
   .aar-field-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
     grid-template-rows: auto auto minmax(1.35rem, auto);
     gap: 0 var(--aar-space-4);
   }
@@ -387,7 +388,8 @@
   :is(.aar-input, .aar-select, select.aar-input, select.aar-select):focus {
     border-color: var(--aar-focus);
     box-shadow: var(--aar-glow);
-    outline: none;
+    outline: 2px solid var(--aar-focus);
+    outline-offset: 2px;
   }
   :is(.aar-input, .aar-select, select.aar-input, select.aar-select):disabled {
     opacity: 0.55;
@@ -420,7 +422,8 @@
   .aar-textarea:focus {
     border-color: var(--aar-focus);
     box-shadow: var(--aar-glow);
-    outline: none;
+    outline: 2px solid var(--aar-focus);
+    outline-offset: 2px;
   }
   .aar-textarea:disabled {
     opacity: 0.55;
@@ -524,7 +527,8 @@
     background: var(--aar-surface);
     border-color: var(--aar-focus);
     box-shadow: var(--aar-glow);
-    outline: none;
+    outline: 2px solid var(--aar-focus);
+    outline-offset: 2px;
   }
 
   .aar-input[data-variant="flushed"],
@@ -549,7 +553,8 @@
   .aar-textarea[data-variant="flushed"]:focus {
     border-bottom-color: var(--aar-focus);
     box-shadow: 0 2px 0 0 var(--aar-focus);
-    outline: none;
+    outline: 2px solid var(--aar-focus);
+    outline-offset: 2px;
   }
 
   .aar-input[data-variant="ghost"],
@@ -572,7 +577,8 @@
     background: var(--aar-surface);
     border-color: var(--aar-focus);
     box-shadow: var(--aar-glow);
-    outline: none;
+    outline: 2px solid var(--aar-focus);
+    outline-offset: 2px;
   }
 
   /* Input Groups & Adornments */
@@ -1045,8 +1051,6 @@
     border: 1px solid var(--aar-border);
     border-radius: var(--aar-radius-md);
     box-shadow: var(--aar-shadow-lg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     transform-origin: top center;
     animation: aar-dropdown-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
@@ -1114,8 +1118,8 @@
   }
   .aar-panel {
     padding: var(--aar-panel-padding);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     background: var(--aar-surface);
   }
   .aar-panel[data-size="sm"] {
@@ -1393,8 +1397,8 @@
     text-align: center;
     color: var(--aar-text);
     background: var(--aar-surface);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-lg);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     box-shadow: var(--aar-shadow-sm);
     transition:
       border-color var(--aar-duration) var(--aar-ease),
@@ -1410,8 +1414,8 @@
     height: 3.5rem;
     color: var(--aar-primary);
     background: var(--aar-surface-raised);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     box-shadow: var(--aar-shadow-sm);
   }
   .aar-contextual-empty .contextual-empty-icon svg {
@@ -1676,8 +1680,8 @@
     gap: var(--aar-space-1);
     padding: var(--aar-space-4);
     background: var(--aar-surface);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     box-shadow: var(--aar-shadow-sm);
     transition:
       border-color var(--aar-duration) var(--aar-ease),
@@ -1754,7 +1758,6 @@
     font-size: 0.75rem;
     font-family: var(--aar-font-mono);
     color: var(--aar-text-muted);
-    backdrop-filter: blur(8px);
     box-shadow: var(--aar-shadow-sm);
   }
   .aar-status-ribbon strong {
@@ -1950,8 +1953,8 @@
     display: flex;
     flex-direction: column;
     padding: var(--aar-space-3);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     background: var(--aar-surface);
     text-align: left;
     cursor: pointer;
@@ -1969,9 +1972,14 @@
   .aar-card[data-selected="true"],
   .aar-card[aria-selected="true"] {
     border-color: var(--aar-primary);
-    box-shadow:
-      0 0 0 1px var(--aar-primary),
-      var(--aar-glow);
+    background: color-mix(in srgb, var(--aar-primary) 8%, var(--aar-surface));
+    box-shadow: var(--aar-feedback-shadow);
+    outline: 2px solid var(--aar-primary);
+    outline-offset: -2px;
+  }
+  .aar-card:is([data-selected="true"], [aria-selected="true"]):focus-visible {
+    outline-color: var(--aar-focus);
+    outline-offset: 2px;
   }
 
   /* Slide Strip / Document Navigation Bar */
@@ -2102,8 +2110,8 @@
     flex-direction: column;
     gap: var(--aar-space-2);
     padding: var(--aar-space-4);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     background: var(--aar-surface-subtle);
     color: var(--aar-text);
     font-size: 0.875rem;
@@ -2135,17 +2143,28 @@
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .aar-range::-webkit-slider-runnable-track {
     height: 0.375rem;
     border-radius: 9999px;
-    background: var(--aar-surface-subtle);
-    outline: none;
-    cursor: pointer;
+    background: var(--aar-border-strong);
+  }
+  .aar-range::-moz-range-track {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: var(--aar-border-strong);
   }
   .aar-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 1.125rem;
     height: 1.125rem;
+    margin-top: -0.375rem;
     border-radius: 50%;
     background: var(--aar-primary);
     border: 2px solid var(--aar-surface);
@@ -2155,6 +2174,23 @@
   }
   .aar-range::-webkit-slider-thumb:hover {
     transform: scale(1.15);
+  }
+  .aar-range::-moz-range-thumb {
+    width: 1.125rem;
+    height: 1.125rem;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: var(--aar-primary);
+    border: 2px solid var(--aar-surface);
+    cursor: pointer;
+    transition: transform var(--aar-duration) var(--aar-ease);
+  }
+  .aar-range::-moz-range-thumb:hover {
+    transform: scale(1.15);
+  }
+  .aar-range:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   /* Toggle / Switch */
@@ -2178,6 +2214,10 @@
     outline: none;
     cursor: pointer;
     transition: all var(--aar-duration) var(--aar-ease);
+  }
+  .aar-toggle input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--aar-focus);
+    outline-offset: 2px;
   }
   .aar-toggle input[type="checkbox"]::after {
     content: "";
@@ -3018,8 +3058,8 @@
   /* 11. Stat / Metric Cards */
   .aar-stat-card {
     padding: var(--aar-space-4);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     background: var(--aar-surface);
     display: flex;
     flex-direction: column;

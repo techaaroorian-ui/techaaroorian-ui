@@ -4,6 +4,8 @@
 @import "./components.css";
 
 @import "./layouts.css";
+@import "./navigation.css";
+@import "./workspace.css";
 @import "./compositions.css";
 @import "./expression.css";
 @import "./code.css";

@@ -1,0 +1,48 @@
+<section class="aar-root aar-workspace" data-size="embedded" aria-label="Migration workspace example">
+  <header class="aar-workspace-header">
+    <h3 class="aar-heading">Paper workspace</h3>
+    <div class="aar-toolbar-group">
+      <a class="aar-button" href="#/guides/philosophy">Design rules</a>
+      <a class="aar-button" data-variant="primary" href="#/headless">Behavior packages</a>
+    </div>
+  </header>
+  <div class="aar-workspace-body" data-layout="studio">
+    <aside class="aar-workspace-region" data-region="navigation">
+      <details class="aar-nav-disclosure" open>
+        <summary>Workspace tools</summary>
+        <nav class="aar-sidenav" aria-label="Migration example tools">
+          <a class="aar-sidenav-link" href="#/aar-loom" aria-current="page">Design foundations</a>
+          <a class="aar-sidenav-link" href="#/headless">Headless behavior</a>
+          <a class="aar-sidenav-link" href="#/guides/icons">Icon guidance</a>
+        </nav>
+      </details>
+    </aside>
+    <section class="aar-workspace-region aar-stack" data-region="content" aria-label="Main work">
+      <div class="aar-toolbar" role="group" aria-label="View commands">
+        <div class="aar-toolbar-group"><span class="aar-badge">Local example</span></div>
+        <div class="aar-toolbar-group"><span class="aar-hint">Content keeps its own rendering engine</span></div>
+      </div>
+      <div class="aar-panel aar-paper aar-stack" data-paper="sage">
+        <h4 class="aar-heading">The task gets the strongest region</h4>
+        <p>Use this region for artwork, documents, forms, or data. Supporting tools stay reachable as the layout stacks.</p>
+      </div>
+      <div class="aar-scroll-area" tabindex="0" role="region" aria-label="Source preview">
+        <div class="aar-code"><pre><code>Plain HTML and public Aar Loom CSS.
+Application state, PDF rendering, and code editing stay outside the CSS framework.</code></pre></div>
+      </div>
+    </section>
+    <aside class="aar-workspace-region" data-region="inspector" aria-label="Properties">
+      <section class="aar-inspector-section">
+        <h4 class="aar-heading">Document properties</h4>
+        <dl class="aar-property-list">
+          <div class="aar-property-row"><dt>Name</dt><dd>Project notes</dd></div>
+          <div class="aar-property-row"><dt>Mode</dt><dd>Local processing</dd></div>
+          <div class="aar-property-row"><dt>State</dt><dd>Ready</dd></div>
+        </dl>
+        <label class="aar-field">Title<input class="aar-input" value="Project notes" /></label>
+        <p class="aar-hint">A native field: no form or validation library required.</p>
+      </section>
+    </aside>
+  </div>
+  <footer class="aar-statusbar"><span>Ready</span><span>Tools remain visible at narrow widths</span></footer>
+</section>

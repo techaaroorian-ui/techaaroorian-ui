@@ -1,0 +1,105 @@
+@layer components {
+  /* Extend the existing workspace anatomy; no mandatory JS component. */
+  .aar-workspace { min-width: 0; container: aar-workspace / inline-size; }
+  .aar-workspace[data-size="viewport"] {
+    height: 100dvh;
+    min-height: 0;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+  .aar-workspace[data-size="embedded"] { min-height: 0; }
+  .aar-workspace-header { flex-wrap: wrap; }
+  .aar-workspace-body[data-layout="studio"] {
+    display: grid;
+    grid-template-columns: minmax(0, var(--aar-navigation-width, 14rem)) minmax(0, 1fr) minmax(0, var(--aar-inspector-width, 18rem));
+    align-items: start;
+    gap: var(--aar-space-4);
+    padding: var(--aar-space-4);
+    overflow: visible;
+  }
+  .aar-workspace-region { min-width: 0; min-height: 0; }
+  .aar-workspace-region[data-region="navigation"] { grid-column: 1; }
+  .aar-workspace-region[data-region="content"] { grid-column: 2; }
+  .aar-workspace-region[data-region="inspector"] { grid-column: 3; }
+  .aar-workspace[data-size="viewport"] .aar-workspace-body[data-layout="studio"] {
+    overflow: auto;
+    align-items: stretch;
+  }
+  .aar-scroll-area {
+    min-width: 0;
+    min-height: 0;
+    max-height: var(--aar-scroll-max-height, 28rem);
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+  }
+  .aar-statusbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--aar-space-3);
+    padding: var(--aar-space-2) var(--aar-space-4);
+    background: var(--aar-surface);
+    color: var(--aar-text-muted);
+    font-size: 0.875rem;
+  }
+  .aar-toolbar-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--aar-space-2);
+    min-width: 0;
+  }
+  .aar-property-list {
+    display: grid;
+    gap: var(--aar-space-3);
+    margin: 0;
+    container: aar-properties / inline-size;
+  }
+  .aar-property-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    align-items: baseline;
+    gap: var(--aar-space-3);
+  }
+  .aar-property-row > :is(dt, dd) { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+  .aar-property-row > dt { color: var(--aar-text-muted); }
+  .aar-inspector-section {
+    display: grid;
+    gap: var(--aar-space-4);
+    padding: var(--aar-panel-padding);
+    background: var(--aar-surface);
+    border-radius: var(--aar-radius-sm);
+  }
+  @container aar-properties (max-width: 14rem) {
+    .aar-property-row { grid-template-columns: minmax(0, 1fr); gap: var(--aar-space-1); }
+  }
+  @container aar-workspace (max-width: 72rem) {
+    .aar-workspace-body[data-layout="studio"] { grid-template-columns: minmax(0, var(--aar-navigation-width, 14rem)) minmax(0, 1fr); }
+    .aar-workspace-region[data-region="inspector"] { grid-column: 1 / -1; }
+  }
+  @container aar-workspace (max-width: 48rem) {
+    .aar-workspace-body[data-layout="studio"] { grid-template-columns: minmax(0, 1fr); }
+    .aar-workspace-region[data-region] { grid-column: 1; }
+  }
+  /* Hidden regions leave the grid; applications still own focus restoration. */
+  .aar-workspace-region[hidden] { display: none; }
+  .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--aar-inspector-width, 18rem));
+  }
+  .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))) [data-region="content"] { grid-column: 1; }
+  .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))) [data-region="inspector"] { grid-column: 2; }
+  .aar-workspace-body[data-layout="studio"]:not(:has([data-region="inspector"]:not([hidden]))) {
+    grid-template-columns: minmax(0, var(--aar-navigation-width, 14rem)) minmax(0, 1fr);
+  }
+  .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))):not(:has([data-region="inspector"]:not([hidden]))) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @container aar-workspace (max-width: 72rem) {
+    .aar-workspace-body[data-layout="studio"] [data-region="inspector"] { grid-column: 1 / -1; }
+  }
+  @container aar-workspace (max-width: 48rem) {
+    .aar-workspace-body[data-layout="studio"] { grid-template-columns: minmax(0, 1fr) !important; }
+    .aar-workspace-body[data-layout="studio"] [data-region] { grid-column: 1 !important; }
+  }
+}

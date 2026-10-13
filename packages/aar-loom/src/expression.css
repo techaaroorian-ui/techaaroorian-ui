@@ -26,8 +26,8 @@
   /* Studio Contextual Empty State */
   .aar-expression .aar-contextual-empty {
     background: var(--aar-surface);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-lg);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     padding: 3rem 2rem;
     display: grid;
     justify-items: center;
@@ -49,8 +49,8 @@
     width: 4rem;
     height: 4rem;
     margin-inline: auto;
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     background: var(--aar-surface-raised);
     color: var(--aar-primary);
     box-shadow: var(--aar-shadow-sm);
@@ -104,7 +104,7 @@
 
   .aar-expression .contextual-empty-actions > button:hover {
     transform: translateY(var(--aar-hover-offset));
-    box-shadow: var(--aar-glow);
+    box-shadow: var(--aar-feedback-shadow);
   }
 
   /* Studio Dropzone / File Intake */
@@ -131,7 +131,7 @@
     width: 2.75rem;
     height: 2.75rem;
     padding: 0.5rem;
-    border: 1px solid var(--aar-border);
+    border: 0;
     border-radius: var(--aar-radius-md);
     background: var(--aar-surface-raised);
   }
@@ -148,8 +148,8 @@
     justify-content: space-between;
     padding: 0.75rem 1rem;
     background: var(--aar-surface);
-    border: 1px solid var(--aar-border);
-    border-radius: var(--aar-radius-md);
+    border: 0;
+    border-radius: var(--aar-radius-sm);
     gap: 1rem;
     animation: aar-subtle-in var(--aar-duration-enter) ease-out;
   }

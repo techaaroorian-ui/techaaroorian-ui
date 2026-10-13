@@ -7,6 +7,8 @@ const modules = [
   "tokens",
   "components",
   "layouts",
+  "navigation",
+  "workspace",
   "compositions",
   "expression",
   "code",

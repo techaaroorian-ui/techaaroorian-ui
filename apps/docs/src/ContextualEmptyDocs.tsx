@@ -1,4 +1,5 @@
 import CodeBlock from "./CodeBlock";
+import BrandWordmark from "./BrandWordmark";
 import ContextualEmptyExample from "./ContextualEmptyExample";
 import exampleSource from "./ContextualEmptyExample.tsx?raw";
 
@@ -10,7 +11,7 @@ export default function ContextualEmptyDocs() {
           <p className="aar-eyebrow">
             Studio Primitives · Composable React Package
           </p>
-          <h1 className="aar-title">Contextual Empty</h1>
+          <h1 className="aar-title"><BrandWordmark label="Contextual Empty" size="lg" /></h1>
         </div>
         <div className="aar-intro-copy">
           <p>
