@@ -1,6 +1,6 @@
 {
   "name": "@techaaroorian-ui/pan-zoom",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Headless viewport calculation, auto-fit, and zoom management with optional React hook.",
   "type": "module",
   "license": "MIT",
@@ -32,5 +32,17 @@
     "react": {
       "optional": true
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techaaroorian-ui/techaaroorian-ui.git",
+    "directory": "packages/pan-zoom"
+  },
+  "homepage": "https://github.com/techaaroorian-ui/techaaroorian-ui/tree/main/packages/pan-zoom#readme",
+  "bugs": {
+    "url": "https://github.com/techaaroorian-ui/techaaroorian-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

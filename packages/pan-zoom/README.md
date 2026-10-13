@@ -12,7 +12,7 @@ Headless viewport calculation, auto-fit algorithms, and zoom management for crea
 ## Installation
 
 ```bash
-npm install @techaaroorian-ui/pan-zoom
+npm install @techaaroorian-ui/pan-zoom@alpha
 ```
 
 ## Quick Start (React)

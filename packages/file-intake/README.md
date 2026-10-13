@@ -1,5 +1,11 @@
 # File Intake
 
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/file-intake@alpha
+```
+
 Atomic file batch validation extracted from Yuwbrndr's asset uploads. Framework-independent core and optional React hook. No CSS, upload service, object URLs, or storage policy.
 
 ## Compact drop-zone interaction

@@ -14,16 +14,18 @@
     "check:styles": "node scripts/check-framework-styles.mjs"
   },
   "dependencies": {
-    "@techaaroorian-ui/aar-loom": "0.2.0-alpha.2",
-    "@techaaroorian-ui/collection-picker": "0.2.0-alpha.0",
-    "@techaaroorian-ui/contextual-empty": "0.1.1-alpha.0",
-    "@techaaroorian-ui/dialog": "0.2.0-alpha.0",
-    "@techaaroorian-ui/file-intake": "0.2.0-alpha.1",
-    "@techaaroorian-ui/ordered-collection": "0.2.0-alpha.0",
+    "@techaaroorian-ui/aar-loom": "0.2.0-alpha.3",
+    "@techaaroorian-ui/collection-picker": "0.2.0-alpha.1",
+    "@techaaroorian-ui/contextual-empty": "0.1.1-alpha.1",
+    "@techaaroorian-ui/dialog": "0.2.0-alpha.1",
+    "@techaaroorian-ui/file-intake": "0.2.0-alpha.2",
+    "@techaaroorian-ui/ordered-collection": "0.2.0-alpha.1",
     "highlight.js": "^11.12.0",
     "lucide-react": "^1.51.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "@techaaroorian-ui/pan-zoom": "0.1.0-alpha.1",
+    "@techaaroorian-ui/share-state": "0.1.0-alpha.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "latest",

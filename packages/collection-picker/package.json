@@ -1,6 +1,6 @@
 {
   "name": "@techaaroorian-ui/collection-picker",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0-alpha.1",
   "description": "Headless filtered single-selection picker with an optional React listbox hook.",
   "type": "module",
   "license": "MIT",
@@ -32,5 +32,17 @@
     "react": {
       "optional": true
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techaaroorian-ui/techaaroorian-ui.git",
+    "directory": "packages/collection-picker"
+  },
+  "homepage": "https://github.com/techaaroorian-ui/techaaroorian-ui/tree/main/packages/collection-picker#readme",
+  "bugs": {
+    "url": "https://github.com/techaaroorian-ui/techaaroorian-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

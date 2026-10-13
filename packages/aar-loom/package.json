@@ -1,6 +1,6 @@
 {
   "name": "@techaaroorian-ui/aar-loom",
-  "version": "0.2.0-alpha.2",
+  "version": "0.2.0-alpha.3",
   "description": "Aar Loom: a themeable, CSS-only design language for tools and workspaces.",
   "license": "MIT",
   "files": [
@@ -30,5 +30,17 @@
   },
   "sideEffects": [
     "**/*.css"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techaaroorian-ui/techaaroorian-ui.git",
+    "directory": "packages/aar-loom"
+  },
+  "homepage": "https://github.com/techaaroorian-ui/techaaroorian-ui/tree/main/packages/aar-loom#readme",
+  "bugs": {
+    "url": "https://github.com/techaaroorian-ui/techaaroorian-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

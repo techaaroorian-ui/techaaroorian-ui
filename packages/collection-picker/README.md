@@ -1,5 +1,11 @@
 # Collection Picker
 
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/collection-picker@alpha
+```
+
 Framework-independent single-selection state with filtering and typeahead. Optional React 18+ hook implements a vertical listbox using `aria-activedescendant`. No CSS or dependency on Aar Loom.
 
 ```js

@@ -1,5 +1,11 @@
 # Ordered Collection
 
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/ordered-collection@alpha
+```
+
 Headless ordered item state, extracted from Yuwbrndr's slide workflow. Framework-independent core; optional React hook. No CSS, renderer, generated IDs, or slide-specific data model.
 
 ```js

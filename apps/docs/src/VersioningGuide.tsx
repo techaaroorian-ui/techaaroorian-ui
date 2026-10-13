@@ -1,10 +1,12 @@
 import CodeBlock from "./CodeBlock";
-import aarCraft from "../../../packages/aar-loom/package.json";
+import aarLoom from "../../../packages/aar-loom/package.json";
 import contextualEmpty from "../../../packages/contextual-empty/package.json";
 import orderedCollection from "../../../packages/ordered-collection/package.json";
 import fileIntake from "../../../packages/file-intake/package.json";
 import dialog from "../../../packages/dialog/package.json";
 import collectionPicker from "../../../packages/collection-picker/package.json";
+import panZoom from "../../../packages/pan-zoom/package.json";
+import shareState from "../../../packages/share-state/package.json";
 
 export default function VersioningGuide() {
   return (
@@ -35,12 +37,14 @@ export default function VersioningGuide() {
             </thead>
             <tbody>
               {[
-                aarCraft,
+                aarLoom,
                 contextualEmpty,
                 orderedCollection,
                 fileIntake,
                 dialog,
                 collectionPicker,
+                panZoom,
+                shareState,
               ].map((pkg) => (
                 <tr key={pkg.name}>
                   <td>

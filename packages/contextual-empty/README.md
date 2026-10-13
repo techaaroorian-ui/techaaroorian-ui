@@ -17,7 +17,7 @@ Traditional empty states answer: *"Is there any data?"* **Contextual Empty State
 ## Installation
 
 ```bash
-npm install @techaaroorian-ui/contextual-empty
+npm install @techaaroorian-ui/contextual-empty@alpha
 ```
 
 ## Usage (The Preset API)

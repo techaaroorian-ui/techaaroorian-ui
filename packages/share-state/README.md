@@ -12,7 +12,7 @@ Zero-server client-side state compression and shareable URL generation via nativ
 ## Installation
 
 ```bash
-npm install @techaaroorian-ui/share-state
+npm install @techaaroorian-ui/share-state@alpha
 ```
 
 ## Quick Start (React)

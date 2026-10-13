@@ -1,5 +1,11 @@
 # Dialog
 
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/dialog@alpha
+```
+
 Headless behavior for native modal `<dialog>` elements. A sheet uses the same behavior with different consumer styling. No CSS, renderer, or runtime framework dependency; optional React 18+ hook at `/react`.
 
 ```js

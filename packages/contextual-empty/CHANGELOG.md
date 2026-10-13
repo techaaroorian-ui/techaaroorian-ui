@@ -1,5 +1,11 @@
 # @techaaroorian-ui/contextual-empty
 
+## 0.1.1-alpha.1
+
+### Patch Changes
+
+- Prepare the public alpha release with canonical monorepo repository, source-directory, homepage, and issue metadata, explicit public publishing access, and alpha-tag installation instructions. Make packaged documentation links point to the repository's public guides.
+
 ## 0.1.1-alpha.0
 
 ### Patch Changes
