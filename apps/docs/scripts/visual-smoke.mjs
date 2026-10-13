@@ -58,6 +58,13 @@ try {
   for(const width of [320,768,1440]) {await page.setViewportSize({width,height:1000});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,route+' overflow at '+width);}
  }
  await page.goto(url+'/#/aar-loom');
+ await page.locator('.aar-guide-sidebar').getByRole('button',{name:'Project migration foundations',exact:false}).click();
+ await page.getByRole('region',{name:'Migration workspace example'}).waitFor();
+ for(const width of [320,768,1440]) {
+  await page.setViewportSize({width,height:1000});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Migration guide at '+width);
+ }
+ await page.setViewportSize({width:1440,height:1000});
  const longNav=page.locator('.aar-guide-sidebar').getByRole('button',{name:'Tabs, Side Navigation & Headers',exact:false});
  assert.equal(await longNav.locator('.aar-nav-label').evaluate(el=>getComputedStyle(el).whiteSpace),'normal');
  for(const width of [320,768,1440]) {
@@ -131,10 +138,25 @@ try {
  assert.deepEqual(errors,[]);
 
  // A consumer fixture using HTML and public CSS alone: no React or other components.
- const files=['tokens','components','layouts','navigation','compositions','expression','code','magic-art','utilities'];
+ const files=['tokens','components','layouts','navigation','workspace','compositions','expression','code','magic-art','utilities'];
  const css=(await Promise.all(files.map(name=>readFile(new URL('../../../packages/aar-loom/src/'+name+'.css',import.meta.url),'utf8')))).join('\n');
  await page.setContent(`<style>${css}</style><body class="aar-page-reset"><main class="aar-root" data-theme="light"><section class="aar-container aar-stack aar-p-4" data-gap="6"><h1 class="aar-title">Independent HTML</h1><div class="aar-grid" data-min="18"><article class="aar-panel">Main work</article><aside class="aar-panel">Supporting tools</aside></div><label class="aar-field">Choice<span class="aar-select-frame"><select class="aar-select"><option>First</option><option>Second</option></select></span></label></section></main></body>`);
  await page.getByRole('combobox').selectOption({label:'Second'});
  for(const width of [320,1280]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Plain HTML fixture');}
+ const workspaceHtml=await readFile(new URL('../src/examples/aar-loom/workspace.html',import.meta.url),'utf8');
+ await page.setContent(`<style>${css}</style><body class="aar-page-reset">${workspaceHtml}</body>`);
+ for(const [width,columns] of [[320,1],[900,2],[1440,3]]) {
+  await page.setViewportSize({width,height:1000});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Plain workspace at '+width);
+  assert.equal(await page.locator('.aar-workspace-body').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),columns,'Container-responsive columns at '+width);
+ }
+ const inspector=page.locator('[data-region="inspector"]');
+ await inspector.evaluate(el=>el.hidden=true);
+ assert.equal(await inspector.isVisible(),false);
+ assert.equal(await page.locator('.aar-workspace-body').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),2,'Hidden inspector releases its column');
+ await page.locator('[data-region="navigation"]').evaluate(el=>el.hidden=true);
+ assert.equal(await page.locator('.aar-workspace-body').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),1,'Content-only workspace');
+ await page.locator('.aar-workspace').evaluate(el=>el.dataset.size='viewport');
+ assert.equal(await page.locator('.aar-workspace').evaluate(el=>Math.round(el.getBoundingClientRect().height)),1000,'Viewport shell is bounded');
  console.log('Visual smoke passed: framework-only HTML, simplified themes, native keyboard selection, custom accent, all routes and narrow layouts, copyable source, file validation, reduced motion.');
 } finally {await browser.close();}

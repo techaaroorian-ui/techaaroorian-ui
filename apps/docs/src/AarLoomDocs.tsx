@@ -1,6 +1,7 @@
 import loomPackage from "../../../packages/aar-loom/package.json";
 import AarSelect from "./AarSelect";
 import NavigationDocs from "./NavigationDocs";
+import ProjectMigrationDocs from "./ProjectMigrationDocs";
 import CodeBlock from "./CodeBlock";
 import quickstartHtml from "./examples/aar-loom/index.html?raw";
 import quickstartCss from "./examples/aar-loom/styles.css?raw";
@@ -3258,6 +3259,12 @@ const DOC_NAV_GROUPS: DocNavGroup[] = [
         badge: "New",
       },
       {
+        id: "migration",
+        label: "Project migration foundations",
+        icon: <Layout size={15} />,
+        badge: "HTML",
+      },
+      {
         id: "scale",
         label: "Universal Size Scale",
         icon: <Ruler size={15} />,
@@ -3566,6 +3573,7 @@ function AarLoomDocs({
                   {view === "quickstart" && <QuickstartDocSection />}
                   {view === "layout" && <LayoutDocSection />}
                   {view === "navigation" && <NavigationDocs />}
+                  {view === "migration" && <ProjectMigrationDocs />}
                   {view === "buttons" && <ButtonsDocSection />}
                   {view === "inputs" && <InputsDocSection />}
                   {view === "selects" && <SelectsDocSection />}
@@ -3603,6 +3611,7 @@ function AarLoomDocs({
                       <IntroDocSection />
                       <QuickstartDocSection />
                       <NavigationDocs />
+                      <ProjectMigrationDocs />
                       <ButtonsDocSection />
                       <InputsDocSection />
                       <SelectsDocSection />
