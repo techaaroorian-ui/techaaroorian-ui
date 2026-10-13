@@ -8,9 +8,11 @@
     "build:packages": "npm run build --workspace packages/aar-loom && npm run build --workspace packages/contextual-empty && npm run build --workspace packages/ordered-collection && npm run build --workspace packages/file-intake && npm run build --workspace packages/dialog && npm run build --workspace packages/collection-picker && npm run build --workspace packages/pan-zoom && npm run build --workspace packages/share-state",
     "test:packages": "npm run test --workspace packages/contextual-empty && npm run test --workspace packages/ordered-collection && npm run test --workspace packages/file-intake && npm run test --workspace packages/collection-picker && npm run test --workspace packages/pan-zoom && npm run test --workspace packages/share-state",
     "test:packed": "node scripts/check-packed-packages.mjs",
-    "release:check": "npm run build:packages && npm run test:packages && npm run build --workspace apps/docs && npm run lint --workspace apps/docs && npm run test:packed",
+    "release:check": "npm run docs:ai:check && npm run build:packages && npm run test:packages && npm run build --workspace apps/docs && npm run lint --workspace apps/docs && npm run test:packed",
     "release:ready": "node scripts/release-ready.mjs",
-    "release": "npm run release:ready && changeset publish"
+    "release": "npm run release:ready && changeset publish",
+    "docs:ai": "node scripts/build-ai-docs.mjs",
+    "docs:ai:check": "node scripts/build-ai-docs.mjs --check"
   },
   "workspaces": [
     "packages/*",

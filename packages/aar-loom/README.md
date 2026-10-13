@@ -98,3 +98,7 @@ For Tailwind v3 import `@techaaroorian-ui/aar-loom/tailwind-v3.css`. The build i
 ## Validate
 
 From the repository root, run `npm run build --workspace packages/aar-loom`, `npm run build --workspace docs`, and `npm run test:visual --workspace docs` with the documentation dev server running. Review narrow layouts, both appearances, keyboard focus, custom colors, and reduced motion. The package is in alpha; release preparation uses Changesets and publishes on the alpha dist-tag.
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

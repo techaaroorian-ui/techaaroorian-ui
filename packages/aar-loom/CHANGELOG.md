@@ -18,6 +18,8 @@
 
 ### Patch Changes
 
+- Include package AI integration guidance and searchable discovery keywords for the initial alpha release.
+
 - e85ea0d: Rename the design language and package to Aar Loom. Retain the aar- CSS prefix and existing CSS entry points. Update documentation, examples, and brand wordmark for the new identity.
 - Prepare the public alpha release with canonical monorepo repository, source-directory, homepage, and issue metadata, explicit public publishing access, and alpha-tag installation instructions. Make packaged documentation links point to the repository's public guides.
 - 84766b5: Use fixed icon, flexible wrapping label, and intrinsic badge columns for guide navigation rows. Add a public aar-nav-label helper and allow rows to grow without clipping labels or badges.

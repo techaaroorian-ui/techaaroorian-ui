@@ -42,3 +42,7 @@ Options must not contain interactive buttons, links, or inputs. Cards with sever
 With Aar Loom, use `aar-picker` and `aar-picker-option`. Other frameworks can connect the core to their reactive state and implement the same focus and keyboard contract. Browser tests cover the React adapter; core tests run without React or the DOM. Alpha APIs may change. ESM and TypeScript declarations.
 
 Reference: [WAI-ARIA listbox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

@@ -71,3 +71,7 @@ const fitScale = calculateFit({
 ## License
 
 MIT © Janarthanan Soundararajan
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

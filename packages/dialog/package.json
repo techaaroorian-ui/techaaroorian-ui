@@ -8,7 +8,8 @@
     "dist",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "AI.md"
   ],
   "exports": {
     ".": {
@@ -43,5 +44,13 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "headless",
+    "dialog",
+    "modal",
+    "sheet",
+    "react"
+  ]
 }

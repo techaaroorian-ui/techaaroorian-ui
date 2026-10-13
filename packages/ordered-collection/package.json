@@ -7,7 +7,8 @@
   "files": [
     "dist",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "AI.md"
   ],
   "exports": {
     ".": {
@@ -43,5 +44,13 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "headless",
+    "ordered-collection",
+    "reorder",
+    "selection",
+    "react"
+  ]
 }

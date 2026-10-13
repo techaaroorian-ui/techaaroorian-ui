@@ -7,7 +7,8 @@
     "src",
     "dist",
     "scripts",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "AI.md"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
@@ -42,5 +43,15 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "css",
+    "design-system",
+    "responsive-layout",
+    "theming",
+    "dark-mode",
+    "tailwind",
+    "framework-agnostic"
+  ]
 }

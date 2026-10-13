@@ -41,3 +41,7 @@ With Aar Loom, import its CSS once and use `aar-dialog`; add `data-placement="en
 Browser interaction tests live in `apps/docs/scripts/visual-smoke.mjs`; run the docs server and `npm run test:visual --workspace apps/docs`. Alpha APIs may change. ESM and TypeScript declarations.
 
 Reference: [native dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog).
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

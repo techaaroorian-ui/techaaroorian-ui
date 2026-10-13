@@ -27,9 +27,10 @@ for (const directory of await readdir(join(root, "packages"))) {
   await mkdir(destination, { recursive: true });
   execFileSync("tar", ["-xzf", join(output, packed.filename), "-C", destination, "--strip-components=1"]);
   for (const target of targets(pkg.exports)) await readFile(join(destination, target));
-  for (const required of ["README.md", "LICENSE", "CHANGELOG.md"]) await readFile(join(destination, required));
+  for (const required of ["README.md", "LICENSE", "CHANGELOG.md", "AI.md"]) await readFile(join(destination, required));
   assert.equal(pkg.publishConfig?.access, "public", `${pkg.name} must explicitly publish publicly`);
   assert.equal(pkg.repository?.directory, `packages/${directory}`);
+  assert.ok(pkg.keywords?.includes("techaaroorian-ui"), `${pkg.name} must have discovery keywords`);
   manifests.push({ name: pkg.name, exports: pkg.exports });
   console.log(`${pkg.name}@${pkg.version}: packaged files and exports verified`);
 }

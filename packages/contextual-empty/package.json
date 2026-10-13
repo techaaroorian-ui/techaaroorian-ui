@@ -22,7 +22,8 @@
   },
   "files": [
     "dist",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "AI.md"
   ],
   "scripts": {
     "build": "tsup && tsc --emitDeclarationOnly",
@@ -49,5 +50,12 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "react",
+    "empty-state",
+    "recovery-actions",
+    "compound-components"
+  ]
 }
