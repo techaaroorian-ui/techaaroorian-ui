@@ -1,11 +1,18 @@
-# Aar Loom logo · concept 1
+# TechAaroorian UI wordmarks and secondary symbols
 
-Generated with the built-in image-generation tool. This is a transparent raster exploration, not yet a production vector logo or an approved replacement for the lab identity.
+Wordmarks are the primary identity. Use consistent sans-serif typography with a 600-weight first word and a 400-weight companion. Long HTML wordmarks can wrap. Use theme-aware forest/lavender ink in interfaces, with a paper backing and subtle border. Color SVG artwork includes a light paper plaque and thin edge so it reads against light or dark backgrounds; monochrome wordmarks use black ink on white with a gray boundary.
 
-The mark suggests a lowercase `a` assembled from two interlocking pieces. Forest green carries the quiet foundation; lavender distinguishes the smaller piece. The horizontal lockup includes the Aar Loom wordmark.
+Masters are in `wordmarks/` (primary text identities) and `marks/` (secondary symbols). Every identity has transparent color and monochrome SVG files. Docs copies are under `apps/docs/public/brand/`. Compact symbols remain useful for favicons and small spaces. Existing raster explorations and the older weave lockup are historical assets.
 
-Next review: recognition at small sizes, monochrome silhouette, light/dark variants, spacing, and an editable vector master.
+SVG wordmarks retain editable text using Segoe UI/Inter/system-ui/sans-serif fallbacks; appearance depends on the installed fonts. They are not outlined print masters. Preserve the horizontal viewBox; symbol viewBoxes remain 64×64. For interface wordmarks, use the public aar-brand-wordmark class and its small/large sizes.
 
-## Generation prompt
 
-Use case: logo-brand. Create an original logo concept for "Aar Loom", a CSS design language by TechAaroorian for thoughtful productivity tools. Asset: clean horizontal logo lockup with a distinctive compact symbol and the exact wordmark "Aar Loom". Symbol: a bold geometric lowercase a suggested by two precisely interlocking crafted pieces, with an intentional negative-space opening; simple silhouette, deliberate asymmetry, recognizable at favicon size. Typography: refined contemporary sans serif, medium weight, careful spacing. Color: deep forest green symbol and wordmark, a very restrained lavender accent in one small part of the symbol, consistent with quiet matte interfaces. Flat vector-like graphic on genuinely transparent background, generous clear space, no mockup, no shadows, no gradients, no 3D, no texture, no tagline, no extra text, no generic sparkle, no tools or paintbrush. One polished logo lockup only.
+Editable vector masters are in `marks/`, with identical docs copies in `apps/docs/public/brand/marks/`. Each identity has transparent color and `-mono.svg` versions. Existing PNGs are earlier raster explorations; `aar-loom.svg` remains the horizontal weave wordmark.
+
+The 11 identities cover TechAaroorian UI, Aar Loom, Contextual Empty, Ordered Collection, File Intake, Dialog, Collection Picker, Pan & Zoom, Share State, and planned Repeatable Sections and Asset Gallery. Planned marks do not imply released packages.
+
+The family uses a 64×64 viewBox, 4-unit strokes (6-unit woven ribbons for Aar Loom), forest #326954 and lavender #6b468f. Geometry is authored as editable SVG, with rounded paper corners, stronger silhouettes, and generous negative space. The collection mark refines the existing T/U concept; Aar Loom preserves the weave motif. Other marks express their package responsibility.
+
+Use color masters on light paper. Monochrome SVGs use currentColor; CSS masks allow external silhouettes to inherit interface ink in dark/custom themes. Minimum recommended size is 24px and clear space is roughly one quarter of the mark width. Keep aspect ratio and avoid gradients, shadows, or ambient motion. Label standalone identities; use empty alt text next to the package name.
+
+The docs Brand page previews and downloads the marks. These are package identifiers; Lucide remains the recommended action-icon library. Headless packages do not gain asset, CSS, or icon-library runtime dependencies.

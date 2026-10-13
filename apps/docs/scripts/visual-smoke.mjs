@@ -53,10 +53,23 @@ try {
  const bottoms=await header.locator('.aar-site-controls select, .aar-site-controls > button').evaluateAll(elements=>elements.map(el=>el.getBoundingClientRect().bottom));
  assert.ok(Math.max(...bottoms)-Math.min(...bottoms)<2,'Header control baseline alignment');
 
- for(const route of ['','aar-loom','headless','contextual-empty','guides/philosophy','guides/magic-art','guides/icons','guides/versioning']) {
+ for(const route of ['','aar-loom','headless','contextual-empty','guides/philosophy','guides/magic-art','guides/icons','guides/brand','guides/versioning']) {
   await page.goto(url+'/#/'+route);
   for(const width of [320,768,1440]) {await page.setViewportSize({width,height:1000});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,route+' overflow at '+width);}
+  assert.equal(await page.locator('.aar-site-header .aar-brand-wordmark').isVisible(),true,'Primary text identity stays visible');
  }
+ await page.goto(url+'/#/guides/brand');
+ assert.equal(await page.getByRole('img',{name:/color mark$/}).count(),11,'All package color identities');
+ assert.equal(await page.getByRole('img',{name:/monochrome mark$/}).count(),11,'All theme-aware identities');
+ const downloads=await page.getByRole('link',{name:/^Download .* SVG$/}).evaluateAll(links=>links.map(link=>link.href));
+ assert.equal(downloads.length,44);
+ assert.equal(await page.getByRole('img',{name:/color wordmark$/}).count(),11,'Primary text identities');
+ for(const asset of downloads) {
+  const response=await page.request.get(asset);
+  assert.equal(response.ok(),true,'Identity asset loads');
+  assert.match(await response.text(),/<svg[^>]+viewBox="0 0 \d+ 64"/);
+ }
+ await page.screenshot({path:new URL('package-identities.png',artifacts).pathname.replace(/^\/(\w:)/,'$1'),fullPage:true});
  await page.goto(url+'/#/aar-loom');
  await page.locator('.aar-guide-sidebar').getByRole('button',{name:'Project migration foundations',exact:false}).click();
  await page.getByRole('region',{name:'Migration workspace example'}).waitFor();

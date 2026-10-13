@@ -60,6 +60,8 @@
     --aar-paper-lavender: #e6dff0;
     --aar-paper-ochre: #efdfb1;
     --aar-text: #302d29;
+    --aar-brand-ink: #326954;
+    --aar-brand-accent: #6b468f;
     --aar-text-muted: #625b51;
     --aar-border: #cdc2b1;
     --aar-border-strong: #897b68;
@@ -89,6 +91,8 @@
     --aar-paper-lavender: #363040;
     --aar-paper-ochre: #403821;
     --aar-text: #f4eee2;
+    --aar-brand-ink: #a9cbbb;
+    --aar-brand-accent: #c9b6fb;
     --aar-text-muted: #c0b6a7;
     --aar-border: #51493e;
     --aar-border-strong: #a69782;
@@ -120,6 +124,8 @@
       --aar-paper-lavender: #363040;
       --aar-paper-ochre: #403821;
       --aar-text: #f4eee2;
+      --aar-brand-ink: #a9cbbb;
+      --aar-brand-accent: #c9b6fb;
       --aar-text-muted: #c0b6a7;
       --aar-border: #51493e;
       --aar-border-strong: #a69782;

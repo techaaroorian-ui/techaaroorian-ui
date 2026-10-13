@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Ordered Collection</title>
+  <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="12" width="30" height="11" rx="3" fill="currentColor"/><rect x="13" y="28" width="30" height="11" rx="3" fill="currentColor"/><rect x="13" y="44" width="30" height="11" rx="3" fill="currentColor"/><path d="M51 20v25m-5-5 5 5 5-5" stroke="currentColor"/></g>
+</svg>

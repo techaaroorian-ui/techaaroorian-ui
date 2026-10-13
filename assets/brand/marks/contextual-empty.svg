@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Contextual Empty</title>
+  <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15h-4a5 5 0 0 0-5 5v25a5 5 0 0 0 5 5h30a5 5 0 0 0 5-5V20a5 5 0 0 0-5-5h-4" stroke="#326954"/><path d="M20 37h8l4 5 4-5h8" stroke="#326954"/><rect x="27" y="10" width="10" height="10" rx="3" fill="#6b468f"/></g>
+</svg>

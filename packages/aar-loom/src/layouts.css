@@ -1,4 +1,46 @@
 @layer components {
+  .aar-brand-wordmark {
+    display: inline-block;
+    max-width: 100%;
+    padding: 0.25em 0.5em;
+    border: 1px solid var(--aar-border);
+    border-radius: var(--aar-radius-sm);
+    background: var(--aar-surface);
+    font-family: var(--aar-font-sans);
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    color: var(--aar-brand-ink);
+    overflow-wrap: anywhere;
+  }
+  .aar-brand-wordmark strong { font-weight: 600; }
+  .aar-brand-wordmark > span { font-weight: 400; color: var(--aar-brand-accent); }
+  .aar-brand-wordmark[data-size="sm"] { font-size: 1.0625rem; }
+  .aar-brand-wordmark[data-size="lg"] { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .aar-brand-wordmark-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 3.5rem;
+    object-fit: contain;
+    object-position: left center;
+  }
+  .aar-package-symbol {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    background: var(--aar-text);
+    mask: var(--aar-symbol) center / contain no-repeat;
+  }
+  .aar-brand-symbol { display: block; width: 4rem; height: 4rem; }
+  .aar-brand-swatch {
+    display: inline-grid;
+    place-items: center;
+    padding: var(--aar-space-3);
+    background: #faf6ed;
+    border-radius: var(--aar-radius-sm);
+  }
   /* Reusable page, guide, workbench, and specimen compositions. */
   .aar-page-scroll {
     scroll-behavior: smooth;
@@ -29,7 +71,7 @@
     font-size: 0.9375rem;
     letter-spacing: -0.025em;
   }
-  .aar-brand > span:last-child {
+  .aar-brand > span:last-child:not(.aar-brand-wordmark) {
     color: var(--aar-text-muted);
   }
   .aar-brand-mark {
@@ -58,7 +100,7 @@
     margin-top: 1rem;
     font-size: clamp(3rem, 6vw, 5.5rem);
   }
-  .aar-intro .aar-title span {
+  .aar-intro .aar-title > span:not(.aar-brand-wordmark) {
     color: var(--aar-text-muted);
   }
   .aar-intro-copy {
@@ -430,7 +472,7 @@
     .aar-motion-study {
       grid-template-columns: 1fr;
     }
-    .aar-brand > span:last-child {
+    .aar-brand > span:last-child:not(.aar-brand-wordmark) {
       display: none;
     }
     .aar-lab-header > .aar-eyebrow {

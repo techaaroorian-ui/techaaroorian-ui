@@ -2,6 +2,7 @@ import loomPackage from "../../../packages/aar-loom/package.json";
 import AarSelect from "./AarSelect";
 import NavigationDocs from "./NavigationDocs";
 import ProjectMigrationDocs from "./ProjectMigrationDocs";
+import BrandWordmark from "./BrandWordmark";
 import CodeBlock from "./CodeBlock";
 import quickstartHtml from "./examples/aar-loom/index.html?raw";
 import quickstartCss from "./examples/aar-loom/styles.css?raw";
@@ -3366,12 +3367,7 @@ function AarLoomDocs({
         {/* Arcane Atelier Hero Header */}
         <section className="aar-intro">
           <div>
-            <div className="aar-wordmark">
-              <img
-                src={`${import.meta.env.BASE_URL}brand/aar-loom.svg`}
-                alt="Aar Loom"
-              />
-            </div>
+            <BrandWordmark label="Aar Loom" size="lg" />
             <p className="aar-eyebrow">Aar Loom · Pure CSS Design System</p>
             <h1 className="aar-title">
               The Arcane Atelier.
