@@ -1,5 +1,11 @@
 # Ordered Collection
 
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/ordered-collection@alpha
+```
+
 Headless ordered item state, extracted from Yuwbrndr's slide workflow. Framework-independent core; optional React hook. No CSS, renderer, generated IDs, or slide-specific data model.
 
 ```js
@@ -25,3 +31,7 @@ The hook reads initial items once. Keep min/max constraints consistent with the 
 The core does not implement drag gestures, roving focus, tabs/listbox semantics, or persistence. Consumers choose appropriate native elements and keyboard/focus behavior; reordering must have non-drag alternatives.
 
 Alpha: APIs may change. ESM and TypeScript declarations; no CommonJS build. No browser globals are accessed by the core.
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

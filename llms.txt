@@ -1,0 +1,30 @@
+# TechAaroorian UI
+
+> Aar Loom is a CSS-only, flat paper design and adaptive layout language. Companion packages provide independently usable behavior with optional React adapters.
+
+Alpha APIs: verify publication and installed versions. The root workspace is private. Repeatable Sections and Asset Gallery are planned.
+
+## Integration and design
+
+- [TechAaroorian UI integration guide for agents](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/ai-integration.md)
+- [Aar Loom design rules](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/design-rules.md)
+- [Aar Loom adaptive design and Yuwbrndr redesign](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/adaptive-layout.md)
+- [Component behavior and styling](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/styling-boundaries.md)
+- [Icons across TechAaroorian UI](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/icons.md)
+- [Independent package versioning](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/versioning.md)
+
+## Packages and complete examples
+
+- [@techaaroorian-ui/aar-loom](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/aar-loom.md): Aar Loom: a themeable, CSS-only design language for tools and workspaces. Prepared 0.2.0-alpha.3; check npm availability.
+- [@techaaroorian-ui/collection-picker](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/collection-picker.md): Headless filtered single-selection picker with an optional React listbox hook. Prepared 0.2.0-alpha.1; check npm availability.
+- [@techaaroorian-ui/contextual-empty](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/contextual-empty.md): A contextual, composable empty-state system for React applications. Prepared 0.1.1-alpha.1; check npm availability.
+- [@techaaroorian-ui/dialog](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/dialog.md): Native modal dialog and sheet behavior with an optional React hook. Prepared 0.2.0-alpha.1; check npm availability.
+- [@techaaroorian-ui/file-intake](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/file-intake.md): Atomic file batch validation with structured errors and an optional React adapter. Prepared 0.2.0-alpha.2; check npm availability.
+- [@techaaroorian-ui/ordered-collection](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/ordered-collection.md): Headless ordered selection and item operations with an optional React adapter. Prepared 0.2.0-alpha.1; check npm availability.
+- [@techaaroorian-ui/pan-zoom](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/pan-zoom.md): Headless viewport calculation, auto-fit, and zoom management with optional React hook. Prepared 0.1.0-alpha.1; check npm availability.
+- [@techaaroorian-ui/share-state](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/share-state.md): Zero-server URL state compression and share links via browser CompressionStream with safe byte limits. Prepared 0.1.0-alpha.1; check npm availability.
+
+## Sources
+
+- [Full text documentation](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/llms-full.txt)
+- [Repository](https://github.com/techaaroorian-ui/techaaroorian-ui)

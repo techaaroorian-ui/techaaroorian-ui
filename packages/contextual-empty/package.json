@@ -1,12 +1,13 @@
 {
   "name": "@techaaroorian-ui/contextual-empty",
-  "version": "0.1.1-alpha.0",
+  "version": "0.1.1-alpha.1",
   "description": "A contextual, composable empty-state system for React applications.",
   "author": "Janarthanan Soundararajan (@TechAaroorian)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/techaaroorian-ui/contextual-empty.git"
+    "url": "git+https://github.com/techaaroorian-ui/techaaroorian-ui.git",
+    "directory": "packages/contextual-empty"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -21,7 +22,8 @@
   },
   "files": [
     "dist",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "AI.md"
   ],
   "scripts": {
     "build": "tsup && tsc --emitDeclarationOnly",
@@ -41,5 +43,19 @@
     "tsup": "^8.0.0",
     "typescript": "^5.0.0",
     "vitest": "^4.1.10"
-  }
+  },
+  "homepage": "https://github.com/techaaroorian-ui/techaaroorian-ui/tree/main/packages/contextual-empty#readme",
+  "bugs": {
+    "url": "https://github.com/techaaroorian-ui/techaaroorian-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "react",
+    "empty-state",
+    "recovery-actions",
+    "compound-components"
+  ]
 }

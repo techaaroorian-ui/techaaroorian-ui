@@ -1,0 +1,1015 @@
+# TechAaroorian UI
+
+> Aar Loom is a CSS-only, flat paper design and adaptive layout language. Companion packages provide independently usable behavior with optional React adapters.
+
+Alpha APIs: verify publication and installed versions. The root workspace is private. Repeatable Sections and Asset Gallery are planned.
+
+# TechAaroorian UI integration guide for agents
+
+TechAaroorian UI provides Aar Loom, a CSS-only design and layout language, and independently usable behavior packages. Start with the smallest package that solves the requested task. The root workspace is private; it is not an installable umbrella package.
+
+## Find the right package
+
+| Task | Package | Runtime |
+| --- | --- | --- |
+| Theme, flat paper surfaces, responsive layout, tabs, headers and side navigation | `@techaaroorian-ui/aar-loom` | CSS only, any framework or plain HTML |
+| Contextual empty-state messaging and recovery actions | `@techaaroorian-ui/contextual-empty` | React 18+ |
+| Insert, duplicate, reorder and select ordered items | `@techaaroorian-ui/ordered-collection` | Framework-independent core; optional `/react` |
+| Validate file batches and handle browser drops | `@techaaroorian-ui/file-intake` | Framework-independent validation; optional `/react` |
+| Native modal dialog and sheet dismissal | `@techaaroorian-ui/dialog` | Browser DOM; optional `/react` |
+| Filter, navigate and select a collection | `@techaaroorian-ui/collection-picker` | Framework-independent core; optional `/react` |
+| Canvas viewport calculations, fit, pan and zoom | `@techaaroorian-ui/pan-zoom` | Framework-independent core; optional `/react` |
+| Compress state into shareable URL fragments | `@techaaroorian-ui/share-state` | Browser APIs; optional `/react` |
+
+Repeatable Sections and Asset Gallery are planned, not available APIs. Aar Loom does not require the behavior packages. Behavior packages do not require Aar Loom or Tailwind. Contextual Empty offers its own optional stylesheet; other headless packages leave rendering and styling to the consumer.
+
+## Use the actual installed contract
+
+Read the chosen package's README.md, AI.md, package.json exports and TypeScript declarations before writing code. Import only public package paths; never import monorepo source paths or assume an unexported helper exists. Check browser requirements and cleanup responsibilities in the package guide. Only the six packages marked with optional `/react` above expose that adapter path; Contextual Empty exports React components at its root.
+
+These packages are in alpha. Prepared manifest versions do not prove npm publication. Check the registry before installation; after publication, use `@alpha` to select the prerelease channel and pin the resolved version for reproducible adoption. Avoid promising production readiness, complete accessibility certification, SSR compatibility or VR support without verifying the relevant contract.
+
+## Build in the Aar Loom language
+
+Paper groups content. Ink communicates. Motion explains change.
+
+- Import `@techaaroorian-ui/aar-loom/index.css` once. Use ordinary semantic HTML or the application's existing components with documented `aar-` classes.
+- Use a scoped `aar-root`, `data-theme="light|dark|system"` and `data-density="comfortable|compact"`. Preference persistence belongs to the application.
+- Use stacks, clusters, adaptive grids and documented workspace regions. Preserve reading order; let long labels wrap; review narrow layouts and zoom before adding fixed widths.
+- Group content with flat paper fills and spacing. Avoid nested borders, decorative gradients or textures behind text. Use boundaries for inputs and overlapping surfaces, and distinct selection and keyboard focus states.
+- Brand colors override semantic tokens such as `--aar-primary`, `--aar-on-primary` and `--aar-focus`. Check contrast in both appearances. Paper colors are regional grouping choices, not status signals or extra theme modes.
+- Keep Magic Art opt-in. Respect reduced motion. CSS supplies presentation; applications or native controls supply tab keyboard behavior, uploads, validation, persistence and asynchronous state.
+- Prefer existing public classes. If a reusable layout primitive is missing, propose adding it to Aar Loom rather than inventing an undocumented framework class. Product-specific styles remain the consumer's choice.
+
+Read [design rules](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/design-rules.md), [adaptive layout](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/adaptive-layout.md), [styling boundaries](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/styling-boundaries.md) and the selected package README for complete examples.
+
+## Discover documentation without executing JavaScript
+
+The docs build generates `llms.txt`, `llms-full.txt`, and `ai/` Markdown guides from repository sources. `llms.txt` is an optional discovery convention, not a guarantee of indexing or agent support. Package tarballs include AI.md and their README; public manifests provide searchable keywords and repository links.
+
+Run `npm run docs:ai` after updating guides or versions. `npm run docs:ai:check` detects stale generated content. Public hosting and npm publication are still needed for external discovery; local files alone are not visible to remote agents.
+
+
+---
+
+# Aar Loom design rules
+
+Status: alpha design contract. These rules guide applications built with ordinary HTML, custom components, or optional headless packages. They do not require a particular JavaScript framework.
+
+**Paper groups content. Ink communicates. Motion explains change.**
+
+“Implemented” means the public CSS supplies a foundation, not that every consumer automatically satisfies the rule. “Application guidance” requires product decisions, markup, or behavior. Spatial UI remains future work.
+
+## 1. Give the task a clear hierarchy
+
+Make the current task the strongest region. Give each task region one visually dominant action; secondary actions use outlined or quiet controls. Separate navigation from task commands. Group by purpose before adding a container.
+
+Application guidance. Review: without reading every label, can someone locate the current task and its next action? Avoid several equally prominent primary actions in the same region.
+
+## 2. Use paper as a surface, not a decoration
+
+Start with a warm neutral workspace and solid sheets. Use a colored sheet when it helps group a related task, collection, or explanation. Prefer one accent per task region; a catalog may use several to distinguish groups. Do not wrap every nested element in another colored card. Do not put grain, textures, gradients, or transparent layers behind reading content in Core.
+
+Implemented foundation: `aar-paper` with `data-paper="sage|clay|lavender|ochre|brand"`. The four named accents are regional surface colors, not themes or status meanings. Brand sheets derive from `--aar-primary`; applications may override the paper tokens. Never communicate success through sage or failure through clay alone.
+
+Review: remove the accent temporarily. Grouping and meaning must survive through headings, spacing, and labels.
+
+## 3. Use borders where a boundary matters
+
+Large paper regions are borderless. Inputs and outlined controls retain a thin boundary; quiet actions may rely on their label and interaction feedback. Menus and dialogs retain boundaries because they overlap content. Use dividers to separate adjacent rows only when spacing is insufficient. Avoid framing a section and every child inside it.
+
+Implemented foundation: borderless paper, panels, metric cards, empty-state regions, and documentation specimens; bordered form controls; visible selected-card outlines; and bounded overlays. Add an explicit divider or control boundary only when the task needs one. Keyboard focus is an explicit outline without a Core glow halo. Selection and focus are different states.
+
+Review: each visible border should identify a control, overlap, separation, or state.
+
+## 4. Keep the geometry consistent
+
+Core controls, paper sheets, and general panels use 4 CSS px corners at the default 16px root size. Larger compositions may use 8px. Circular geometry is for avatars, swatches, handles, and genuinely round controls. Do not mix arbitrary corner shapes in one application region.
+
+Implemented tokens: `--aar-radius-sm`, `--aar-radius-md`, `--aar-radius-lg`. Values remain rem-based and scale with root text size.
+
+## 5. Let spacing show relationships
+
+Use a 4px base rhythm: 4 / 8 / 12 / 16 / 24 / 32 at the default root size. Labels and inputs typically use 8; peer controls 8–12; content within a group 16; separate groups 24–32. Default panel padding is 24, compact is 16. These are starting values, not a reason to compress long labels or translations.
+
+Implemented tokens: `--aar-space-*`, `--aar-panel-padding`; compositions: `aar-stack`, `aar-cluster`, `aar-grid`, `aar-split`. Application guidance: choose gaps based on relationship and available space. Avoid accumulated padding from unnecessary nested panels.
+
+## 6. Establish readable ink hierarchy
+
+Use one sans-serif family for interface content and monospace for code or data that benefits from alignment. Start with 16px body text and 1.5 line height; compact controls and supporting labels may use 14px. Use 20px / 600 section headings and responsive page titles. Keep extended prose around 45–75 characters per line. Do not reduce text size to solve an overcrowded layout.
+
+Implemented foundation: font tokens, `aar-heading`, `aar-title`, and scoped `aar-root` typography. Body sizing and prose width remain application guidance; the framework does not impose a global browser font-size reset. Some existing small metadata styles still need review against the 14px guidance.
+
+Review: inspect actual content at 200% browser zoom, with long labels, and at 320px width. Essential information must remain reachable. Aim for at least 4.5:1 contrast for ordinary reading text and 3:1 for essential non-text state indicators. Consumer-supplied colors must be checked again; default contrast checks do not certify a custom theme or the whole application.
+
+## 7. Keep appearance, brand, density, and expression separate
+
+Appearance is Light / Dark / System. Brand overrides semantic roles such as primary and its foreground. Density is Comfortable / Compact. Expression is Core / optional Magic Art. Do not add theme modes merely to change a section's paper color. A dark appearance uses its own surfaces and ink; do not invert the page as an image.
+
+Implemented foundation: theme and density attributes, semantic tokens, optional Magic Art. Custom foregrounds are an application responsibility. Changing appearance must not change task state or reading order.
+
+## 8. Make every state tell the truth
+
+Hover is temporary color or boundary feedback; Core cards do not lift. Selected is persistent: tint or inset outline plus a semantic selected/pressed state appropriate to the widget. Focus is a visible keyboard outline. Pressed may compress slightly without shifting neighboring content. Invalid combines a control cue with a specific explanation. Disabled remains distinguishable and must not be the only explanation for an unavailable action.
+
+Pending means work is unresolved, not failed. Pair pending, success, and error with readable text. Announce meaningful asynchronous changes with appropriate live-region semantics. A timeout does not prove a payment or background operation failed.
+
+Implemented visual foundation; application guidance supplies correct ARIA, validation, asynchronous state, and announcements. CSS cannot implement state machines or accessible custom widget behavior by itself.
+
+## 9. Use motion to connect states
+
+Use roughly 140ms for control feedback and 180–220ms for short reveals. Entrances may move up to 6px; Core hover must not move content. Keep controls usable during transitions. Avoid animation on every nested child, repeated attention-grabbing loops, and decorative typing of labels or placeholders.
+
+Implemented tokens and select reveal: `--aar-duration`, `--aar-duration-enter`, `--aar-enter-offset`, `aar-enter`. With reduced motion, preserve the final state without movement. Optional Magic Art must not reduce text readability or replace feedback. Effects that use JavaScript must honor reduced motion in that code too.
+
+## 10. Reserve depth for overlap
+
+Core cards and grouped content stay flat. Menus and dialogs may use a small offset edge shadow so their relationship to the underlying sheet is clear. Do not assign elevation to every section or increase shadow on ordinary hover. Magic Art may introduce glow or expressive depth only when enabled.
+
+Implemented shadow tokens; custom surfaces and decorations still require review.
+
+## 11. Adapt to room and input
+
+Begin with one main region (Focus). Add one supporting region when both fit comfortably (Split). Studio can show up to two supporting regions around the task; Wide gives extra room to the work rather than stretching reading lines. Collapse or move tools through reachable disclosure controls; never hide the only path to an action. Preserve task state and focus when presentation changes.
+
+Implemented foundation: wrapping clusters, bounded grids, responsive split, guide and workbench layouts. Focus/Split/Studio/Wide application transitions are guidance, not a finished docking engine. The current `aar-split` breakpoint is 60rem; products should still evaluate their real content.
+
+Start with 44px primary interaction targets. Compact desktop controls can use the 36px density token, but coarse-pointer targets must stay comfortable. The smallest control variants require product-level review; density does not shrink reading text. Test portrait, landscape, 320 / 768 / 1440px, zoom, keyboard, and long content. Spatial/VR layouts need separate prototypes and input research; a responsive web page is not VR support.
+
+## 12. Prefer native semantics and clear behavior boundaries
+
+Use native buttons, inputs, selects, headings, and dialogs where appropriate. Link labels and errors to their controls. Use icons with labels or accessible names; decoration is hidden from assistive technology. Custom widgets need their own keyboard, dismissal, and focus behavior, with or without the optional headless packages. CSS supplies appearance and layout rather than mandatory component ownership.
+
+Application guidance. Review the same task with pointer, keyboard, and assistive technology. For example, a native select can use CSS option reveals where supported and retain a platform picker elsewhere.
+
+## Review before shipping
+
+Check a real task, not only isolated specimens: default, hover, focus, selected, disabled, invalid, pending, empty, and error states. Review light/dark/custom brand, narrow/wide space, comfortable/compact density, zoom, and reduced motion. Confirm that examples show working code and that the application uses public Aar Loom styles. Automated checks support this review; they do not replace it or certify accessibility.
+
+The alpha docs still contain experimental compositions and small metadata styles. Treat them as examples under review, not exceptions that silently redefine these rules. Yuwbrndr is the next application where this contract should be validated.
+
+
+---
+
+# Aar Loom adaptive design and Yuwbrndr redesign
+
+Status: proposed design direction and implementation sequence. These modes are not yet implemented or validated. Yuwbrndr provides task requirements; its existing appearance and panel arrangement are not the design reference.
+
+## Philosophy: the work comes first
+
+The main task occupies the strongest visual region. Tools stay nearby, grouped by purpose, and appear when relevant. A panel explains a relationship; it should not be a box around every control. Primary color marks the next consequential action and selected state, rather than decorating every surface.
+
+Use a restrained surface hierarchy, readable typography, consistent spacing, and stable control geometry. Distinctive identity should come from composition, typography, selection treatment, and interaction consistency. Motion acknowledges state changes; it does not delay access to controls.
+
+Progressive disclosure means exposing detail when it is needed. In Yuwbrndr, browsing templates, editing code, adjusting document settings, and exporting should each have a clear working area. Keeping every tool permanently visible competes with the canvas.
+
+## Derive anatomy, keep behavior boundaries clear
+
+| Yuwbrndr evidence | Reusable Aar Loom candidate | Responsibility outside CSS |
+| --- | --- | --- |
+| Header and canvas controls | Toolbar, action group, icon button, segmented control | Commands, expanded state, keyboard interaction |
+| Sidebar and editor dock | Panel, panel heading, disclosure, resize handle styling | Dock state, focus, resizing and persistence |
+| Aspect preset and theme menus | Selectable option, swatch, menu surface | Selection, navigation, dismissal |
+| Upload assets and examples | Collection grid, thumbnail card, drop-zone states | Upload validation, drag/drop, file storage |
+| Export and prompt forms | Field, help/error text, choice group, progress and feedback | Validation, asynchronous operations |
+| About, fonts, stickers and capability dialogs | Dialog anatomy, sheet, overlay surface | Focus containment, Escape, focus restoration, modality |
+| Slide strip | Selectable thumbnail, ordered collection, contextual actions | Slide order, duplication, navigation |
+| Empty canvas and failures | Contextual Empty integration, notice, status | Message content and recovery actions |
+| Code and artwork previews | Workspace frame, status bar | Code editor, rendering, zoom/pan, export |
+
+CSS provides appearance and layout contracts. Native HTML or application code provides behavior. A styled row is not automatically an accessible tabs or menu widget. Contextual Empty remains its own React package. Code parsing, slide models, generated artwork, export and AI prompting remain Yuwbrndr features.
+
+## Layout vocabulary
+
+Start with reusable compositions: stack (vertical rhythm), cluster (wrapping peers), grid (collections), split (two working regions), frame (bounded content), and workspace (command area, main work, contextual tools, status). Use logical properties and minimum-size constraints so long labels and translated text work naturally.
+
+The application shell chooses which regions are present. Components adapt inside those regions using container queries. Do not make a CSS breakpoint silently remove the only way to reach an action. Preserve task state when presentation changes; keyboard focus must remain reachable.
+
+## Adapt to space and input, not device names
+
+| Mode | Composition | Yuwbrndr application |
+| --- | --- | --- |
+| Focus | One main region; labeled task switcher; tools open as a sheet or dedicated view | Mobile portrait, narrow windows: switch between canvas and code; assets and document settings open on demand |
+| Split | Main region plus one supporting region | Tablet or medium window: canvas plus code OR inspector; asset browser temporarily replaces the supporting panel |
+| Studio | Main region plus up to two supporting regions | Desktop: narrow tool navigation, canvas, active inspector or code dock; user can collapse either side |
+| Wide | Bounded supporting panels; additional room goes to the work | Ultrawide: larger canvas or explicit comparison view; do not stretch forms indefinitely |
+| Spatial | Stable task panels around a central work surface | Future XR adapter: explicit panel placement, selection feedback, and controller/hand alternatives |
+
+Initial layout experiments should use approximately 40rem and 70rem width transitions, then revise them based on real minimum panel and canvas sizes. These are hypotheses, not fixed phone/tablet classifications. Low-height landscape layouts need a shorter command area and fewer simultaneous panels even when width is large. Container width, available height, zoom, text size, and input capabilities all affect the result.
+
+Separate three geometries: application window, working viewport, and authored document. A 9:16 artwork does not imply a portrait application layout. Keep artwork dimensions and export resolution stable while the workspace reorganizes. Existing preview isolation must survive the redesign.
+
+Touch and mixed-input environments need generous targets and actions that do not rely on hover. Compact density is an explicit user preference for suitable contexts, not an automatic consequence of a wide screen. Respect reduced motion and ensure state remains clear without animation.
+
+## Yuwbrndr target composition
+
+- Command bar: product/document context, document mode, share, and one primary Export action. Move output dimensions and artwork palette into Document settings; move zoom/fit beside the canvas.
+- Tool navigation: Assets, Templates, Document, and Code, with text labels where space permits. Keep selection distinct from action emphasis.
+- Work surface: canvas-first preview, quiet boundary, contextual empty state, and a compact view-control area.
+- Supporting panel: content for the selected task. Show code and inspector together only when usable work space remains.
+- Sequence area: slides when the document uses slides; use a reachable sequence view on narrow screens instead of an unusably compressed strip.
+- Feedback: persistent inline recovery for errors; announced short status for successful actions. Important errors must not disappear on a timer.
+
+The redesign can change visual hierarchy, navigation, surfaces, and panel placement. Preserve document content, imports, sharing, exporting, and authored artwork semantics. This is a product redesign rather than recoloring the old utility-based layout.
+
+## Spatial scope
+
+A browser page in a headset remains a 2D interface and can use the adaptive CSS layouts. Immersive VR requires session handling, a spatial renderer, input mapping, and device testing. A large media-query breakpoint cannot enable it.
+
+Share semantic color roles, type roles, spacing relationships, component states, and task structure with an optional future XR adapter. Add spatial-specific sizing, distance, legibility, stable placement, and depth rules only after headset experiments. CSS pixel hit areas are not a validated angular target size. Avoid forced camera movement and hover-only commands; provide explicit open/close and non-drag alternatives. Do not advertise VR support until the adapter has been tested on named devices and browsers.
+
+WebXR DOM overlays offer interactive 2D content in supported immersive sessions; support must be negotiated rather than assumed. They do not replace the spatial renderer or guarantee arbitrary HTML panels throughout a VR scene.
+
+## Build sequence and evidence
+
+1. Create a docs layout laboratory with Focus, Split, Studio, Wide, and low-height examples using the same task content. Compare light/dark, custom palettes, long labels, touch and keyboard. Review composition before standardizing CSS APIs.
+2. Add the proven stack/cluster/grid/split/frame compositions to Aar Loom with a changeset. Define public layout and token contracts; no Yuwbrndr-specific selectors in the package.
+3. Rebuild Yuwbrndr command bar and workspace shell around the new layout. Preserve actions and artwork isolation while changing navigation and panel composition.
+4. Migrate fields, collections, menus, dialogs, notices, and sequence controls. Remove the frozen legacy interface CSS after its final consumer migrates.
+5. Validate 320px narrow windows, phone portrait/landscape, tablet portrait/landscape, 1280px desktop, 2560px ultrawide, short windows, and 200% zoom. Check focus after resize, sheet dismissal, long labels, input ergonomics, reduced motion, and unchanged export dimensions. These are test cases, not device guarantees.
+6. Prototype a separate spatial adapter using the validated task model. Test headset legibility, selection, panel dismissal, and input alternatives before specifying a public XR contract.
+
+## Technical references
+
+- [MDN: container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries)
+- [MDN: media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries)
+- [W3C: WebXR Device API](https://www.w3.org/TR/webxr/)
+- [W3C: WebXR DOM Overlays Module](https://www.w3.org/TR/webxr-dom-overlays-1/)
+
+
+---
+
+# Component behavior and styling
+
+TechAaroorian UI packages own behavior and documented markup/state contracts. Aar Loom owns optional appearance and layout. Headless packages do not import Aar Loom, icons, or a visual stylesheet.
+
+| Consumer | Styles to load |
+| --- | --- |
+| Aar Loom application | Aar Loom CSS once, with documented component classes |
+| Custom design system | Consumer CSS for the headless markup/state contract |
+| Contextual Empty without a design system | Optional contextual-empty/dist/index.css |
+
+Contextual Empty's existing stylesheet is retained as a standalone option. It is not imported automatically by the bundled JavaScript. Aar Loom consumers can skip it and pass `className="aar-contextual-empty"` to a preset or compound root. The adapter styles only that opt-in class and its documented descendants. It does not require the React package at runtime.
+
+```tsx
+import '@techaaroorian-ui/aar-loom/index.css';
+import { SearchEmpty } from '@techaaroorian-ui/contextual-empty';
+
+<div className="aar-root" data-theme="dark">
+  <SearchEmpty className="aar-contextual-empty" query="drafts" onClear={clearSearch} />
+</div>
+```
+
+Do not import both standalone Contextual Empty CSS and its Aar Loom styling for the same component. The standalone stylesheet is unlayered and can override layered design-language rules. Choose one styling owner.
+
+Dialog/sheet and collection picker ship no styles. Aar Loom supplies `aar-dialog`, optional `data-placement="end"` or `"bottom"`, `aar-picker`, and `aar-picker-option`. Their state attributes remain semantic: `[open]`, `[aria-selected]`, `[aria-disabled]`, and `[data-active]`. A picker active outline indicates the option being explored; filled selection indicates the committed choice.
+
+File Intake now includes headless file drop handling as well as validation. Aar Loom supplies the compact `aar-file-intake` composition, `aar-dropzone` drag-active state, and file-row anatomy. A consumer owns the accepted asset list, preview URLs, removal and uploads; a bare file input is the minimal integration, not the full example.
+
+Behavior may require browser primitives such as the native dialog's hidden/top-layer rules. Preserve those rules in custom CSS; headless does not mean removing the browser's accessibility behavior. Product-specific compositions, artwork, and syntax highlighting remain consumer responsibilities.
+
+
+---
+
+# Icons across TechAaroorian UI
+
+Lucide is the recommended icon family for consuming applications and the collection docs. It is optional and is not a dependency of either public package. Brand logos remain separate custom assets. Aar Loom defines CSS anatomy; the application supplies icon SVGs.
+
+Install `lucide-react` in a React consumer and import named icons. Start with 16–20 px for controls and 24–32 px for empty states, using a consistent stroke width. These are collection conventions, not framework requirements.
+
+```tsx
+import { Download, Settings, Search } from 'lucide-react';
+
+<button onClick={download}>
+  <Download size={18} strokeWidth={1.75} aria-hidden="true" />
+  Download
+</button>
+
+<button aria-label="Open settings" onClick={openSettings}>
+  <Settings size={20} aria-hidden="true" />
+</button>
+
+<SearchEmpty
+  query="drafts"
+  icon={<Search size={32} aria-hidden="true" />}
+  onClear={clearSearch}
+/>
+```
+
+Use visible labels where possible. Label the button rather than its decorative icon; keep keyboard focus visible and give the wrapper a usable hit area. Use words and shape as well as color for status. Non-React consumers can use Lucide SVG assets or framework-specific packages.
+
+Live guide: `#/guides/icons`.
+
+Sources: [Lucide React](https://lucide.dev/guide/react), [accessibility guidance](https://lucide.dev/how-to/accessibility).
+
+
+---
+
+# Independent package versioning
+
+TechAaroorian UI is a collection, not one synchronized release. Aar Loom and Contextual Empty each have their own package version and changelog. The private docs app is not published. Displayed versions come from package manifests.
+
+## Contract and stability
+
+The checkout contains independently versioned alpha packages. The docs versioning page reads all eight manifests directly, including Pan & Zoom and Share State. These are manifest versions, not proof of publication. Do not overwrite a published version.
+
+SemVer treats 0.y.z as initial development: https://semver.org/.
+
+Our pre-1.0 convention is **patch** for compatible additions and fixes, **minor** for breaking changes. Once a package reaches 1.0, use patch for compatible fixes, minor for compatible features, and major for breaking changes. A breaking change must include migration notes.
+
+Aar Loom's public contract includes documented classes, attributes, tokens, exported CSS paths, and interaction/accessibility behavior. Removing tokens, changing component anatomy, or altering theme scope can be breaking even if there is no JavaScript API. Contextual Empty's contract includes exports, props, callbacks, DOM/state attributes, and its documented CSS hooks.
+
+## Changesets workflow
+
+1. Run `npm run changeset` after changing a public package. Select affected packages and write a consumer-facing summary. Avoid package bumps for docs-only changes.
+2. Inspect the pending plan with `npm run changeset:status`. Pending records should represent actual changes, not scheduled future features.
+3. Apply the plan with `npm run version:packages`. This updates manifests, changelogs, and package-lock.json without publishing.
+4. Build, test, inspect package contents, and review the version diff with `npm run release:check`.
+5. Commit the release diff. Publish deliberately with `npm run release` or the manual release workflow. Changesets skips versions already in the registry and creates package-specific release tags when it publishes.
+
+Changesets usage: https://github.com/changesets/changesets/blob/main/docs/intro-to-using-changesets.md.
+
+The current checkout is in Changesets prerelease mode with the alpha tag. For a new preview channel use `npm exec changeset pre enter alpha`, add changesets, and version normally; publish on the alpha dist-tag. Exit with `npm exec changeset pre exit` when preparing the stable release. Preview preparation must also be reviewed; it does not happen automatically on every merge.
+
+After applying changesets, use `npm run release:ready` to inspect the prepared versions and channel. `changeset:status` is for pending records; with Changesets 3 it can report missing records after a plan has been consumed while the branch still differs from main. The manual publish workflow uses release:ready instead and refuses unversioned pending records.
+
+## Release checks
+
+`npm run release:check` builds and tests the prepared manifests, builds/lints documentation, and runs `npm run test:packed`. The packed-consumer check creates local tarballs under `.cache/packed-consumer`, verifies exported files and release metadata, and exercises JavaScript, React adapter, CommonJS, and CSS entry points from those payloads. It uses this checkout's installed React peers; it is not a fresh registry-install test. Verify a clean installation from npm after publication.
+
+Build all eight public packages and docs, run component and core behavior tests and docs lint, and inspect dry-run package contents. Run browser smoke checks with the docs server for UI/theme and React adapter changes, including dialog focus/dismissal and picker keyboard interaction. Verify the CSS package has no runtime icon dependency and the headless cores import without React. Inspect the tarballs before publishing; a successful build is not proof that the right files are included.
+
+No automatic publish on pushes to main. The workflow is manual and defaults to dry-run. Registry credentials are required only for publication. This task configures release tooling; it does not publish, create release tags, or claim that local versions are released.
+
+
+---
+
+# @techaaroorian-ui/aar-loom: agent integration
+
+Aar Loom: a themeable, CSS-only design language for tools and workspaces.
+
+Prepared version: 0.2.0-alpha.3. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/aar-loom`
+- `@techaaroorian-ui/aar-loom/index.css`
+- `@techaaroorian-ui/aar-loom/tokens.css`
+- `@techaaroorian-ui/aar-loom/components.css`
+- `@techaaroorian-ui/aar-loom/tailwind-v3.css`
+- `@techaaroorian-ui/aar-loom/layouts.css`
+- `@techaaroorian-ui/aar-loom/navigation.css`
+- `@techaaroorian-ui/aar-loom/workspace.css`
+- `@techaaroorian-ui/aar-loom/utilities.css`
+- `@techaaroorian-ui/aar-loom/compositions.css`
+- `@techaaroorian-ui/aar-loom/expression.css`
+- `@techaaroorian-ui/aar-loom/code.css`
+- `@techaaroorian-ui/aar-loom/magic-art.css`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/aar-loom/README.md).
+
+# Aar Loom
+
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/aar-loom@alpha
+```
+
+A CSS-only design and layout language. Use plain HTML, your own components, or any application framework. Aar Loom does not require TechAaroorian UI headless packages or a component library.
+
+## Start with HTML
+
+For consumer adoption, use the [project migration map](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/project-migration.md). The exported `workspace.css` module adds `aar-workspace-body[data-layout="studio"]`, typed workspace regions, `aar-inspector-section`, metadata property rows, toolbar groups, scroll areas, and a status bar. Container-width transitions keep all regions reachable. It is included in `index.css` and the generated Tailwind v3 stylesheet. These are CSS foundations; resizing, persistence, validation, and file processing remain application or headless behavior.
+
+Navigation patterns are public CSS: `aar-app-header` and `aar-app-header-actions` group identity and commands; `aar-app-shell` places `aar-sidenav` beside content and stacks below 54rem. Use `aar-sidenav-group`, `aar-sidenav-label`, and route anchors with `aar-sidenav-link` plus `aria-current="page"`. Native `details.aar-nav-disclosure` provides a collapsible navigation region. `aar-tabs` supports default underline, `data-variant="pills"`, or `data-variant="paper"`; `aar-tabpanel` respects `hidden`. Real tabs require application selection and keyboard behavior. Breadcrumbs use the existing `aar-breadcrumb-*` classes. The module is included by `index.css`; a selective `navigation.css` import also needs the token/base component foundations.
+
+Read the [alpha design rules](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/design-rules.md) for typography, spacing, surface, state, motion, and adaptive-layout decisions. They distinguish implemented CSS foundations from application guidance and future spatial work.
+
+Paper regions are borderless: their fill and spacing establish the boundary. Inputs, outlined buttons, and overlays retain borders. Selected paper regions receive an inset outline; keyboard focus retains its separate visible outline.
+
+The core surface language is smooth colored paper: warm off-white sheets, muted sage/clay/lavender/ochre accents, and ink-like text. Add `aar-paper` to any region with `data-paper="sage"`, `"clay"`, `"lavender"`, `"ochre"`, or `"brand"`. Brand sheets derive from `--aar-primary`; surface tokens `--aar-paper-sage` and the corresponding color names can also be overridden. These are region colors, not additional theme modes. Light, Dark, and System remain the appearance choices. Dark appearance uses muted tinted sheets with light ink. Texture is omitted to keep small text clear.
+
+Core styling is flat: solid surfaces, modest corners, thin borders, and spacing establish hierarchy. Hover uses color and border feedback without lifting cards. Selected cards receive a subtle tint. Focus outlines remain visible, while menus and dialogs retain a small separation shadow. Optional Magic Art can add expressive elevation and glow.
+
+```css
+@import "@techaaroorian-ui/aar-loom/index.css";
+```
+
+```html
+<body class="aar-page-reset">
+  <main class="aar-root" data-theme="system" data-density="comfortable">
+    <section class="aar-container aar-stack aar-p-4" data-gap="6">
+      <h1 class="aar-title">Your application</h1>
+      <div class="aar-grid" data-min="18">
+        <article class="aar-panel">Main work</article>
+        <aside class="aar-panel">Supporting tools</aside>
+      </div>
+    </section>
+  </main>
+</body>
+```
+
+`aar-page-reset` is an explicit margin reset; the framework does not reset the global body. Applications own preference controls and persistence.
+
+## Appearance, brand, expression, density
+
+- `data-theme="light|dark|system"`: one default surface and text hierarchy for each appearance. System follows the browser preference.
+- Brand identity: override semantic tokens such as `--aar-primary`, `--aar-on-primary`, and `--aar-focus`. There are no named palette variants. Give each appearance a readable foreground/background pair.
+- `data-magic-art="true"`: optional expressive feedback. Core controls and layout work without it.
+- `data-density="comfortable|compact"`: spacing and control density. Coarse pointers retain generous targets.
+
+```css
+[data-brand="your-brand"][data-theme="light"] {
+  --aar-primary: #326954;
+  --aar-on-primary: #ffffff;
+  --aar-focus: #326954;
+}
+[data-brand="your-brand"][data-theme="dark"] {
+  --aar-primary: #a8d6c4;
+  --aar-on-primary: #142d25;
+  --aar-focus: #a8d6c4;
+}
+```
+
+Custom colors require contrast checks. Status roles remain distinct from brand accent. Nested explicit theme roots can choose independent appearances; ordinary markup inherits the surrounding tokens.
+
+## Public layout classes
+
+| Pattern | Classes / attributes |
+| --- | --- |
+| Application or documentation shell | `aar-site`, `aar-site-header`, `aar-site-footer` |
+| Bounded content and reading measure | `aar-container`, `aar-prose`, `aar-section` |
+| Vertical rhythm and wrapping peers | `aar-stack`, `aar-cluster`, `data-gap="1|2|3|4|6|8"` |
+| Adaptive collection grid | `aar-grid`, `data-min="14|18|24"` |
+| Work and supporting regions | `aar-split`, `aar-workspace`, `aar-workspace-main` |
+| Knowledge portal navigation | `aar-guide-shell`, `aar-guide-sidebar`, `aar-guide-main` |
+| Highlighted source frame | `aar-code`, `aar-code-toolbar`, `data-expanded="true"` |
+| Spacing utilities | `aar-p-4`, `aar-mt-6`, `aar-gap-4` (quarter-rem scale) |
+
+The default entry includes every public module. Advanced consumers can import `tokens.css`, `components.css`, `layouts.css`, `compositions.css`, `expression.css`, `code.css`, `magic-art.css`, and `utilities.css` separately. Use the default entry when composing modules to preserve layer order. The documentation uses only these package styles.
+
+Runtime geometry uses documented CSS inputs rather than a private stylesheet: `--aar-grid-min`, `--aar-split-cols`, `--aar-order`, and `--aar-width`, `--aar-height`, `--aar-transform` with corresponding `aar-bind-*` classes. Consumers supply dimensions or transforms; CSS cannot calculate application state.
+
+## Interaction boundaries
+
+Component classes are convenient examples, not mandatory APIs. CSS supplies focus, selected-state appearance, responsive composition, and motion. Native HTML supplies button, select, and details behavior. Applications or headless adapters supply dialog dismissal, listbox navigation, uploads, drawing, and viewport state.
+
+`aar-select-frame` wraps a native `select.aar-select` and an optional decorative `aar-select-chevron`. On fine-pointer devices, browsers supporting `appearance: base-select` get a themed option panel with a short fade and lift, selected checkmark, and rotating arrow. Touch devices and unsupported browsers retain their platform picker. Reduced motion disables the reveal transition.
+
+Magic Art geometry and surface transitions use CSS/SVG. Star particle bursts need an application event handler; CSS classes alone cannot create particles. Respect reduced motion. The docs demonstrate an optional handler; Aar Loom ships no JavaScript runtime.
+
+## Tailwind coexistence
+
+The standard entry declares `theme, base, components, utilities`. Normal Tailwind utilities can override component-layer styles. Reduced-motion rules intentionally use `!important` to preserve the user's preference.
+
+For Tailwind v3 import `@techaaroorian-ui/aar-loom/tailwind-v3.css`. The build includes all public modules under native `aar-theme`, `aar-components`, and `aar-utilities` layers; unlayered Tailwind utilities take precedence. Tailwind v4-specific token mapping is not shipped.
+
+## Validate
+
+From the repository root, run `npm run build --workspace packages/aar-loom`, `npm run build --workspace docs`, and `npm run test:visual --workspace docs` with the documentation dev server running. Review narrow layouts, both appearances, keyboard focus, custom colors, and reduced motion. The package is in alpha; release preparation uses Changesets and publishes on the alpha dist-tag.
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/aar-loom/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+
+---
+
+# @techaaroorian-ui/collection-picker: agent integration
+
+Headless filtered single-selection picker with an optional React listbox hook.
+
+Prepared version: 0.2.0-alpha.1. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/collection-picker`
+- `@techaaroorian-ui/collection-picker/react`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/collection-picker/README.md).
+
+# Collection Picker
+
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/collection-picker@alpha
+```
+
+Framework-independent single-selection state with filtering and typeahead. Optional React 18+ hook implements a vertical listbox using `aria-activedescendant`. No CSS or dependency on Aar Loom.
+
+```js
+import { createPicker, reducePicker, visibleItems } from '@techaaroorian-ui/collection-picker';
+const items = [{ id: 'poster', label: 'Poster' }, { id: 'slides', label: 'Slides' }];
+let state = createPicker(items);
+state = reducePicker(state, { type: 'navigate', direction: 'next' }, items);
+state = reducePicker(state, { type: 'select' }, items);
+const shown = visibleItems(items, state.query);
+```
+
+```tsx
+import { useCollectionPicker } from '@techaaroorian-ui/collection-picker/react';
+const picker = useCollectionPicker(items);
+<input aria-label="Filter formats" value={picker.query}
+  onChange={event => picker.setQuery(event.target.value)} />
+<div {...picker.listboxProps} aria-label="Formats" className="aar-picker">
+  {picker.visibleItems.map(item => (
+    <div key={item.id} {...picker.getOptionProps(item)} className="aar-picker-option">
+      {item.label}
+    </div>
+  ))}
+</div>
+```
+
+Items require unique nonempty IDs and text labels; optional disabled flags exclude them from navigation and selection. Core commands: `query`, `navigate` (next/previous/first/last), `select` (explicit ID or active item), and `typeahead` (text and millisecond timestamp). Typeahead accumulates prefixes within 700ms; repeated initial letters cycle through matches. Arrow navigation stops at list boundaries.
+
+Active focus and committed selection are separate. Filtering preserves selection, including when that choice is hidden; selection clears when its item is removed or disabled. `reconcilePicker` normalizes state when the source items change. The React hook normalizes each render and initializes selection only once; it is uncontrolled. Remount to reset or use the core for externally controlled state.
+
+The React adapter handles Up/Down, Home/End, Enter/Space, and character typeahead; modifiers and IME composition are left alone. Tab leaves the list. Options are not separate tab stops; DOM focus stays on the labeled listbox. Pointer selection focuses the listbox. Provide visible focus styling, selected styling, and an announced empty-result message. The filter is a separate labeled input, not a combobox.
+
+Options must not contain interactive buttons, links, or inputs. Cards with several actions require a different pattern. This alpha does not support multiselect, grouped options, virtualization, async loading, or custom filter functions. Native `<select>` remains a simpler choice for ordinary form fields.
+
+With Aar Loom, use `aar-picker` and `aar-picker-option`. Other frameworks can connect the core to their reactive state and implement the same focus and keyboard contract. Browser tests cover the React adapter; core tests run without React or the DOM. Alpha APIs may change. ESM and TypeScript declarations.
+
+Reference: [WAI-ARIA listbox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/collection-picker/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+
+---
+
+# @techaaroorian-ui/contextual-empty: agent integration
+
+A contextual, composable empty-state system for React applications.
+
+Prepared version: 0.1.1-alpha.1. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/contextual-empty`
+- `@techaaroorian-ui/contextual-empty/dist/index.css`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/contextual-empty/README.md).
+
+# @techaaroorian-ui/contextual-empty
+
+[![npm version](https://badge.fury.io/js/@techaaroorian-ui%2Fcontextual-empty.svg)](https://badge.fury.io/js/@techaaroorian-ui%2Fcontextual-empty)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A contextual, composable empty-state system for React applications.
+
+Traditional empty states answer: *"Is there any data?"* **Contextual Empty States** answer: *"Why is there no data, and what should the user do next?"*
+
+## Features
+
+- 🧩 **Dual API:** Use quick Presets for speed, or Compound Primitives for ultimate control.
+- ♿️ **A11y First:** Built-in ARIA support and semantic HTML.
+- 🎨 **Headless Styles:** Ships with unopinionated base styles via CSS variables.
+- ⚡️ **Zero Dependencies:** Ultra-lean bundle size.
+
+## Installation
+
+```bash
+npm install @techaaroorian-ui/contextual-empty@alpha
+```
+
+## Usage (The Preset API)
+
+The standalone stylesheet below is optional. With Aar Loom, import Aar Loom CSS once and add `className="aar-contextual-empty"` to the preset or compound root instead. Use one styling owner for a component. The bundled JavaScript does not automatically load the standalone CSS.
+
+```tsx
+import '@techaaroorian-ui/aar-loom/index.css';
+import { SearchEmpty } from '@techaaroorian-ui/contextual-empty';
+
+<SearchEmpty className="aar-contextual-empty" query="drafts" onClear={clearSearch} />
+```
+
+For rapid development, use our built-in contextual presets:
+
+```tsx
+import { SearchEmpty } from '@techaaroorian-ui/contextual-empty';
+import '@techaaroorian-ui/contextual-empty/dist/index.css';
+
+function Dashboard() {
+  return (
+    <SearchEmpty 
+      query="quantum metrics"
+      onClear={() => handleClearFilters()} 
+    />
+  );
+}
+```
+
+## Usage (The Primitive API)
+
+For highly custom layouts, bypass the presets and use our Compound Components:
+
+```tsx
+import { ContextualEmptyState } from '@techaaroorian-ui/contextual-empty';
+
+function CustomError() {
+  return (
+    <ContextualEmptyState type="error">
+      <ContextualEmptyState.Icon>
+        <MyCustomWarningSvg />
+      </ContextualEmptyState.Icon>
+      <ContextualEmptyState.Content>
+        <h3>Connection Lost</h3>
+        <p>Please check your internet and try again.</p>
+      </ContextualEmptyState.Content>
+      <ContextualEmptyState.Actions>
+        <button onClick={retry}>Try Again</button>
+      </ContextualEmptyState.Actions>
+    </ContextualEmptyState>
+  );
+}
+```
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/contextual-empty/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+
+---
+
+# @techaaroorian-ui/dialog: agent integration
+
+Native modal dialog and sheet behavior with an optional React hook.
+
+Prepared version: 0.2.0-alpha.1. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/dialog`
+- `@techaaroorian-ui/dialog/react`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/dialog/README.md).
+
+# Dialog
+
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/dialog@alpha
+```
+
+Headless behavior for native modal `<dialog>` elements. A sheet uses the same behavior with different consumer styling. No CSS, renderer, or runtime framework dependency; optional React 18+ hook at `/react`.
+
+```js
+import { bindDialog } from '@techaaroorian-ui/dialog';
+const controller = bindDialog(document.querySelector('dialog'), {
+  dismissOutside: true,
+  onOpenChange: open => console.log(open),
+});
+openButton.addEventListener('click', () => controller.open());
+closeButton.addEventListener('click', () => controller.close());
+// When the owning view is removed:
+controller.destroy();
+```
+
+```tsx
+import { useDialog } from '@techaaroorian-ui/dialog/react';
+const { dialogRef, open, close } = useDialog({ dismissOutside: true });
+<button onClick={open}>Open settings</button>
+<dialog ref={dialogRef} aria-labelledby="settings-title" className="aar-dialog">
+  <h2 id="settings-title">Settings</h2>
+  <button onClick={() => close()}>Close</button>
+</dialog>
+```
+
+Keep the dialog mounted and initially closed. Do not supply a React `open` prop or open it with `show()`; the controller uses `showModal()`. The native browser handles top-layer modality, background inertness, and focus containment. Set an accessible label using `aria-labelledby` or `aria-label`. Set `autofocus` on a suitable child if the first focusable element is not appropriate. Include an explicit close button. Native Escape/cancel, close(), and dialog-form submissions synchronize state and restore focus to the opener if it still exists.
+
+Backdrop dismissal requires primary-pointer down and up outside the content rectangle; a drag starting inside does not dismiss. Set `dismissOutside: false` for flows needing explicit dismissal; Escape remains available. The controller does not block dismissal for unsaved edits. Destroy removes listeners, closes the surface, and restores focus; destroyed controllers cannot reopen. Do not bind multiple controllers to the same element. In React, keep dismissOutside stable while open; changing it rebinds and closes the dialog.
+
+The browser API does not access globals at module import, but binding requires a mounted native dialog with `showModal` support. No legacy polyfill is included. This package does not implement global scroll locking, animation orchestration, routing, or confirmations. Nested dialogs are supported by the browser and are tested in the docs examples. Device and assistive technology verification is still needed before a stable release.
+
+With Aar Loom, import its CSS once and use `aar-dialog`; add `data-placement="end"` or `"bottom"` for a sheet. Without Aar Loom, provide your own CSS. Do not add `display: block` to a closed dialog.
+
+Browser interaction tests live in `apps/docs/scripts/visual-smoke.mjs`; run the docs server and `npm run test:visual --workspace apps/docs`. Alpha APIs may change. ESM and TypeScript declarations.
+
+Reference: [native dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog).
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/dialog/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+
+---
+
+# @techaaroorian-ui/file-intake: agent integration
+
+Atomic file batch validation with structured errors and an optional React adapter.
+
+Prepared version: 0.2.0-alpha.2. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/file-intake`
+- `@techaaroorian-ui/file-intake/react`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/file-intake/README.md).
+
+# File Intake
+
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/file-intake@alpha
+```
+
+Atomic file batch validation extracted from Yuwbrndr's asset uploads. Framework-independent core and optional React hook. No CSS, upload service, object URLs, or storage policy.
+
+## Compact drop-zone interaction
+
+```tsx
+import { useFileDropzone } from '@techaaroorian-ui/file-intake/react';
+const { dropzoneProps, inputProps, open, errors, isDragging } = useFileDropzone({
+  maxFiles: 5,
+  maxFileBytes: 2 * 1024 * 1024,
+  accept: ['image/png', 'image/jpeg', 'image/webp'],
+  existingCount: assets.length,
+  disabled: assets.length >= 5,
+  onAccepted: files => addAssets(files),
+});
+<div {...dropzoneProps} className="aar-dropzone" role="group" aria-label="Image intake">
+  <span>Drop images here</span>
+  <button onClick={open}>Choose images</button>
+  <input {...inputProps} className="aar-visually-hidden" tabIndex={-1} aria-label="Image files" />
+</div>
+```
+
+The hook supplies file-only drop handling, nested drag tracking, a chooser trigger, same-file reselection, and the latest validation result. Render errors in an announced, persistent region; label the file input and provide a native button as the keyboard/touch alternative. Browser selection and drops use the same atomic validation and existingCount. onAccepted runs only for valid, nonempty batches. `clear()` clears validation feedback, not the application's asset list.
+
+For other frameworks, `bindFileDropzone(element, options)` supplies the browser behavior. Pass onResult, optional onDragChange, and getter callbacks for existingCount and disabled; call destroy() on unmount. It ignores non-file drags, prevents dropped files navigating the page within the bound target, and skips disabled intake. Provide a separate native input wired to validateFiles. The core validator remains usable without browser globals.
+
+Aar Loom provides compact `aar-file-intake`, `aar-dropzone`, `aar-file-list`, `aar-file-row`, `aar-file-details`, and `aar-file-preview` anatomy. The docs demonstrate retained assets, per-file removal, count limits, and local raster previews. These are consumer-owned composition and resource handling: the package does not allocate preview URLs or store assets. Preview URLs must be revoked on removal/unmount. Do not nest action buttons inside a clickable drop-zone button.
+
+```js
+import { validateFiles } from '@techaaroorian-ui/file-intake';
+const result = validateFiles(input.files, {
+  maxFiles: 5,
+  maxFileBytes: 2 * 1024 * 1024,
+  accept: ['image/*', '.png'],
+}, existingAssets.length);
+if (result.errors.length === 0) {
+  // Create object URLs or upload accepted files only after full validation.
+}
+```
+
+```tsx
+import { useFileIntake } from '@techaaroorian-ui/file-intake/react';
+const intake = useFileIntake({ maxFiles: 5, maxFileBytes: 2 * 1024 * 1024 });
+// intake.validate(event.currentTarget.files ?? [], existingAssets.length)
+// intake.errors: render persistent, labeled error feedback.
+// intake.clear(): clear the latest validation result.
+```
+
+Pass an iterable of files or metadata objects with `name`, `size`, and `type`. FileList works directly. Limits default to unlimited. `maxFiles` includes existing items. Byte limits are inclusive. Accept patterns support exact MIME types, MIME families (`image/*`), and case-insensitive extensions (`.png`). Any error rejects the whole batch. Empty input produces an empty successful result. Errors have `count`, `size`, `type`, or `metadata` codes for caller-owned messages. Malformed limits throw.
+
+MIME/extension checks use supplied metadata, not file contents. Validate again at any upload service. Create and revoke object URLs in the consuming application; this package allocates none. The hook retains references to the last batch until the next validation or clear. It does not keep a running asset collection.
+
+Consumers provide a labeled file input, optional drop handling, progress, and storage. Always offer file selection as an alternative to dragging. React 18+ is required only for `/react`; the core works without React or browser globals.
+
+Alpha: APIs may change. ESM and TypeScript declarations; no CommonJS build.
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/file-intake/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+
+---
+
+# @techaaroorian-ui/ordered-collection: agent integration
+
+Headless ordered selection and item operations with an optional React adapter.
+
+Prepared version: 0.2.0-alpha.1. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/ordered-collection`
+- `@techaaroorian-ui/ordered-collection/react`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/ordered-collection/README.md).
+
+# Ordered Collection
+
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/ordered-collection@alpha
+```
+
+Headless ordered item state, extracted from Yuwbrndr's slide workflow. Framework-independent core; optional React hook. No CSS, renderer, generated IDs, or slide-specific data model.
+
+```js
+import { createCollection, reduceCollection } from '@techaaroorian-ui/ordered-collection';
+let state = createCollection([{ id: 'cover', title: 'Cover' }]);
+state = reduceCollection(state, {
+  type: 'insert', afterId: 'cover', item: { id: 'details', title: 'Details' },
+}, { minItems: 1, maxItems: 6 });
+```
+
+```tsx
+import { useOrderedCollection } from '@techaaroorian-ui/ordered-collection/react';
+const { items, selectedId, dispatch } = useOrderedCollection(initialItems, { minItems: 1, maxItems: 6 });
+// Render ordinary labeled buttons; selection is application state.
+// onClick={() => dispatch({ type: 'select', id: item.id })}
+// aria-pressed={selectedId === item.id}
+```
+
+Commands: `select`, `insert` (append by default; optional `afterId`), `remove`, `move` (zero-based final index), and `update` (replace an item with the same ID). Insert selects the new item. Removing the selected item selects its next neighbor, or the previous neighbor at the end. Removing the final item selects null when allowed. Capacity, minimum, and missing-target operations are no-ops. Invalid IDs, duplicate IDs, malformed limits and fractional move indexes throw. Caller data is treated as immutable; the core does not deep-clone nested payloads. Duplication is an insert with a new ID and a caller-owned copy policy.
+
+The hook reads initial items once. Keep min/max constraints consistent with the collection's current size; changes to options affect subsequent commands but do not automatically truncate existing data. React 18+ is required only for `/react`. Other frameworks can store reducer results in their own reactive state.
+
+The core does not implement drag gestures, roving focus, tabs/listbox semantics, or persistence. Consumers choose appropriate native elements and keyboard/focus behavior; reordering must have non-drag alternatives.
+
+Alpha: APIs may change. ESM and TypeScript declarations; no CommonJS build. No browser globals are accessed by the core.
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/ordered-collection/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+
+---
+
+# @techaaroorian-ui/pan-zoom: agent integration
+
+Headless viewport calculation, auto-fit, and zoom management with optional React hook.
+
+Prepared version: 0.1.0-alpha.1. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/pan-zoom`
+- `@techaaroorian-ui/pan-zoom/react`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/pan-zoom/README.md).
+
+# @techaaroorian-ui/pan-zoom
+
+Headless viewport calculation, auto-fit algorithms, and zoom management for creative workspaces and canvas editors.
+
+## Features
+
+- **Zero Dependencies**: Pure mathematical engine with no CSS or framework dependencies.
+- **Auto-Fit Calculation**: Uniform scale calculation that cleanly fits content within any container.
+- **Optional React Hook**: `usePanZoom` with `ResizeObserver` support and zoom controls.
+- **Full Control**: Zoom stepping, bounds clamping, and panning coordinates.
+
+## Installation
+
+```bash
+npm install @techaaroorian-ui/pan-zoom@alpha
+```
+
+## Quick Start (React)
+
+```tsx
+import { usePanZoom } from '@techaaroorian-ui/pan-zoom/react';
+
+function CanvasWorkspace() {
+  const {
+    containerRef,
+    zoom,
+    renderedWidth,
+    renderedHeight,
+    zoomIn,
+    zoomOut,
+    resetZoom,
+    autoFit,
+    toggleAutoFit,
+  } = usePanZoom({
+    contentWidth: 1200,
+    contentHeight: 627,
+    padding: 32,
+  });
+
+  return (
+    <div ref={containerRef} style={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
+      <header>
+        <button onClick={zoomIn}>Zoom In</button>
+        <button onClick={zoomOut}>Zoom Out</button>
+        <button onClick={resetZoom}>100%</button>
+        <button onClick={toggleAutoFit}>Auto-Fit: {autoFit ? 'ON' : 'OFF'}</button>
+      </header>
+
+      <div style={{ width: renderedWidth, height: renderedHeight }}>
+        {/* Your artwork / canvas content */}
+      </div>
+    </div>
+  );
+}
+```
+
+## Core API (Framework-Agnostic)
+
+```ts
+import { calculateFit, clampZoom, stepZoom, createPanZoom } from '@techaaroorian-ui/pan-zoom';
+
+const fitScale = calculateFit({
+  containerWidth: 1024,
+  containerHeight: 768,
+  contentWidth: 1200,
+  contentHeight: 627,
+  padding: 32,
+});
+```
+
+## License
+
+MIT © Janarthanan Soundararajan
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/pan-zoom/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+
+---
+
+# @techaaroorian-ui/share-state: agent integration
+
+Zero-server URL state compression and share links via browser CompressionStream with safe byte limits.
+
+Prepared version: 0.1.0-alpha.1. Verify registry availability before installation; this manifest is not proof of publication.
+
+Read the included README.md for examples and limitations. Use only these public import paths:
+
+- `@techaaroorian-ui/share-state`
+- `@techaaroorian-ui/share-state/react`
+
+Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
+
+[Shared package-selection and design guidance](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/ai-integration.md).
+[Package source and README](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/share-state/README.md).
+
+# @techaaroorian-ui/share-state
+
+Zero-server client-side state compression and shareable URL generation via native browser `CompressionStream`.
+
+## Features
+
+- **Zero-Server Sharing**: Encode application state directly into URL hash fragments without any databases or accounts.
+- **Native Compression**: Uses browser `CompressionStream('deflate-raw')` for up to 80% size reduction on JSON/HTML payloads.
+- **Safety Limits**: Guards against decompression bombs and URL length limits.
+- **Optional React Hook**: `useShareState` for instant hash synchronization and one-click copy links.
+
+## Installation
+
+```bash
+npm install @techaaroorian-ui/share-state@alpha
+```
+
+## Quick Start (React)
+
+```tsx
+import { useShareState } from '@techaaroorian-ui/share-state/react';
+
+function DesignStudio() {
+  const { loadedPayload, copyShareUrl } = useShareState({
+    onLoaded: (state) => {
+      console.log('Restored state from URL:', state);
+    },
+  });
+
+  const handleShare = async () => {
+    const url = await copyShareUrl({ code: '<h1>Hello World</h1>', theme: 'obsidian' });
+    alert(`Link copied to clipboard: ${url}`);
+  };
+
+  return <button onClick={handleShare}>Share Design</button>;
+}
+```
+
+## License
+
+MIT © Janarthanan Soundararajan
+
+## AI agent integration
+
+See the included [AI.md](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/packages/share-state/AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+

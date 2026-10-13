@@ -1,6 +1,6 @@
 {
   "name": "@techaaroorian-ui/share-state",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Zero-server URL state compression and share links via browser CompressionStream with safe byte limits.",
   "type": "module",
   "license": "MIT",
@@ -8,7 +8,8 @@
     "dist",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "AI.md"
   ],
   "exports": {
     ".": {
@@ -32,5 +33,25 @@
     "react": {
       "optional": true
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techaaroorian-ui/techaaroorian-ui.git",
+    "directory": "packages/share-state"
+  },
+  "homepage": "https://github.com/techaaroorian-ui/techaaroorian-ui/tree/main/packages/share-state#readme",
+  "bugs": {
+    "url": "https://github.com/techaaroorian-ui/techaaroorian-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "shareable-url",
+    "compression",
+    "browser",
+    "state",
+    "react"
+  ]
 }

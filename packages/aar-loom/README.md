@@ -1,14 +1,20 @@
 # Aar Loom
 
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/aar-loom@alpha
+```
+
 A CSS-only design and layout language. Use plain HTML, your own components, or any application framework. Aar Loom does not require TechAaroorian UI headless packages or a component library.
 
 ## Start with HTML
 
-For consumer adoption, use the [project migration map](../../docs/project-migration.md). The exported `workspace.css` module adds `aar-workspace-body[data-layout="studio"]`, typed workspace regions, `aar-inspector-section`, metadata property rows, toolbar groups, scroll areas, and a status bar. Container-width transitions keep all regions reachable. It is included in `index.css` and the generated Tailwind v3 stylesheet. These are CSS foundations; resizing, persistence, validation, and file processing remain application or headless behavior.
+For consumer adoption, use the [project migration map](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/project-migration.md). The exported `workspace.css` module adds `aar-workspace-body[data-layout="studio"]`, typed workspace regions, `aar-inspector-section`, metadata property rows, toolbar groups, scroll areas, and a status bar. Container-width transitions keep all regions reachable. It is included in `index.css` and the generated Tailwind v3 stylesheet. These are CSS foundations; resizing, persistence, validation, and file processing remain application or headless behavior.
 
 Navigation patterns are public CSS: `aar-app-header` and `aar-app-header-actions` group identity and commands; `aar-app-shell` places `aar-sidenav` beside content and stacks below 54rem. Use `aar-sidenav-group`, `aar-sidenav-label`, and route anchors with `aar-sidenav-link` plus `aria-current="page"`. Native `details.aar-nav-disclosure` provides a collapsible navigation region. `aar-tabs` supports default underline, `data-variant="pills"`, or `data-variant="paper"`; `aar-tabpanel` respects `hidden`. Real tabs require application selection and keyboard behavior. Breadcrumbs use the existing `aar-breadcrumb-*` classes. The module is included by `index.css`; a selective `navigation.css` import also needs the token/base component foundations.
 
-Read the [alpha design rules](../../docs/design-rules.md) for typography, spacing, surface, state, motion, and adaptive-layout decisions. They distinguish implemented CSS foundations from application guidance and future spatial work.
+Read the [alpha design rules](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/design-rules.md) for typography, spacing, surface, state, motion, and adaptive-layout decisions. They distinguish implemented CSS foundations from application guidance and future spatial work.
 
 Paper regions are borderless: their fill and spacing establish the boundary. Inputs, outlined buttons, and overlays retain borders. Selected paper regions receive an inset outline; keyboard focus retains its separate visible outline.
 
@@ -91,4 +97,8 @@ For Tailwind v3 import `@techaaroorian-ui/aar-loom/tailwind-v3.css`. The build i
 
 ## Validate
 
-From the repository root, run `npm run build --workspace packages/aar-loom`, `npm run build --workspace docs`, and `npm run test:visual --workspace docs` with the documentation dev server running. Review narrow layouts, both appearances, keyboard focus, custom colors, and reduced motion. The package is in alpha; the rename and new layout API require versioning before publication.
+From the repository root, run `npm run build --workspace packages/aar-loom`, `npm run build --workspace docs`, and `npm run test:visual --workspace docs` with the documentation dev server running. Review narrow layouts, both appearances, keyboard focus, custom colors, and reduced motion. The package is in alpha; release preparation uses Changesets and publishes on the alpha dist-tag.
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

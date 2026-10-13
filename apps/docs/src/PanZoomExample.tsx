@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Plus, Minus, Sparkles } from "lucide-react";
-import { usePanZoom } from "../../../packages/pan-zoom/src/react";
+import { usePanZoom } from "@techaaroorian-ui/pan-zoom/react";
 
 const PRESETS = [
   { name: "LinkedIn Banner", width: 1200, height: 627 },

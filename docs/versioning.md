@@ -4,7 +4,7 @@ TechAaroorian UI is a collection, not one synchronized release. Aar Loom and Con
 
 ## Contract and stability
 
-The checkout contains independently versioned alpha packages. The docs versioning page reads all six manifests directly, including Dialog and Collection Picker. These are manifest versions, not proof of publication. Do not overwrite a published version.
+The checkout contains independently versioned alpha packages. The docs versioning page reads all eight manifests directly, including Pan & Zoom and Share State. These are manifest versions, not proof of publication. Do not overwrite a published version.
 
 SemVer treats 0.y.z as initial development: https://semver.org/.
 
@@ -28,6 +28,8 @@ After applying changesets, use `npm run release:ready` to inspect the prepared v
 
 ## Release checks
 
-Build all six public packages and docs, run component and core behavior tests and docs lint, and inspect dry-run package contents. Run browser smoke checks with the docs server for UI/theme and React adapter changes, including dialog focus/dismissal and picker keyboard interaction. Verify the CSS package has no runtime icon dependency and the headless cores import without React. Inspect the tarballs before publishing; a successful build is not proof that the right files are included.
+`npm run release:check` builds and tests the prepared manifests, builds/lints documentation, and runs `npm run test:packed`. The packed-consumer check creates local tarballs under `.cache/packed-consumer`, verifies exported files and release metadata, and exercises JavaScript, React adapter, CommonJS, and CSS entry points from those payloads. It uses this checkout's installed React peers; it is not a fresh registry-install test. Verify a clean installation from npm after publication.
+
+Build all eight public packages and docs, run component and core behavior tests and docs lint, and inspect dry-run package contents. Run browser smoke checks with the docs server for UI/theme and React adapter changes, including dialog focus/dismissal and picker keyboard interaction. Verify the CSS package has no runtime icon dependency and the headless cores import without React. Inspect the tarballs before publishing; a successful build is not proof that the right files are included.
 
 No automatic publish on pushes to main. The workflow is manual and defaults to dry-run. Registry credentials are required only for publication. This task configures release tooling; it does not publish, create release tags, or claim that local versions are released.

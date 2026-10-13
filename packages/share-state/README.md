@@ -12,7 +12,7 @@ Zero-server client-side state compression and shareable URL generation via nativ
 ## Installation
 
 ```bash
-npm install @techaaroorian-ui/share-state
+npm install @techaaroorian-ui/share-state@alpha
 ```
 
 ## Quick Start (React)
@@ -39,3 +39,7 @@ function DesignStudio() {
 ## License
 
 MIT © Janarthanan Soundararajan
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

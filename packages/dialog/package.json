@@ -1,6 +1,6 @@
 {
   "name": "@techaaroorian-ui/dialog",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0-alpha.1",
   "description": "Native modal dialog and sheet behavior with an optional React hook.",
   "type": "module",
   "license": "MIT",
@@ -8,7 +8,8 @@
     "dist",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "AI.md"
   ],
   "exports": {
     ".": {
@@ -31,5 +32,25 @@
     "react": {
       "optional": true
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techaaroorian-ui/techaaroorian-ui.git",
+    "directory": "packages/dialog"
+  },
+  "homepage": "https://github.com/techaaroorian-ui/techaaroorian-ui/tree/main/packages/dialog#readme",
+  "bugs": {
+    "url": "https://github.com/techaaroorian-ui/techaaroorian-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "headless",
+    "dialog",
+    "modal",
+    "sheet",
+    "react"
+  ]
 }

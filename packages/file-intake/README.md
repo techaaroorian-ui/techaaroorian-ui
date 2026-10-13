@@ -1,5 +1,11 @@
 # File Intake
 
+Install the alpha package:
+
+```bash
+npm install @techaaroorian-ui/file-intake@alpha
+```
+
 Atomic file batch validation extracted from Yuwbrndr's asset uploads. Framework-independent core and optional React hook. No CSS, upload service, object URLs, or storage policy.
 
 ## Compact drop-zone interaction
@@ -54,3 +60,7 @@ MIME/extension checks use supplied metadata, not file contents. Validate again a
 Consumers provide a labeled file input, optional drop handling, progress, and storage. Always offer file selection as an alternative to dragging. React 18+ is required only for `/react`; the core works without React or browser globals.
 
 Alpha: APIs may change. ESM and TypeScript declarations; no CommonJS build.
+
+## AI agent integration
+
+See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.

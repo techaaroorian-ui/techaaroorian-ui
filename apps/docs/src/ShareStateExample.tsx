@@ -3,7 +3,7 @@ import { Share2 } from "lucide-react";
 import {
   encodeShareState,
   decodeShareState,
-} from "../../../packages/share-state/src/index";
+} from "@techaaroorian-ui/share-state";
 
 export default function ShareStateExample() {
   const [title, setTitle] = useState("Arcane Atelier Study 001");

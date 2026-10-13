@@ -1,13 +1,14 @@
 {
   "name": "@techaaroorian-ui/ordered-collection",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0-alpha.1",
   "description": "Headless ordered selection and item operations with an optional React adapter.",
   "type": "module",
   "license": "MIT",
   "files": [
     "dist",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "AI.md"
   ],
   "exports": {
     ".": {
@@ -31,5 +32,25 @@
     "react": {
       "optional": true
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techaaroorian-ui/techaaroorian-ui.git",
+    "directory": "packages/ordered-collection"
+  },
+  "homepage": "https://github.com/techaaroorian-ui/techaaroorian-ui/tree/main/packages/ordered-collection#readme",
+  "bugs": {
+    "url": "https://github.com/techaaroorian-ui/techaaroorian-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "techaaroorian-ui",
+    "headless",
+    "ordered-collection",
+    "reorder",
+    "selection",
+    "react"
+  ]
 }

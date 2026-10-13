@@ -1,50 +1,38 @@
 # TechAaroorian UI
 
-Alpha release preparation now includes framework-independent Ordered Collection and File Intake packages with optional React hooks. Their [interactive examples](./apps/docs/src/HeadlessGuide.tsx) are at `#/headless`; see [extraction and release scope](./docs/headless-extraction.md). The workspace itself remains private; public packages publish independently.
+Aar Loom is a CSS-only design and adaptive layout language built around flat colored paper, readable ink, and purposeful motion. Use it with plain HTML, your own components, or any framework. Custom theme colors and optional Magic Art expression are supported; headless packages and Tailwind are optional.
 
-A CSS-only design language for thoughtful tools, with optional companion packages.
+## Packages
 
-The first Aar Loom study explores **clarity through layers**: semantic color, precise surfaces, purposeful typography, and consistent interaction states. Components use the `aar-` prefix and support custom theme colors.
+| Package | Purpose | Integration |
+| --- | --- | --- |
+| [aar-loom](./packages/aar-loom/README.md) | CSS themes, controls, responsive layouts and navigation | Any framework or HTML |
+| [contextual-empty](./packages/contextual-empty/README.md) | Empty-state messaging and recovery | React |
+| [ordered-collection](./packages/ordered-collection/README.md) | Selection, insertion, duplication and reordering | Core + optional React |
+| [file-intake](./packages/file-intake/README.md) | File batch validation and drop handling | Core + optional React |
+| [dialog](./packages/dialog/README.md) | Native modal dialogs and sheets | Browser + optional React |
+| [collection-picker](./packages/collection-picker/README.md) | Filtering, typeahead and single selection | Core + optional React |
+| [pan-zoom](./packages/pan-zoom/README.md) | Canvas fitting, zoom and viewport calculations | Core + optional React |
+| [share-state](./packages/share-state/README.md) | Compressed state in shareable URLs | Browser + optional React |
 
-## Documentation
+The root workspace is private. Each package publishes independently. Alpha manifests describe prepared versions; verify npm availability before installing. Repeatable Sections and Asset Gallery are planned, not implemented packages.
 
-Run `npm run dev --workspace apps/docs` and open the Vite URL. The collection overview links to dedicated package documentation: `#/aar-loom` for the CSS language and visual lab, and `#/contextual-empty` for React installation, presets, composition, styling, and live examples. Hash routes support direct links and reloads on static hosting.
+## Documentation and AI agents
 
-Collection guides: `#/guides/icons` covers optional Lucide integration, and `#/guides/versioning` explains independent package releases. Lucide is a docs dependency, not an Aar Loom dependency. See [release policy](./docs/versioning.md) for Changesets commands and public contracts.
+Start with the [package-selection and integration guide](./docs/ai-integration.md), [Aar Loom design rules](./docs/design-rules.md), and each package README for complete examples. The [llms.txt index](./llms.txt) links to plain-text documentation that agents can read without executing the docs application. Every package includes AI.md with public import paths and integration boundaries.
 
-With the server running, run `npm run test:visual --workspace apps/docs` to check browser behavior and capture review screenshots in `apps/docs/visual-artifacts/`. Screenshots are review artifacts, not approved regression baselines.
+Run `npm run dev --workspace apps/docs` and open the Vite URL. Dedicated routes include `#/aar-loom`, `#/contextual-empty`, `#/headless`, and the philosophy, icons and versioning guides. The server also serves `llms.txt`, `llms-full.txt` and Markdown under `ai/`.
 
-Start with the [CSS package guide](./packages/aar-loom/README.md) and [design concepts](./docs/design-language.md). The CSS foundation has no runtime dependency. React powers only the documentation playground and existing companion component.
+Run `npm run docs:ai` to regenerate discovery files from package manifests, READMEs and design guides. Docs development/build does this automatically; `npm run docs:ai:check` checks freshness. See [release policy](./docs/versioning.md) and the [initial alpha checklist](./docs/initial-alpha-release.md) before publication.
 
-The [roadmap](./docs/roadmap.md) starts with Yuwbrndr adoption, followed by component migration, refinement through real workflows, a second product, and a versioned release. With Yuwbrndr running on port 5174, run `node apps/docs/scripts/yuwbrndr-smoke.mjs` for integration checks and screenshots.
+## Development
 
-This repository is managed as a Monorepo using NPM Workspaces.
+This monorepo uses npm workspaces. Run `npm ci`, `npm run build:packages`, and `npm run release:check`. With the docs server running, `npm run test:visual --workspace apps/docs` checks browser behavior and captures review screenshots. Screenshots are review artifacts, not approved regression baselines.
 
-## 📦 Packages
+CSS supplies presentation; native controls, application logic, or optional adapters supply behavior. Consumer applications remain responsible for correct semantics, custom-color contrast, preference persistence, and device/accessibility verification. Lucide is an optional icon integration documented in the docs; Aar Loom ships no icon dependency.
 
-### [`@techaaroorian-ui/aar-loom`](./packages/aar-loom)
+See [contributing](./CONTRIBUTING.md), [project migration](./docs/project-migration.md), and the [roadmap](./docs/roadmap.md).
 
-Theme tokens, buttons, fields, panels, toolbars, badges, typography, and empty-state styling. Light/dark/system appearance, forest/iris palettes, and compact density. Consumer overrides define custom themes.
+## License
 
-### [`@techaaroorian-ui/contextual-empty`](./packages/contextual-empty)
-
-[![npm version](https://badge.fury.io/js/@techaaroorian-ui%2Fcontextual-empty.svg)](https://www.npmjs.com/package/@techaaroorian-ui/contextual-empty)
-
-A contextual, composable empty-state system for React applications.
-
-## 🏗️ Architecture
-
-The existing React companion packages follow these principles; the new CSS foundation uses semantic theme tokens and layered component styles:
-
-- **Zero Dependencies:** We rely on modern React and standard DOM APIs to keep bundle sizes ultra-lean.
-- **Inversion of Control:** We provide compound primitives (Dot Notation) alongside fast presets, giving developers ultimate layout control.
-- **Headless Styles:** Components ship with unopinionated CSS variables, ready to be themed by Tailwind, CSS Modules, or styled-components.
-- **A11y First:** Built-in ARIA attributes and keyboard navigation.
-
-## 🤝 Contributing
-
-We love community contributions! Please read our [Contributing Guidelines](./CONTRIBUTING.md) to learn how to spin up the local development environment, run the Vitest test suite, and open a Pull Request.
-
-## 📄 License
-
-[MIT](LICENSE) © Janarthanan Soundararajan
+[MIT](./LICENSE) — Janarthanan Soundararajan
