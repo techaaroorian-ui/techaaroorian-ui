@@ -1,0 +1,83 @@
+@layer components {
+  /* Related commands share seams; selection and keyboard behavior remain native. */
+  .aar-button-group {
+    --aar-group-height: var(--aar-control-height);
+    --aar-group-padding: var(--aar-control-padding);
+    --aar-group-font-size: 0.875rem;
+    --aar-group-block-padding: 0.5rem;
+    display: inline-flex;
+    align-items: stretch;
+    vertical-align: middle;
+    isolation: isolate;
+  }
+  .aar-button-group[data-size="sm"] {
+    --aar-group-height: var(--aar-control-height-sm);
+    --aar-group-padding: var(--aar-control-padding-sm);
+    --aar-group-font-size: 0.8125rem;
+    --aar-group-block-padding: 0.35rem;
+  }
+  .aar-button-group[data-size="xs"] {
+    --aar-group-height: var(--aar-control-height-xs);
+    --aar-group-padding: var(--aar-control-padding-xs);
+    --aar-group-font-size: 0.75rem;
+    --aar-group-block-padding: 0.2rem;
+  }
+  .aar-button-group > :is(.aar-button, .aar-icon-button, .aar-button-group-value) {
+    position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    min-height: var(--aar-group-height);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    font-size: var(--aar-group-font-size);
+  }
+  .aar-button-group > .aar-button { padding: var(--aar-group-block-padding) var(--aar-group-padding); }
+  .aar-button-group > .aar-icon-button {
+    width: var(--aar-group-height);
+    height: auto;
+    min-width: var(--aar-group-height);
+  }
+  .aar-button-group-value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.25rem;
+    padding: 0.35rem var(--aar-group-padding);
+    background: var(--aar-surface);
+    border-color: var(--aar-border);
+    color: var(--aar-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .aar-button-group > :first-child {
+    border-start-start-radius: var(--aar-radius-sm);
+    border-end-start-radius: var(--aar-radius-sm);
+  }
+  .aar-button-group > :last-child {
+    border-start-end-radius: var(--aar-radius-sm);
+    border-end-end-radius: var(--aar-radius-sm);
+  }
+  .aar-button-group > :not(:first-child) { margin-inline-start: -1px; }
+  .aar-button-group > :hover { z-index: 1; }
+  .aar-button-group > :focus-visible { z-index: 2; }
+  .aar-button-group[data-orientation="vertical"] { flex-direction: column; }
+  .aar-button-group[data-orientation="vertical"] > :not(:first-child) {
+    margin-inline-start: 0;
+    margin-block-start: -1px;
+  }
+  .aar-button-group[data-orientation="vertical"] > :first-child {
+    border-end-start-radius: 0;
+    border-start-end-radius: var(--aar-radius-sm);
+  }
+  .aar-button-group[data-orientation="vertical"] > :last-child {
+    border-start-end-radius: 0;
+    border-end-start-radius: var(--aar-radius-sm);
+  }
+  .aar-button-group > :only-child { border-radius: var(--aar-radius-sm); }
+  @media (pointer: coarse) {
+    .aar-button-group { --aar-group-height: max(44px, var(--aar-control-height)); }
+    .aar-button-group[data-size="sm"], .aar-button-group[data-size="xs"] {
+      --aar-group-height: max(44px, var(--aar-control-height-sm));
+    }
+  }
+}

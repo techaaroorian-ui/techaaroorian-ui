@@ -6,6 +6,7 @@ await mkdir(directory, { recursive: true });
 const modules = [
   "tokens",
   "components",
+  "button-groups",
   "layouts",
   "navigation",
   "workspace",
@@ -13,6 +14,8 @@ const modules = [
   "expression",
   "code",
   "magic-art",
+  "studio",
+  "application-utilities",
   "utilities",
 ];
 const sources = await Promise.all(

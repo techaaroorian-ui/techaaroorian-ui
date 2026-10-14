@@ -1,5 +1,6 @@
 import loomPackage from "../../../packages/aar-loom/package.json";
 import AarSelect from "./AarSelect";
+import ButtonGroupsDocs from "./ButtonGroupsDocs";
 import NavigationDocs from "./NavigationDocs";
 import ProjectMigrationDocs from "./ProjectMigrationDocs";
 import BrandWordmark from "./BrandWordmark";
@@ -2074,6 +2075,7 @@ function ButtonsDocSection() {
 
   return (
     <section className="aar-guide-section" id="buttons">
+      <ButtonGroupsDocs/>
       <div className="aar-panel">
         <p className="aar-eyebrow">Core Instruments / 01</p>
         <h2 className="aar-heading">Buttons &amp; Action Triggers</h2>

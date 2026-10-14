@@ -19,6 +19,10 @@ Read the included README.md for examples and limitations. Use only these public 
 - `@techaaroorian-ui/aar-loom/expression.css`
 - `@techaaroorian-ui/aar-loom/code.css`
 - `@techaaroorian-ui/aar-loom/magic-art.css`
+- `@techaaroorian-ui/aar-loom/button-groups.css`
+- `@techaaroorian-ui/aar-loom/studio.css`
+- `@techaaroorian-ui/aar-loom/application-utilities.css`
+- `@techaaroorian-ui/aar-loom/codemirror.css`
 
 Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
 

@@ -714,7 +714,7 @@
     justify-content: space-between;
     gap: 1.25rem;
     padding: 0.875rem 4vw;
-    border-bottom: 1px solid var(--aar-border);
+    border-bottom: 0;
     background: var(--aar-surface);
     position: sticky;
     top: 0;
@@ -919,7 +919,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     padding: 2rem 4vw;
-    border-top: 1px solid var(--aar-border);
+    border-top: 0;
     font-size: 0.8125rem;
     color: var(--aar-text-muted);
     margin-top: auto;

@@ -27,7 +27,11 @@
     "./compositions.css": "./src/compositions.css",
     "./expression.css": "./src/expression.css",
     "./code.css": "./src/code.css",
-    "./magic-art.css": "./src/magic-art.css"
+    "./magic-art.css": "./src/magic-art.css",
+    "./button-groups.css": "./src/button-groups.css",
+    "./studio.css": "./src/studio.css",
+    "./application-utilities.css": "./src/application-utilities.css",
+    "./codemirror.css": "./src/codemirror.css"
   },
   "sideEffects": [
     "**/*.css"

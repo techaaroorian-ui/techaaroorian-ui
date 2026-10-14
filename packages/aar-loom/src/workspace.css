@@ -21,8 +21,12 @@
   .aar-workspace-region[data-region="content"] { grid-column: 2; }
   .aar-workspace-region[data-region="inspector"] { grid-column: 3; }
   .aar-workspace[data-size="viewport"] .aar-workspace-body[data-layout="studio"] {
-    overflow: auto;
+    overflow: hidden;
     align-items: stretch;
+    gap: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 0;
   }
   .aar-scroll-area {
     min-width: 0;
@@ -42,6 +46,7 @@
     background: var(--aar-surface);
     color: var(--aar-text-muted);
     font-size: 0.875rem;
+    border-top: 0;
   }
   .aar-toolbar-group {
     display: flex;
@@ -69,6 +74,7 @@
     gap: var(--aar-space-4);
     padding: var(--aar-panel-padding);
     background: var(--aar-surface);
+    border: 0;
     border-radius: var(--aar-radius-sm);
   }
   @container aar-properties (max-width: 14rem) {
@@ -96,6 +102,12 @@
     grid-template-columns: minmax(0, 1fr);
   }
   @container aar-workspace (max-width: 72rem) {
+    .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))) [data-region="inspector"] {
+      grid-column: 1 / -1;
+    }
     .aar-workspace-body[data-layout="studio"] [data-region="inspector"] { grid-column: 1 / -1; }
   }
   @container aar-workspace (max-width: 48rem) {

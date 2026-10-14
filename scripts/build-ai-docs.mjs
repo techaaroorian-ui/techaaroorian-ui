@@ -15,7 +15,7 @@ async function emit(path, content) {
     await writeFile(path, content);
   }
 }
-const guides = ['ai-integration', 'design-rules', 'adaptive-layout', 'styling-boundaries', 'icons', 'versioning'];
+const guides = ['ai-integration', 'design-rules', 'adaptive-layout', 'styling-boundaries', 'icons', 'versioning', 'local-consumer-development'];
 const sections = [];
 const links = [];
 for (const guide of guides) {

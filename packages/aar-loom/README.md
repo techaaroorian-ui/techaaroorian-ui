@@ -102,3 +102,22 @@ From the repository root, run `npm run build --workspace packages/aar-loom`, `np
 ## AI agent integration
 
 See the included [AI.md](./AI.md) for public import paths and integration guidance. Complete package examples remain in this README.
+
+## Joined button groups (next alpha)
+
+Use `aar-button-group` for commands acting on one value, such as zoom out / current zoom / zoom in / reset. Direct children use `aar-button`, `aar-icon-button`, or the noninteractive `aar-button-group-value`. Set `data-size="sm|xs"` on the group; omit it for default sizing. `data-orientation="vertical"` stacks the group. Logical seams support RTL, and keyboard focus remains visible. Coarse pointers retain at least 44px targets.
+
+```html
+<div class="aar-button-group" data-size="sm" role="group" aria-label="Canvas zoom">
+  <button class="aar-icon-button" type="button" aria-label="Zoom out">−</button>
+  <output class="aar-button-group-value" aria-label="Current zoom">100%</output>
+  <button class="aar-icon-button" type="button" aria-label="Zoom in">+</button>
+  <button class="aar-button" type="button">Reset</button>
+</div>
+```
+
+Bind commands and values in the application. Prefer ordinary Tab navigation; `role="group"` does not implement a custom toolbar keyboard pattern. Keep joined labels short and place separate groups inside a wrapping `aar-toolbar-group`. Use `aar-segmented` for mode selection instead of treating every joined command as selected. This module is included by index.css and tailwind-v3.css; selective `button-groups.css` imports also need tokens.css and components.css. These additions are prepared for the next alpha and are not in 0.2.0-alpha.3.
+
+## Local consumer development
+
+Run `npm run dev:pack:loom` at the repository root to build a local tarball. Yuwbrndr can apply it with `npm run loom:local` without saving a local dependency path. See the [local integration workflow](https://github.com/techaaroorian-ui/techaaroorian-ui/blob/main/docs/local-consumer-development.md) for iteration, checks and publication order.

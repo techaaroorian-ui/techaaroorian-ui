@@ -5,6 +5,8 @@
   [data-paper="clay"] { --aar-paper-color: var(--aar-paper-clay); }
   [data-paper="lavender"] { --aar-paper-color: var(--aar-paper-lavender); }
   [data-paper="ochre"] { --aar-paper-color: var(--aar-paper-ochre); }
+  [data-paper="cyan"] { --aar-paper-color: var(--aar-paper-cyan); }
+  [data-paper="coral"] { --aar-paper-color: var(--aar-paper-coral); }
   [data-paper="brand"] {
     --aar-paper-color: color-mix(in srgb, var(--aar-primary) 12%, var(--aar-surface));
   }

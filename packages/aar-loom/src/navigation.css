@@ -8,7 +8,7 @@
     gap: var(--aar-space-4);
     padding: var(--aar-space-4) var(--aar-panel-padding);
     background: var(--aar-surface);
-    border-bottom: 1px solid var(--aar-border);
+    border-bottom: 0;
   }
   .aar-app-header > *, .aar-app-shell > * { min-width: 0; }
   .aar-app-header-actions {
@@ -96,9 +96,8 @@
   .aar-tabs[data-variant="paper"] .aar-tab:is([aria-selected="true"], [aria-current="page"]) {
     background: var(--aar-paper-color, var(--aar-paper-lavender));
     box-shadow: none;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.3em;
+    text-decoration: none;
+    font-weight: 700;
   }
   .aar-tabpanel { min-width: 0; padding-block: var(--aar-space-4); }
   .aar-tabpanel[hidden] { display: none; }
