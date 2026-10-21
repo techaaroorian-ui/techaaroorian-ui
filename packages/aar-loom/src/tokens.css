@@ -67,8 +67,8 @@
     --aar-brand-ink: #0f172a;
     --aar-brand-accent: #2563eb;
     --aar-text-muted: #64748b;
-    --aar-border: transparent;
-    --aar-border-strong: transparent;
+    --aar-border: rgba(15, 23, 42, 0.08);
+    --aar-border-strong: rgba(15, 23, 42, 0.14);
     --aar-primary: #18181b;
     --aar-on-primary: #ffffff;
     --aar-focus: #2563eb;
@@ -103,8 +103,8 @@
     --aar-brand-ink: #f8fafc;
     --aar-brand-accent: #38bdf8;
     --aar-text-muted: #94a3b8;
-    --aar-border: transparent;
-    --aar-border-strong: transparent;
+    --aar-border: rgba(255, 255, 255, 0.08);
+    --aar-border-strong: rgba(255, 255, 255, 0.14);
     --aar-primary: #6366f1;
     --aar-on-primary: #ffffff;
     --aar-focus: #6366f1;
@@ -123,9 +123,9 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme]),
     [data-theme="system"] {
-      --aar-shadow-sm: 0 1px 3px rgb(0 0 0 / 0.4);
-      --aar-shadow-md: 0 4px 14px -2px rgb(0 0 0 / 0.55);
-      --aar-shadow-lg: 0 12px 28px -4px rgb(0 0 0 / 0.7);
+      --aar-shadow-sm: none;
+      --aar-shadow-md: none;
+      --aar-shadow-lg: none;
       --aar-background: #06070a;
       --aar-surface: #10121a;
       --aar-surface-subtle: #161924;
@@ -141,8 +141,8 @@
       --aar-brand-ink: #a5b4fc;
       --aar-brand-accent: #c084fc;
       --aar-text-muted: #9ca3af;
-      --aar-border: transparent;
-      --aar-border-strong: transparent;
+      --aar-border: rgba(255, 255, 255, 0.08);
+      --aar-border-strong: rgba(255, 255, 255, 0.14);
       --aar-primary: #6366f1;
       --aar-on-primary: #ffffff;
       --aar-focus: #6366f1;

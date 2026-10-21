@@ -68,8 +68,8 @@ export default function PhilosophyGuide() {
           Warm paper surfaces, muted color, ink-like text, and spacing establish hierarchy. Cards
           stay still on hover; color changes show interaction. Selection remains
           visible through a tinted surface and distinct border, while keyboard
-          focus keeps an explicit outline. Menus and dialogs use a small shadow
-          to separate overlapping content.
+          focus keeps an explicit outline. Menus and dialogs differentiate through
+          subtle surface color stepping and hairline borders without drop shadows.
         </p>
         <p>
           The <strong>magic-art philosophy is optional</strong>. Clean business
@@ -478,7 +478,7 @@ export default function PhilosophyGuide() {
               <p className="aar-m-0-0-1rem aar-ink-text-muted aar-text-0-875rem">
                 {magicArtEnabled
                   ? "In Magic-Art, the modal surface uses 76% semi-transparent frosted glass (backdrop-filter: blur(24px)). Upon opening, glowing concentric waves erupt from the modal border, expand 50px–100px outward, and dissolve."
-                  : "In Clean Mode, the modal is completely solid and opaque with crisp borders and minimal drop shadow—ideal for enterprise environments."}
+                  : "In Clean Mode, the modal is completely solid and opaque with crisp hairline borders and surface color differentiation without drop shadows—ideal for enterprise environments."}
               </p>
 
               {magicArtEnabled && (

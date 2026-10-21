@@ -14,6 +14,7 @@ Read the included README.md for examples and limitations. Use only these public 
 - `@techaaroorian-ui/aar-loom/layouts.css`
 - `@techaaroorian-ui/aar-loom/navigation.css`
 - `@techaaroorian-ui/aar-loom/workspace.css`
+- `@techaaroorian-ui/aar-loom/canvas.css`
 - `@techaaroorian-ui/aar-loom/utilities.css`
 - `@techaaroorian-ui/aar-loom/compositions.css`
 - `@techaaroorian-ui/aar-loom/expression.css`

@@ -91,7 +91,7 @@ export default function PanZoomExample() {
               "--aar-height": `${renderedHeight}px`,
             } as React.CSSProperties
           }
-          className="aar-bind-width aar-bind-height aar-bg-surface aar-border-2px-dashed-primary aar-radius-radius-sm aar-display-flex aar-direction-column aar-items-center aar-justify-center aar-p-4 aar-text-align-center aar-box-shadow-shadow-md aar-transition-width-100ms-ease-height-100ms-ease"
+          className="aar-bind-width aar-bind-height aar-bg-surface aar-border-2px-dashed-primary aar-radius-radius-sm aar-display-flex aar-direction-column aar-items-center aar-justify-center aar-p-4 aar-text-align-center aar-transition-width-100ms-ease-height-100ms-ease"
         >
           <p className="aar-eyebrow aar-m-0px">Altar Canvas</p>
           <h4 className="aar-heading aar-m-25rem-0 aar-text-1rem">

@@ -1,5 +1,15 @@
 # @techaaroorian-ui/aar-loom
 
+## 0.2.0-alpha.4
+
+### Minor Changes
+
+- b852835: Add public joined button groups with optional value readouts, small/extra-small sizing, logical RTL seams, vertical orientation and visible keyboard focus. Document the distinction from segmented choices and wrapping toolbars with an interactive, copyable example.
+
+  Fix tablet stacking in a two-region studio without navigation, allowing consumer applications to remove their local specificity workaround.
+
+  Make documentation guide sidebar sticky and allow natural document flow in guide workspace, eliminating viewport height locks and blank overscroll.
+
 ## 0.2.0-alpha.3
 
 ### Minor Changes

@@ -3,6 +3,9 @@ import AarSelect from "./AarSelect";
 import ButtonGroupsDocs from "./ButtonGroupsDocs";
 import NavigationDocs from "./NavigationDocs";
 import ProjectMigrationDocs from "./ProjectMigrationDocs";
+import MenuDocs from "./MenuDocs";
+import CanvasDocs from "./CanvasDocs";
+import TableDocs from "./TableDocs";
 import BrandWordmark from "./BrandWordmark";
 import CodeBlock from "./CodeBlock";
 import quickstartHtml from "./examples/aar-loom/index.html?raw";
@@ -50,6 +53,7 @@ import {
   TrendingUp,
   FileText,
   Clock,
+  Table,
 } from "lucide-react";
 
 const lessons = [
@@ -470,7 +474,7 @@ function SizeScaleSpecimen() {
 
 function FormVariantsSpecimen() {
   const [variant, setVariant] = useState<
-    "outline" | "filled" | "flushed" | "ghost"
+    "outline" | "flat" | "filled" | "flushed" | "ghost"
   >("outline");
   const [layout, setLayout] = useState<"vertical" | "horizontal" | "floating">(
     "vertical",
@@ -491,9 +495,9 @@ function FormVariantsSpecimen() {
             Style, Structure &amp; Selection Controls
           </h2>
           <p className="aar-hint">
-            Modular form architecture: 4 visual input styles (
-            <code>outline</code>, <code>filled</code>, <code>flushed</code>,{" "}
-            <code>ghost</code>), layout engines, input groups, validation tones,
+            Modular form architecture: 5 visual input styles (
+            <code>outline</code>, <code>flat</code>, <code>filled</code>,{" "}
+            <code>flushed</code>, <code>ghost</code>), layout engines, input groups, validation tones,
             and accessible selection primitives.
           </p>
         </div>
@@ -504,7 +508,7 @@ function FormVariantsSpecimen() {
         <div className="aar-cluster aar-justify-space-between aar-mb-3 aar-items-center">
           <p className="aar-eyebrow">1. Visual Input Variants (data-variant)</p>
           <div className="aar-segmented" role="tablist">
-            {(["outline", "filled", "flushed", "ghost"] as const).map((v) => (
+            {(["outline", "flat", "filled", "flushed", "ghost"] as const).map((v) => (
               <button
                 key={v}
                 type="button"
@@ -536,11 +540,13 @@ function FormVariantsSpecimen() {
               defaultValue={
                 variant === "outline"
                   ? "Standard Border"
-                  : variant === "filled"
-                    ? "Subtle Surface Fill"
-                    : variant === "flushed"
-                      ? "Clean Underline Only"
-                      : "Frameless Ghost"
+                  : variant === "flat"
+                    ? "Borderless Flat Surface"
+                    : variant === "filled"
+                      ? "Subtle Surface Fill"
+                      : variant === "flushed"
+                        ? "Clean Underline Only"
+                        : "Frameless Ghost"
               }
             />
           </label>
@@ -1804,7 +1810,7 @@ const TOKEN_CATEGORIES = [
   {
     category: "Hairline Structure & Ink",
     tokens: [
-      { name: "--aar-border", role: "1px etched structural boundary" },
+      { name: "--aar-border", role: "Hard-to-notice 1px hairline structural boundary" },
       {
         name: "--aar-border-strong",
         role: "Active selection and highlighted edges",
@@ -1961,6 +1967,27 @@ function AarLoomDropdownSelect({
 function IntroDocSection() {
   return (
     <section className="aar-guide-section" id="aar-intro">
+      <div className="aar-panel aar-p-6">
+        <BrandWordmark label="Aar Loom" size="lg" />
+        <p className="aar-eyebrow aar-mt-2">Aar Loom · Pure CSS Design System</p>
+        <h1 className="aar-title aar-m-0-5rem-0">
+          The Arcane Atelier.
+          <br />
+          <span className="aar-ink-text-muted">Precision over ornament.</span>
+        </h1>
+        <div className="aar-intro-copy aar-max-w-52rem aar-mt-3">
+          <p className="aar-text-1-125rem aar-line-height-1-6">
+            A CSS-only language for creative engineering tools. 1px etched
+            hairlines, Light, Dark, and System appearance, corner-bracket
+            altars, and honest functional runes.
+          </p>
+          <p className="aar-hint aar-mt-2">
+            Zero runtime dependencies. Works with React, Vue, Svelte, or
+            static HTML.
+          </p>
+        </div>
+      </div>
+
       <div className="aar-panel">
         <div className="aar-cluster aar-gap-2 aar-mb-2 aar-flex-wrap-wrap">
           <span
@@ -2122,6 +2149,22 @@ function ButtonsDocSection() {
                   data-size={btnSize}
                 >
                   Secondary Action
+                </button>
+                <button
+                  type="button"
+                  className="aar-button"
+                  data-variant="flat"
+                  data-size={btnSize}
+                >
+                  Flat Action
+                </button>
+                <button
+                  type="button"
+                  className="aar-button aar-display-inline-flex aar-items-center aar-gap-2"
+                  data-variant="ai"
+                  data-size={btnSize}
+                >
+                  <Sparkles size={14} /> AI Action
                 </button>
                 <button
                   type="button"
@@ -2570,7 +2613,7 @@ function SelectsDocSection() {
               {/* Native Select */}
               <label className="aar-field">
                 <span className="aar-field-label">
-                  1. Native Styled Select (.aar-select)
+                  1. Standard Outlined (.aar-select)
                 </span>
                 <select
                   className="aar-select"
@@ -2582,7 +2625,27 @@ function SelectsDocSection() {
                   <option value="story">Story Deck (1080×1920)</option>
                 </select>
                 <span className="aar-hint">
-                  Uses native browser picker with custom etched arrow.
+                  Standard etched border with custom picker arrow.
+                </span>
+              </label>
+
+              {/* Native Select - Flat Variant */}
+              <label className="aar-field">
+                <span className="aar-field-label">
+                  2. Flat Surface Variant (data-variant=&quot;flat&quot;)
+                </span>
+                <select
+                  className="aar-select"
+                  data-variant="flat"
+                  value={selectedVal}
+                  onChange={(e) => setSelectedVal(e.target.value)}
+                >
+                  <option value="social">Social Banner (1200×627)</option>
+                  <option value="post">Square Post (1080×1080)</option>
+                  <option value="story">Story Deck (1080×1920)</option>
+                </select>
+                <span className="aar-hint">
+                  Borderless subtle surface that lifts on hover and focus.
                 </span>
               </label>
 
@@ -2698,74 +2761,118 @@ function SurfacesDocSection() {
     <section className="aar-guide-section" id="surfaces">
       <div className="aar-panel">
         <p className="aar-eyebrow">Core Instruments / 04</p>
-        <h2 className="aar-heading">Cards, Panels &amp; Canvas Altar</h2>
+        <h2 className="aar-heading">Flat Surfaces &amp; Hairline Boundaries</h2>
         <p className="aar-hint aar-mb-6">
-          Boundary definition without heavy clutter. Cards support selection
-          rings, compact density, and etched corner brackets.
+          Zero drop shadows needed. Aar Loom differentiates layers through progressive background color stepping (<code>--aar-background</code> → <code>--aar-surface</code> → <code>--aar-surface-subtle</code> → <code>--aar-surface-raised</code>) and delicate 1px hairline borders (<code>--aar-border</code>) that are subtle and hard to notice.
         </p>
 
         <div className="aar-specimen-box">
           <div className="aar-specimen-preview">
-            <div className="aar-stack" data-gap="3">
-              {/* Altar with Corner Brackets */}
-              <div
-                className="aar-altar aar-min-h-140px aar-display-flex aar-items-center aar-justify-center aar-bg-surface-subtle aar-radius-radius-md"
-                data-corner-brackets="true"
-              >
-                <div className="aar-text-align-center">
-                  <span className="aar-display-inline-flex aar-items-center aar-justify-center aar-m-0-auto-0-5rem aar-ink-primary">
-                    <Sparkles size={28} />
-                  </span>
-                  <h4 className="aar-m-0-25rem-0 aar-text-1-1rem">
-                    The Canvas Altar (.aar-altar)
-                  </h4>
-                  <p className="aar-hint aar-m-0px">
-                    Framed with etched corner brackets (
-                    <code>data-corner-brackets=&quot;true&quot;</code>). Artwork
-                    rendered with zero chrome distortion.
-                  </p>
+            <div className="aar-stack" data-gap="4">
+              {/* Surface Elevation Comparison Specimen */}
+              <div className="aar-stack" data-gap="2">
+                <p className="aar-eyebrow">1. Flat Surface Stepping (Zero Drop Shadows)</p>
+                <div
+                  className="aar-grid aar-gap-3"
+                  style={{ "--aar-grid-min": "13rem" } as React.CSSProperties}
+                >
+                  <div className="aar-panel aar-p-4 aar-bg-surface">
+                    <span className="aar-badge" data-size="xs">1. Base Surface</span>
+                    <h4 className="aar-m-0-5rem-0-0-25rem aar-text-0-95rem">--aar-surface</h4>
+                    <p className="aar-hint aar-m-0px aar-text-0-8125rem">
+                      Workspaces, inspectors, and default cards. Clean matte foundation.
+                    </p>
+                  </div>
+                  <div className="aar-panel aar-p-4 aar-bg-surface-subtle" data-variant="flat">
+                    <span className="aar-badge" data-size="xs" data-tone="warning">2. Subtle Well</span>
+                    <h4 className="aar-m-0-5rem-0-0-25rem aar-text-0-95rem">--aar-surface-subtle</h4>
+                    <p className="aar-hint aar-m-0px aar-text-0-8125rem">
+                      Muted toolbars, flat cards, and inactive field backgrounds.
+                    </p>
+                  </div>
+                  <div className="aar-panel aar-p-4 aar-bg-surface-raised">
+                    <span className="aar-badge" data-size="xs" data-variant="primary">3. Raised Layer</span>
+                    <h4 className="aar-m-0-5rem-0-0-25rem aar-text-0-95rem">--aar-surface-raised</h4>
+                    <p className="aar-hint aar-m-0px aar-text-0-8125rem">
+                      Menus, dialogs, and active tool panels with 1px hairline border.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Grid of Cards */}
-              <div
-                className="aar-grid aar-gap-4"
-                style={{ "--aar-grid-min": "14rem" } as React.CSSProperties}
-              >
-                <div className="aar-card aar-p-5" data-selected="true">
-                  <div className="aar-cluster aar-justify-space-between">
-                    <span className="aar-eyebrow">Active Preset</span>
-                    <span
-                      className="aar-badge aar-display-inline-flex aar-items-center aar-gap-2"
-                      data-variant="primary"
-                    >
-                      <Check size={11} /> Selected
-                    </span>
+              {/* Container Panels & Inset Wells */}
+              <div className="aar-stack" data-gap="2">
+                <p className="aar-eyebrow">2. Container Panels (.aar-panel &amp; data-variant=&quot;flat&quot;)</p>
+                <div
+                  className="aar-grid aar-gap-4"
+                  style={{ "--aar-grid-min": "14rem" } as React.CSSProperties}
+                >
+                  <div className="aar-panel aar-p-5">
+                    <span className="aar-eyebrow">Standard Panel</span>
+                    <h4 className="aar-m-0-5rem-0-0-25rem aar-text-1-1rem">
+                      .aar-panel
+                    </h4>
+                    <p className="aar-hint aar-m-0">
+                      Solid surface container with 1px hairline boundary (<code>--aar-border</code>).
+                    </p>
                   </div>
-                  <h4 className="aar-m-0-5rem-0-0-25rem aar-text-1-1rem">
-                    Social Banner
-                  </h4>
-                  <p className="aar-hint">
-                    1200×627 · Optimized for LinkedIn and Twitter feeds.
-                  </p>
+                  <div className="aar-panel aar-p-5" data-variant="flat">
+                    <span className="aar-eyebrow">Flat Well Panel</span>
+                    <h4 className="aar-m-0-5rem-0-0-25rem aar-text-1-1rem">
+                      data-variant=&quot;flat&quot;
+                    </h4>
+                    <p className="aar-hint aar-m-0">
+                      Muted subtle well (<code>--aar-surface-subtle</code>) for grouped workspace controls.
+                    </p>
+                  </div>
                 </div>
+              </div>
 
-                <div className="aar-card aar-p-5">
-                  <span className="aar-eyebrow">Available Preset</span>
-                  <h4 className="aar-m-0-5rem-0-0-25rem aar-text-1-1rem">
-                    Square Post
-                  </h4>
-                  <p className="aar-hint">
-                    1080×1080 · High-contrast 1:1 Instagram frame.
-                  </p>
-                </div>
+              {/* Grid of Cards: Standard & Flat */}
+              <div className="aar-stack" data-gap="2">
+                <p className="aar-eyebrow">3. Card Primitives (.aar-card &amp; data-variant=&quot;flat&quot;)</p>
+                <div
+                  className="aar-grid aar-gap-4"
+                  style={{ "--aar-grid-min": "14rem" } as React.CSSProperties}
+                >
+                  <div className="aar-card aar-p-5" data-selected="true">
+                    <div className="aar-cluster aar-justify-space-between">
+                      <span className="aar-eyebrow">Active Preset</span>
+                      <span
+                        className="aar-badge aar-display-inline-flex aar-items-center aar-gap-2"
+                        data-variant="primary"
+                      >
+                        <Check size={11} /> Selected
+                      </span>
+                    </div>
+                    <h4 className="aar-m-0-5rem-0-0-25rem aar-text-1-1rem">
+                      Social Banner
+                    </h4>
+                    <p className="aar-hint">
+                      1200×627 · Highlighted via active tint and primary outline.
+                    </p>
+                  </div>
 
-                <div className="aar-card aar-p-4" data-compact="true">
-                  <span className="aar-eyebrow">Compact Card</span>
-                  <h4 className="aar-m-0-25rem-0 aar-text-0-95rem">
-                    Story Deck
-                  </h4>
-                  <p className="aar-hint aar-m-0px">1080×1920 · 6 Slides</p>
+                  <div className="aar-card aar-p-5" data-variant="flat">
+                    <div className="aar-cluster aar-justify-space-between">
+                      <span className="aar-eyebrow">Flat Card</span>
+                      <span className="aar-badge" data-size="xs">data-variant=&quot;flat&quot;</span>
+                    </div>
+                    <h4 className="aar-m-0-5rem-0-0-25rem aar-text-1-1rem">
+                      Square Post
+                    </h4>
+                    <p className="aar-hint">
+                      1080×1080 · Inset subtle surface with hairline border.
+                    </p>
+                  </div>
+
+                  <div className="aar-card aar-p-4" data-compact="true">
+                    <span className="aar-eyebrow">Compact Card</span>
+                    <h4 className="aar-m-0-25rem-0 aar-text-0-95rem">
+                      Story Deck
+                    </h4>
+                    <p className="aar-hint aar-m-0px">1080×1920 · 6 Slides</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2774,14 +2881,19 @@ function SurfacesDocSection() {
           <CodeBlock
             title="surfaces-usage.html"
             language="html"
-            code={`<!-- Base Interactive Card -->
-<div class="aar-card">
-  <span class="aar-eyebrow">Template</span>
-  <h4 class="aar-heading">Square Post</h4>
-  <p class="aar-hint">1080×1080 Aspect Ratio</p>
-</div>
+            code={`<!-- Flat Background Differentiation (No Drop Shadows) -->
+<section class="aar-panel">
+  <h3 class="aar-heading">Instrument Panel</h3>
+  <p class="aar-hint">Standard surface foundation (.aar-surface)</p>
+</section>
 
-<!-- Selected Card with Active Halo Ring -->
+<!-- Flat Well Container -->
+<section class="aar-panel" data-variant="flat">
+  <h3 class="aar-heading">Grouped Controls Well</h3>
+  <p class="aar-hint">Inset subtle surface (.aar-surface-subtle)</p>
+</section>
+
+<!-- Active / Selected Card -->
 <div class="aar-card" data-selected="true">
   <div class="aar-cluster aar-justify-space-between">
     <span class="aar-eyebrow">Active Preset</span>
@@ -2789,19 +2901,6 @@ function SurfacesDocSection() {
   </div>
   <h4 class="aar-heading">Social Banner</h4>
   <p class="aar-hint">1200×627 Retina</p>
-</div>
-
-<!-- Elevation Panel -->
-<section class="aar-panel">
-  <h3 class="aar-heading">Instrument Panel</h3>
-  <p class="aar-hint">Grouped control instruments</p>
-</section>
-
-<!-- The Arcane Canvas Altar with Corner Brackets (┌ ┐ └ ┘) -->
-<div class="aar-altar" data-corner-brackets="true">
-  <div class="aar-altar-canvas">
-    <!-- User artwork stage rendered cleanly here -->
-  </div>
 </div>`}
           />
         </div>
@@ -2963,7 +3062,7 @@ function DialogsDocSection() {
                 onClick={() => setModalOpen(false)}
               >
                 <div
-                  className="aar-dialog aar-dialog-wave aar-w-min-500px-95vw aar-bg-surface-raised aar-radius-radius-md aar-border-1px-solid-border aar-p-6 aar-box-shadow-shadow-lg"
+                  className="aar-dialog aar-dialog-wave aar-w-min-500px-95vw aar-bg-surface-raised aar-radius-radius-md aar-border-1px-solid-border aar-p-6"
                   data-size="md"
 
                   onClick={(e) => e.stopPropagation()}
@@ -3215,6 +3314,12 @@ const DOC_NAV_GROUPS: DocNavGroup[] = [
         badge: "CSS",
       },
       {
+        id: "button-groups",
+        label: "Joined Button Groups",
+        icon: <Layers size={15} />,
+        badge: "New",
+      },
+      {
         id: "inputs",
         label: "Inputs & Form Controls",
         icon: <FormInput size={15} />,
@@ -3222,14 +3327,32 @@ const DOC_NAV_GROUPS: DocNavGroup[] = [
       },
       {
         id: "selects",
-        label: "Selects & Menus",
+        label: "Selects & Pickers",
         icon: <ChevronDown size={15} />,
-        badge: "Menus",
+        badge: "Forms",
+      },
+      {
+        id: "menus",
+        label: "Menus & Dropdowns",
+        icon: <MoreHorizontal size={15} />,
+        badge: "New",
+      },
+      {
+        id: "canvas",
+        label: "Canvas & Viewport",
+        icon: <Layout size={15} />,
+        badge: "New",
+      },
+      {
+        id: "tables",
+        label: "Tables & Data Grids",
+        icon: <Table size={15} />,
+        badge: "Data",
       },
       {
         id: "surfaces",
-        label: "Cards & Canvas Altar",
-        icon: <Layout size={15} />,
+        label: "Cards & Surfaces",
+        icon: <Layers size={15} />,
         badge: "Cards",
       },
       {
@@ -3365,32 +3488,8 @@ function AarLoomDocs({
       data-density={density}
       style={colors}
     >
-      <section className="aar-container">
-        {/* Arcane Atelier Hero Header */}
-        <section className="aar-intro">
-          <div>
-            <BrandWordmark label="Aar Loom" size="lg" />
-            <p className="aar-eyebrow">Aar Loom · Pure CSS Design System</p>
-            <h1 className="aar-title">
-              The Arcane Atelier.
-              <br />
-              <span>Precision over ornament.</span>
-            </h1>
-          </div>
-          <div className="aar-intro-copy">
-            <p>
-              A CSS-only language for creative engineering tools. 1px etched
-              hairlines, Light, Dark, and System appearance, corner-bracket
-              altars, and honest functional runes.
-            </p>
-            <p className="aar-hint">
-              Zero runtime dependencies. Works with React, Vue, Svelte, or
-              static HTML.
-            </p>
-          </div>
-        </section>
-
-        {/* Live Visual Testing Controls */}
+      <section className="aar-container aar-guide-workspace">
+        {/* Live Visual Testing Controls (Static Header Card) */}
         <section
           className="aar-panel aar-control-bar"
           aria-label="Visual testing controls"
@@ -3502,11 +3601,7 @@ function AarLoomDocs({
                             "aar-docs-main-content",
                           );
                           if (main) {
-                            const top =
-                              main.getBoundingClientRect().top +
-                              window.scrollY -
-                              80;
-                            window.scrollTo({ top, behavior: "smooth" });
+                            main.scrollTo({ top: 0, behavior: "smooth" });
                           }
                         }}
                       >
@@ -3573,8 +3668,12 @@ function AarLoomDocs({
                   {view === "navigation" && <NavigationDocs />}
                   {view === "migration" && <ProjectMigrationDocs />}
                   {view === "buttons" && <ButtonsDocSection />}
+                  {view === "button-groups" && <ButtonGroupsDocs />}
                   {view === "inputs" && <InputsDocSection />}
                   {view === "selects" && <SelectsDocSection />}
+                  {view === "menus" && <MenuDocs />}
+                  {view === "canvas" && <CanvasDocs />}
+                  {view === "tables" && <TableDocs />}
                   {view === "surfaces" && <SurfacesDocSection />}
                   {view === "badges" && <BadgesDocSection />}
                   {view === "dialogs" && <DialogsDocSection />}
@@ -3611,8 +3710,12 @@ function AarLoomDocs({
                       <NavigationDocs />
                       <ProjectMigrationDocs />
                       <ButtonsDocSection />
+                      <ButtonGroupsDocs />
                       <InputsDocSection />
                       <SelectsDocSection />
+                      <MenuDocs />
+                      <CanvasDocs />
+                      <TableDocs />
                       <SurfacesDocSection />
                       <BadgesDocSection />
                       <DialogsDocSection />
@@ -3644,40 +3747,40 @@ function AarLoomDocs({
                 </div>
               ))}
             </div>
+
+            {/* Quality Review Guidelines */}
+            <section className="aar-review aar-mt-12">
+              <div>
+                <p className="aar-eyebrow">Quality Criteria</p>
+                <h2 className="aar-heading">Test the rules, then the details.</h2>
+              </div>
+              <ol>
+                <li>
+                  <b>Hierarchy</b> — Can you identify the main action at a glance?
+                </li>
+                <li>
+                  <b>Theme</b> — Compare surfaces, text, and controls in both
+                  appearances.
+                </li>
+                <li>
+                  <b>Interaction</b> — Tab through controls; inspect focus, hover,
+                  pressed, and disabled.
+                </li>
+                <li>
+                  <b>Resilience</b> — Resize to mobile, zoom to 200%, and try longer
+                  text.
+                </li>
+              </ol>
+            </section>
+
+            <footer className="aar-lab-footer">
+              <span>Aar Loom / Pure CSS Open Source Design System</span>
+              <span>
+                Zero runtime dependencies · MIT License · Machine-Readable HTML
+              </span>
+            </footer>
           </section>
         </div>
-
-        {/* Quality Review Guidelines */}
-        <section className="aar-review aar-mt-12">
-          <div>
-            <p className="aar-eyebrow">Quality Criteria</p>
-            <h2 className="aar-heading">Test the rules, then the details.</h2>
-          </div>
-          <ol>
-            <li>
-              <b>Hierarchy</b> — Can you identify the main action at a glance?
-            </li>
-            <li>
-              <b>Theme</b> — Compare surfaces, text, and controls in both
-              appearances.
-            </li>
-            <li>
-              <b>Interaction</b> — Tab through controls; inspect focus, hover,
-              pressed, and disabled.
-            </li>
-            <li>
-              <b>Resilience</b> — Resize to mobile, zoom to 200%, and try longer
-              text.
-            </li>
-          </ol>
-        </section>
-
-        <footer className="aar-lab-footer">
-          <span>Aar Loom / Pure CSS Open Source Design System</span>
-          <span>
-            Zero runtime dependencies · MIT License · Machine-Readable HTML
-          </span>
-        </footer>
       </section>
     </div>
   );

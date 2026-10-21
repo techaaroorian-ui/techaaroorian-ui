@@ -10,6 +10,7 @@ const modules = [
   "layouts",
   "navigation",
   "workspace",
+  "canvas",
   "compositions",
   "expression",
   "code",

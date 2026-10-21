@@ -20,7 +20,7 @@ Paper regions are borderless: their fill and spacing establish the boundary. Inp
 
 The core surface language is smooth colored paper: warm off-white sheets, muted sage/clay/lavender/ochre accents, and ink-like text. Add `aar-paper` to any region with `data-paper="sage"`, `"clay"`, `"lavender"`, `"ochre"`, or `"brand"`. Brand sheets derive from `--aar-primary`; surface tokens `--aar-paper-sage` and the corresponding color names can also be overridden. These are region colors, not additional theme modes. Light, Dark, and System remain the appearance choices. Dark appearance uses muted tinted sheets with light ink. Texture is omitted to keep small text clear.
 
-Core styling is flat: solid surfaces, modest corners, thin borders, and spacing establish hierarchy. Hover uses color and border feedback without lifting cards. Selected cards receive a subtle tint. Focus outlines remain visible, while menus and dialogs retain a small separation shadow. Optional Magic Art can add expressive elevation and glow.
+Core styling is flat: solid surfaces, modest corners, subtle hairline borders, and background color stepping establish hierarchy. Drop shadows are completely eliminated; elements differentiate cleanly through background tones (`--aar-background`, `--aar-surface`, `--aar-surface-subtle`, `--aar-surface-raised`). Hover uses color and border feedback without lifting cards. Selected cards receive a subtle tint. Focus outlines remain visible, and overlays like menus and dialogs rely on surface color elevation and 1px hairline borders. Optional Magic Art can add expressive glow.
 
 ```css
 @import "@techaaroorian-ui/aar-loom/index.css";

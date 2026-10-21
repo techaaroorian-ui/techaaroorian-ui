@@ -1,7 +1,6 @@
-/* Reusable studio composition: compact commands, paper regions and task views. */
+/* Reusable studio composition: compact commands, paper regions and task views.
+   Built upon Aar Loom's universal component variants (flat inputs, menus, and canvas). */
 @layer components {
-/* Application geometry sits on Aar Loom's public studio composition.
-   Theme, layout transitions, paper, tabs, controls and menus are framework styles. */
 
 .aar-studio {
   --aar-control-height-sm: 1.625rem;
@@ -128,19 +127,13 @@
   overflow-y: auto;
   gap: var(--aar-space-4);
 }
-.aar-studio-editor { flex: 1; min-height: 0; padding: 0; display: flex; flex-direction: column; height: 100%; }
-.aar-canvas-viewport {
-  background: var(--aar-background);
-  height: 100%;
+.aar-studio-editor {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: var(--aar-space-3);
-  position: relative;
-  overflow: hidden;
-  user-select: none;
-  min-width: 0;
-  min-height: 0;
+  height: 100%;
 }
 
 .aar-editor-codemirror {
@@ -178,133 +171,14 @@
   .aar-studio *, .aar-studio *::before, .aar-studio *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
 }
 
-@media (max-width: 48rem) {
-  .aar-studio-header details[data-menu="studio"] { position: static; }
-  .aar-studio-header details[data-menu="studio"] .aar-menu-dropdown[data-align="end"] { left: auto; right: var(--aar-space-4); }
-}
-
-.aar-pane-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 2.5rem;
-  min-height: 2.5rem;
-  padding: 0 var(--aar-space-4);
-  border-bottom: none;
-  background: var(--aar-surface-subtle);
-  font-family: var(--aar-font-mono);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--aar-text-muted);
-  flex-shrink: 0;
-}
-
-.aar-canvas-card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 38rem;
-  margin: 0 auto var(--aar-space-3);
-  background: var(--aar-surface-raised);
-  border: none;
-  border-radius: var(--aar-radius-lg);
-  box-shadow: none;
-  overflow: hidden;
-  flex-shrink: 0;
-  z-index: 20;
-}
-
-.aar-canvas-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--aar-space-2);
-  padding: 0.35rem 0.75rem;
-  font-size: 0.75rem;
-  min-height: 2rem;
-  background: var(--aar-surface-raised);
-}
-.aar-canvas-card-header span {
-  white-space: nowrap;
-}
-
-.aar-canvas-card-tip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--aar-space-2);
-  padding: 0.25rem 0.75rem;
-  font-size: 0.6875rem;
-  color: var(--aar-text-muted);
-  border-top: none;
-  background: var(--aar-surface-subtle);
-}
-
-.aar-canvas-ribbon {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--aar-space-2);
-  width: 100%;
-  max-width: 38rem;
-  margin: 0 auto;
-  padding: 0.35rem 0.85rem;
-  font-size: 0.75rem;
-  flex-shrink: 0;
-  border-radius: var(--aar-radius-lg);
-  box-shadow: none;
-  background: var(--aar-surface-raised);
-  border: none;
-  z-index: 20;
-}
-.aar-canvas-ribbon .aar-cluster,
-.aar-canvas-ribbon .aar-u-flex {
-  flex-wrap: nowrap;
-}
-.aar-canvas-ribbon span {
-  white-space: nowrap;
-}
-
-.aar-canvas-tip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--aar-space-2);
-  width: 100%;
-  max-width: 38rem;
-  margin: var(--aar-space-2) auto 0;
-  padding: 0.25rem 0.85rem;
-  font-size: 0.6875rem;
-  flex-shrink: 0;
-  border-radius: var(--aar-radius-lg);
-  background: var(--aar-surface-subtle);
-  border: none;
-  color: var(--aar-text-muted);
-  box-shadow: none;
-  z-index: 20;
-}
-
 .aar-preset-menu-dropdown { width: 18rem; max-height: 20rem; overflow-y: auto; }
 .aar-editor-commands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
 .aar-editor-commands > .aar-segmented { grid-column: 1 / -1; }
 .aar-editor-commands > button, .aar-editor-commands > .relative > button { width: 100%; justify-content: center; }
 
-.aar-studio [data-variant="ai"] {
-  background: color-mix(in srgb, var(--aar-syntax-keyword, #0284c7) 14%, transparent);
-  border: none;
-  color: var(--aar-syntax-keyword, #0284c7);
-}
-.aar-studio [data-variant="ai"]:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--aar-syntax-keyword, #0284c7) 24%, transparent);
-  border: none;
-  color: var(--aar-syntax-keyword, #0284c7);
-}
-
-/* Compact studio controls share one small size; paper colors identify tasks. */
+/* Studio inherits universal flat variant styling automatically when nested in .aar-studio */
 .aar-studio *, .aar-studio *::before, .aar-studio *::after { box-sizing: border-box; }
-.aar-studio :is(.aar-select, .aar-input) {
+.aar-studio :is(.aar-select, .aar-input):not([data-variant]) {
   height: var(--aar-control-height-sm);
   min-height: var(--aar-control-height-sm);
   font-size: 0.6875rem;
@@ -313,10 +187,10 @@
   color: var(--aar-text);
   border-radius: var(--aar-radius-md);
 }
-.aar-studio :is(.aar-select, .aar-input):hover:not(:disabled) {
+.aar-studio :is(.aar-select, .aar-input):not([data-variant]):hover:not(:disabled) {
   background: var(--aar-surface-raised);
 }
-.aar-studio :is(.aar-select, .aar-input):focus-visible {
+.aar-studio :is(.aar-select, .aar-input):not([data-variant]):focus-visible {
   outline: 2px solid var(--aar-focus);
   outline-offset: 0;
   background: var(--aar-surface-raised);
@@ -339,7 +213,7 @@
   box-shadow: none;
 }
 
-.aar-studio .aar-segmented {
+.aar-studio .aar-segmented:not([data-variant]) {
   border: none;
   background: var(--aar-surface-subtle);
   border-radius: var(--aar-radius-md);
@@ -347,35 +221,18 @@
   gap: 2px;
 }
 
-.aar-studio :is(.aar-button, .aar-icon-button) {
+.aar-studio :is(.aar-button, .aar-icon-button):not([data-variant]) {
   min-height: var(--aar-control-height-sm);
   padding: 0.15rem var(--aar-control-padding-sm);
   font-size: 0.6875rem;
   border: none;
-}
-.aar-studio :is(.aar-button, .aar-icon-button):not([data-variant="primary"]):not([data-variant="ai"]):not([data-variant="quiet"]) {
   background: var(--aar-surface-subtle);
   color: var(--aar-text);
 }
-.aar-studio :is(.aar-button, .aar-icon-button):not([data-variant="primary"]):not([data-variant="ai"]):not([data-variant="quiet"]):hover:not(:disabled) {
+.aar-studio :is(.aar-button, .aar-icon-button):not([data-variant]):hover:not(:disabled) {
   background: var(--aar-surface-raised);
 }
-.aar-studio :is(.aar-button, .aar-icon-button)[data-variant="quiet"] {
-  background: transparent;
-  color: var(--aar-text-muted);
-}
-.aar-studio :is(.aar-button, .aar-icon-button)[data-variant="quiet"]:hover:not(:disabled) {
-  background: var(--aar-surface-subtle);
-  color: var(--aar-text);
-}
-.aar-studio :is(.aar-button, .aar-icon-button)[data-variant="primary"] {
-  background: var(--aar-primary);
-  color: var(--aar-on-primary);
-  border: none;
-}
-.aar-studio :is(.aar-button, .aar-icon-button)[data-variant="primary"]:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--aar-primary) 85%, black);
-}
+
 .aar-studio :is(.aar-button, .aar-icon-button)[data-size="xs"] {
   min-height: var(--aar-control-height-xs);
   padding: 0.075rem var(--aar-control-padding-xs);
@@ -409,84 +266,6 @@
   color: var(--aar-text);
 }
 
-.aar-studio .aar-badge {
-  font-size: 0.625rem;
-  padding: 0.075rem 0.35rem;
-  line-height: 1.25;
-  border: none;
-  background: var(--aar-surface-subtle);
-  color: var(--aar-text-muted);
-  border-radius: var(--aar-radius-sm);
-}
-
-.aar-studio details.aar-menu > .aar-menu-dropdown {
-  position: absolute;
-  top: calc(100% + 0.375rem);
-  min-width: 17rem;
-  padding: 0.375rem;
-  background: var(--aar-surface-raised);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: var(--aar-radius-md);
-  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  z-index: 100;
-}
-
-[data-theme="dark"] .aar-studio details.aar-menu > .aar-menu-dropdown {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.65), 0 4px 12px rgba(0, 0, 0, 0.45);
-}
-
-.aar-studio .aar-menu-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--aar-space-2);
-  width: 100%;
-  padding: 0.4375rem 0.625rem;
-  border: none;
-  border-radius: var(--aar-radius-sm);
-  background: transparent;
-  color: var(--aar-text);
-  font-family: var(--aar-font-sans);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color var(--aar-duration) var(--aar-ease), color var(--aar-duration) var(--aar-ease);
-}
-
-.aar-studio .aar-menu-item:hover:not(:disabled) {
-  background: var(--aar-surface-subtle);
-  color: var(--aar-text);
-}
-
-.aar-studio .aar-menu-item:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.aar-studio .aar-menu-item[data-selected="true"] {
-  background: color-mix(in srgb, var(--aar-primary) 10%, transparent);
-  color: var(--aar-primary);
-  font-weight: 600;
-}
-
-.aar-studio .aar-menu-divider {
-  height: 1px;
-  background: var(--aar-surface-subtle);
-  margin: 0.25rem 0;
-  border: none;
-}
-
-.aar-studio .aar-dropzone {
-  border: none;
-  background: var(--aar-surface-subtle);
-}
-
 .aar-studio .aar-statusbar {
   min-height: 1.5rem;
   height: 1.5rem;
@@ -497,112 +276,9 @@
   color: var(--aar-text-muted);
 }
 
-.aar-studio .aar-empty {
-  padding: var(--aar-space-6) var(--aar-space-6);
-  max-width: 26rem;
-  text-align: center;
-  border-radius: var(--aar-radius-md);
-}
-.aar-studio .aar-empty h2 {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  margin: var(--aar-space-2) 0 var(--aar-space-1);
-}
-.aar-studio .aar-empty p {
-  font-size: 0.75rem;
-  color: var(--aar-text-muted);
-  margin-bottom: var(--aar-space-3);
 }
 
-.aar-studio .aar-canvas-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--aar-space-3);
-  max-width: 34rem;
-  margin: 0 auto;
-  text-align: center;
-  user-select: none;
-}
-.aar-studio .aar-canvas-empty-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: var(--aar-radius-lg);
-  background: color-mix(in srgb, var(--aar-primary) 15%, transparent);
-  color: var(--aar-brand-accent);
-  border: none;
-}
-.aar-studio .aar-canvas-empty-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-}
-.aar-studio .aar-canvas-empty-text h3 {
-  margin: 0;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--aar-text);
-  line-height: 1.25;
-}
-.aar-studio .aar-canvas-empty-text p {
-  margin: 0;
-  font-size: 0.8125rem;
-  color: var(--aar-text-muted);
-  line-height: 1.45;
-  max-width: 28rem;
-}
-.aar-studio .aar-canvas-empty-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--aar-space-2);
-  margin-top: 0.25rem;
-}
-
-}
-
-@layer components {
-  .aar-studio .aar-notice { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--aar-space-2); padding: var(--aar-space-1) var(--aar-space-3); line-height: 1.4; }
-  .aar-notice-icon { width: 0.875rem; height: 0.875rem; color: var(--aar-primary); }
-  .aar-notice-content { min-width: 0; margin: 0; font-size: 0.75rem; }
-  .aar-notice-action { justify-self: end; }
-  .aar-studio .aar-notice > .aar-notice-icon { align-self: center; }
-  .aar-studio .aar-notice > .aar-notice-content { flex: initial; }
-  .aar-studio .aar-notice > .aar-notice-action { align-self: center; }
-}
-
-@layer utilities { .aar-swatch { background: var(--aar-swatch-color); } .aar-font-sample { font-family: var(--aar-preview-font, var(--aar-font-sans)); } }
-
-@layer components {
- .aar-canvas-frame {
-   position: relative;
-   flex-shrink: 0;
-   width: var(--aar-canvas-frame-width);
-   height: var(--aar-canvas-frame-height);
-   aspect-ratio: var(--aar-canvas-ratio);
-   border-radius: var(--aar-radius-lg);
-   box-shadow: none;
-   border: 0;
-   outline: 0;
-   overflow: hidden;
-   transition: width 150ms ease-out, height 150ms ease-out;
- }
- .aar-canvas-frame[data-fit="true"] { max-width: 100%; max-height: 100%; }
- .aar-canvas-preview {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: var(--aar-canvas-width);
-   height: var(--aar-canvas-height);
-   transform: scale(var(--aar-canvas-zoom, 1));
-   transform-origin: top left;
-   overflow: hidden;
-   border-radius: inherit;
-   transition: transform 150ms ease-out;
- }
+@layer utilities {
+  .aar-swatch { background: var(--aar-swatch-color); }
+  .aar-font-sample { font-family: var(--aar-preview-font, var(--aar-font-sans)); }
 }
