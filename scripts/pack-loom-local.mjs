@@ -1,0 +1,22 @@
+import { execFileSync } from 'node:child_process';
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+const npmCli = process.env.npm_execpath;
+if (!npmCli) throw new Error('Run npm run dev:pack:loom.');
+const output = join(root, '.cache', 'aar-loom-local');
+await mkdir(output, { recursive: true });
+const npm = args => execFileSync(process.execPath, [npmCli, ...args], { cwd: root, stdio: 'inherit' });
+npm(['run', 'build', '--workspace', 'packages/aar-loom']);
+const result = JSON.parse(execFileSync(process.execPath, [npmCli, 'pack', '--workspace', 'packages/aar-loom', '--ignore-scripts', '--json', '--pack-destination', output, '--cache', join(root, '.cache/npm')], { cwd: root, encoding: 'utf8' }));
+const packed = Array.isArray(result) ? result[0] : Object.values(result)[0];
+const original = join(output, packed.filename);
+const sha256 = createHash('sha256').update(await readFile(original)).digest('hex');
+const tarball = join(output, packed.filename.replace(/\.tgz$/, `-${sha256.slice(0, 16)}.tgz`));
+await copyFile(original, tarball);
+const manifest = { name: '@techaaroorian-ui/aar-loom', version: packed.version, tarball, sha256 };
+await writeFile(join(output, 'latest.json'), JSON.stringify(manifest, null, 2) + '\n');
+console.log(`Local Aar Loom build: ${tarball}\nSHA256: ${manifest.sha256}\nNo package was published.`);

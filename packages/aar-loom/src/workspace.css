@@ -21,8 +21,12 @@
   .aar-workspace-region[data-region="content"] { grid-column: 2; }
   .aar-workspace-region[data-region="inspector"] { grid-column: 3; }
   .aar-workspace[data-size="viewport"] .aar-workspace-body[data-layout="studio"] {
-    overflow: auto;
+    overflow: hidden;
     align-items: stretch;
+    gap: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 0;
   }
   .aar-scroll-area {
     min-width: 0;
@@ -42,6 +46,7 @@
     background: var(--aar-surface);
     color: var(--aar-text-muted);
     font-size: 0.875rem;
+    border-top: 0;
   }
   .aar-toolbar-group {
     display: flex;
@@ -69,6 +74,7 @@
     gap: var(--aar-space-4);
     padding: var(--aar-panel-padding);
     background: var(--aar-surface);
+    border: 0;
     border-radius: var(--aar-radius-sm);
   }
   @container aar-properties (max-width: 14rem) {
@@ -96,10 +102,64 @@
     grid-template-columns: minmax(0, 1fr);
   }
   @container aar-workspace (max-width: 72rem) {
+    .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .aar-workspace-body[data-layout="studio"]:not(:has([data-region="navigation"]:not([hidden]))) [data-region="inspector"] {
+      grid-column: 1 / -1;
+    }
     .aar-workspace-body[data-layout="studio"] [data-region="inspector"] { grid-column: 1 / -1; }
   }
   @container aar-workspace (max-width: 48rem) {
     .aar-workspace-body[data-layout="studio"] { grid-template-columns: minmax(0, 1fr) !important; }
     .aar-workspace-body[data-layout="studio"] [data-region] { grid-column: 1 !important; }
+  }
+
+  /* --------------------------------------------------------------------------
+     Universal Collapsible Drawers & Panels (Sidebar, Inspector)
+     -------------------------------------------------------------------------- */
+  .aar-sidebar,
+  .aar-inspector,
+  .aar-workspace-sidebar,
+  .aar-workspace-inspector,
+  .aar-studio-sidebar,
+  .aar-studio-inspector {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--aar-surface);
+    border: none;
+    flex-shrink: 0;
+    transition: width 280ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 200ms ease;
+    will-change: width, opacity;
+  }
+
+  :is(.aar-sidebar, .aar-inspector, .aar-workspace-sidebar, .aar-workspace-inspector, .aar-studio-sidebar, .aar-studio-inspector)[data-collapsed="true"],
+  :is(.aar-sidebar, .aar-inspector, .aar-workspace-sidebar, .aar-workspace-inspector, .aar-studio-sidebar, .aar-studio-inspector)[hidden] {
+    width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Pane Header (for sidebars, inspectors, and tools) */
+  .aar-pane-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
+    min-height: 2.5rem;
+    padding: 0 var(--aar-space-4);
+    border-bottom: none;
+    background: var(--aar-surface-subtle);
+    font-family: var(--aar-font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--aar-text-muted);
+    flex-shrink: 0;
   }
 }

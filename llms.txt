@@ -12,6 +12,7 @@ Alpha APIs: verify publication and installed versions. The root workspace is pri
 - [Component behavior and styling](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/styling-boundaries.md)
 - [Icons across TechAaroorian UI](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/icons.md)
 - [Independent package versioning](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/versioning.md)
+- [Develop Aar Loom with Yuwbrndr](https://raw.githubusercontent.com/techaaroorian-ui/techaaroorian-ui/main/apps/docs/public/ai/local-consumer-development.md)
 
 ## Packages and complete examples
 

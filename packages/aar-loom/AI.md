@@ -14,11 +14,16 @@ Read the included README.md for examples and limitations. Use only these public 
 - `@techaaroorian-ui/aar-loom/layouts.css`
 - `@techaaroorian-ui/aar-loom/navigation.css`
 - `@techaaroorian-ui/aar-loom/workspace.css`
+- `@techaaroorian-ui/aar-loom/canvas.css`
 - `@techaaroorian-ui/aar-loom/utilities.css`
 - `@techaaroorian-ui/aar-loom/compositions.css`
 - `@techaaroorian-ui/aar-loom/expression.css`
 - `@techaaroorian-ui/aar-loom/code.css`
 - `@techaaroorian-ui/aar-loom/magic-art.css`
+- `@techaaroorian-ui/aar-loom/button-groups.css`
+- `@techaaroorian-ui/aar-loom/studio.css`
+- `@techaaroorian-ui/aar-loom/application-utilities.css`
+- `@techaaroorian-ui/aar-loom/codemirror.css`
 
 Read package.json and bundled type declarations where supplied before implementing an API. Do not import workspace source files.
 

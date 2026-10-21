@@ -1,6 +1,6 @@
 {
   "name": "@techaaroorian-ui/aar-loom",
-  "version": "0.2.0-alpha.3",
+  "version": "0.2.0-alpha.4",
   "description": "Aar Loom: a themeable, CSS-only design language for tools and workspaces.",
   "license": "MIT",
   "files": [
@@ -23,11 +23,16 @@
     "./layouts.css": "./src/layouts.css",
     "./navigation.css": "./src/navigation.css",
     "./workspace.css": "./src/workspace.css",
+    "./canvas.css": "./src/canvas.css",
     "./utilities.css": "./src/utilities.css",
     "./compositions.css": "./src/compositions.css",
     "./expression.css": "./src/expression.css",
     "./code.css": "./src/code.css",
-    "./magic-art.css": "./src/magic-art.css"
+    "./magic-art.css": "./src/magic-art.css",
+    "./button-groups.css": "./src/button-groups.css",
+    "./studio.css": "./src/studio.css",
+    "./application-utilities.css": "./src/application-utilities.css",
+    "./codemirror.css": "./src/codemirror.css"
   },
   "sideEffects": [
     "**/*.css"

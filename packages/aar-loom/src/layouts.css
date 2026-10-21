@@ -544,6 +544,23 @@
   }
 
   /* Aar Loom & Headless Documentation Shell & Side Navigation */
+  .aar-guide-workspace {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  @media (min-width: 60rem) {
+    .aar-guide-workspace {
+      padding-top: 0.5rem;
+    }
+    .aar-guide-workspace .aar-control-bar {
+      margin-bottom: 0.875rem;
+    }
+    .aar-guide-workspace .aar-guide-shell {
+      margin-top: 0;
+    }
+  }
+
   .aar-guide-shell {
     display: grid;
     grid-template-columns: 310px minmax(0, 1fr);
@@ -552,13 +569,13 @@
     align-items: flex-start;
   }
   .aar-guide-sidebar {
-    position: static;
+    position: sticky;
     top: 4.75rem;
     max-height: calc(100vh - 5.5rem);
     background: var(--aar-surface);
-    border: 0;
+    border: 1px solid var(--aar-border);
     border-radius: var(--aar-radius-sm);
-    box-shadow: var(--aar-shadow-sm);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -714,7 +731,7 @@
     justify-content: space-between;
     gap: 1.25rem;
     padding: 0.875rem 4vw;
-    border-bottom: 1px solid var(--aar-border);
+    border-bottom: 0;
     background: var(--aar-surface);
     position: sticky;
     top: 0;
@@ -844,18 +861,20 @@
     gap: 1rem;
     padding: 2.25rem 2rem;
     border-radius: var(--aar-radius-sm);
-    border: 0;
+    border: 1px solid var(--aar-border);
     background: var(--aar-surface);
+    box-shadow: none;
     transition:
       transform var(--aar-duration) var(--aar-ease),
-      border-color var(--aar-duration) var(--aar-ease),
-      box-shadow var(--aar-duration) var(--aar-ease);
+      background-color var(--aar-duration) var(--aar-ease),
+      border-color var(--aar-duration) var(--aar-ease);
   }
 
   .aar-feature-card:hover {
     transform: translateY(var(--aar-hover-offset));
+    background: var(--aar-surface-subtle);
     border-color: var(--aar-border-strong);
-    box-shadow: var(--aar-shadow-md);
+    box-shadow: none;
   }
 
   .aar-feature-card > p:not(.aar-eyebrow) {
@@ -919,7 +938,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     padding: 2rem 4vw;
-    border-top: 1px solid var(--aar-border);
+    border-top: 0;
     font-size: 0.8125rem;
     color: var(--aar-text-muted);
     margin-top: auto;

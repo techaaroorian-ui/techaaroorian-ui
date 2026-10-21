@@ -1,0 +1,13 @@
+/* Optional CodeMirror 6 skin; the editor remains an external dependency. */
+.aar-editor-codemirror .cm-editor { height: 100%; font-size: var(--aar-editor-font-size, 13px); background: var(--aar-surface); color: var(--aar-text); }
+.aar-editor-codemirror .cm-scroller { overflow: auto; }
+.aar-editor-codemirror .cm-scroller, .aar-editor-codemirror .cm-content { background: var(--aar-surface); }
+.aar-editor-codemirror .cm-gutters, .aar-editor-codemirror .cm-activeLine, .aar-editor-codemirror .cm-activeLineGutter { background: var(--aar-surface-subtle); }
+.aar-editor-codemirror .cm-gutters { color: var(--aar-text-muted); border: 0; }
+.aar-editor-codemirror .cm-lineNumbers .cm-gutterElement { padding: 0 .5rem; min-width: 2rem; }
+.aar-editor-codemirror .cm-cursor { border-left-color: var(--aar-text); }
+.aar-editor-codemirror .cm-selectionBackground { background: color-mix(in srgb, var(--aar-primary) 25%, transparent) !important; }
+.aar-syntax-keyword { color: var(--aar-primary); font-weight: 600; }
+.aar-syntax-string { color: var(--aar-success); }
+.aar-syntax-comment { color: var(--aar-text-muted); }
+.aar-syntax-value { color: var(--aar-text); }

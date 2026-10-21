@@ -1,0 +1,284 @@
+/* Reusable studio composition: compact commands, paper regions and task views.
+   Built upon Aar Loom's universal component variants (flat inputs, menus, and canvas). */
+@layer components {
+
+.aar-studio {
+  --aar-control-height-sm: 1.625rem;
+  --aar-control-padding-sm: 0.4375rem;
+  --aar-control-height-xs: 1.3125rem;
+  --aar-control-padding-xs: 0.3125rem;
+  --aar-panel-padding: 0.625rem;
+  --aar-border: transparent;
+  --aar-border-strong: transparent;
+  font-size: 0.75rem;
+  overflow: hidden;
+}
+
+.aar-studio-header {
+  position: relative;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--aar-space-2);
+  padding: 0 var(--aar-space-3);
+  height: 2.375rem;
+  min-height: 2.375rem;
+  background: var(--aar-surface-subtle);
+  border-bottom: none;
+}
+.aar-studio-header strong {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.aar-studio .aar-workspace-body[data-layout="studio"],
+.aar-studio-body[data-layout="studio"] {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.aar-studio-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--aar-navigation-width, 20rem);
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--aar-surface);
+  border: none !important;
+  border-right: none !important;
+  flex-shrink: 0;
+  transition: width 280ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 200ms ease;
+  will-change: width, opacity;
+}
+
+.aar-studio-sidebar[data-collapsed="true"],
+.aar-studio-sidebar[hidden] {
+  width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.aar-studio-sidebar > * {
+  width: var(--aar-navigation-width, 20rem);
+  min-width: var(--aar-navigation-width, 20rem);
+  flex-shrink: 0;
+}
+
+.aar-studio-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--aar-background);
+  transition: width 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.aar-studio-inspector {
+  display: flex;
+  flex-direction: column;
+  width: var(--aar-inspector-width, 28rem);
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--aar-surface);
+  border: none !important;
+  border-left: none !important;
+  flex-shrink: 0;
+  transition: width 280ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 200ms ease;
+  will-change: width, opacity;
+}
+
+.aar-studio-inspector[hidden],
+.aar-studio-inspector[data-collapsed="true"] {
+  width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.aar-studio-inspector > * {
+  width: var(--aar-inspector-width, 28rem);
+  min-width: var(--aar-inspector-width, 28rem);
+  flex-shrink: 0;
+}
+
+.aar-studio-library {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  max-height: none;
+  padding: var(--aar-space-4);
+  overflow-y: auto;
+  gap: var(--aar-space-4);
+}
+.aar-studio-editor {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.aar-editor-codemirror {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+}
+.aar-studio .cm-editor { height: 100%; }
+.aar-studio .cm-scroller { height: 100%; overflow: auto; }
+.aar-studio .cm-lineNumbers .cm-gutterElement { padding: 0 .5rem; min-width: 2rem; font-size: 0.75rem; }
+.aar-studio [hidden] { display: none !important; }
+.aar-studio-mobile-nav { display: none; }
+.aar-studio-body[data-focus-code="true"] > [data-region="content"] { display: none; }
+.aar-studio-body[data-focus-code="true"] > [data-region="inspector"] { grid-column: 1 / -1; }
+
+@container aar-workspace (max-width: 72rem) {
+  .aar-studio-content { min-height: 24rem; }
+  .aar-studio-inspector { min-height: 20rem; }
+  .aar-studio-editor { height: 100%; flex: 1; }
+  .aar-studio-library { max-height: 24rem; }
+}
+@container aar-workspace (max-width: 48rem) {
+  .aar-studio-mobile-nav { display: flex; }
+  .aar-studio-status { display: none; }
+  .aar-studio-body[data-mobile-view="canvas"] > [data-region="inspector"],
+  .aar-studio-body[data-mobile-view="tools"] > [data-region="content"] { display: none; }
+  .aar-studio-body[data-mobile-view="tools"] > [data-region="inspector"] { min-height: 100%; }
+  .aar-studio-editor { min-height: 20rem; height: auto; flex: 1; }
+  .aar-studio-content { min-height: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aar-studio *, .aar-studio *::before, .aar-studio *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}
+
+.aar-preset-menu-dropdown { width: 18rem; max-height: 20rem; overflow-y: auto; }
+.aar-editor-commands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+.aar-editor-commands > .aar-segmented { grid-column: 1 / -1; }
+.aar-editor-commands > button, .aar-editor-commands > .relative > button { width: 100%; justify-content: center; }
+
+/* Studio inherits universal flat variant styling automatically when nested in .aar-studio */
+.aar-studio *, .aar-studio *::before, .aar-studio *::after { box-sizing: border-box; }
+.aar-studio :is(.aar-select, .aar-input):not([data-variant]) {
+  height: var(--aar-control-height-sm);
+  min-height: var(--aar-control-height-sm);
+  font-size: 0.6875rem;
+  border: none;
+  background: var(--aar-surface-subtle);
+  color: var(--aar-text);
+  border-radius: var(--aar-radius-md);
+}
+.aar-studio :is(.aar-select, .aar-input):not([data-variant]):hover:not(:disabled) {
+  background: var(--aar-surface-raised);
+}
+.aar-studio :is(.aar-select, .aar-input):not([data-variant]):focus-visible {
+  outline: 2px solid var(--aar-focus);
+  outline-offset: 0;
+  background: var(--aar-surface-raised);
+}
+
+.aar-studio :is(.aar-segmented > button, .aar-segmented-item, .aar-tab) {
+  min-height: var(--aar-control-height-sm);
+  padding: .15rem var(--aar-control-padding-sm);
+  font-size: 0.6875rem;
+  border: none;
+  background: transparent;
+  color: var(--aar-text-muted);
+  border-radius: var(--aar-radius-sm);
+  transition: background-color var(--aar-duration) var(--aar-ease), color var(--aar-duration) var(--aar-ease);
+}
+.aar-studio :is(.aar-segmented > button, .aar-segmented-item, .aar-tab)[aria-pressed="true"],
+.aar-studio :is(.aar-segmented > button, .aar-segmented-item, .aar-tab)[aria-selected="true"] {
+  background: var(--aar-surface-raised);
+  color: var(--aar-text);
+  box-shadow: none;
+}
+
+.aar-studio .aar-segmented:not([data-variant]) {
+  border: none;
+  background: var(--aar-surface-subtle);
+  border-radius: var(--aar-radius-md);
+  padding: 2px;
+  gap: 2px;
+}
+
+.aar-studio :is(.aar-button, .aar-icon-button):not([data-variant]) {
+  min-height: var(--aar-control-height-sm);
+  padding: 0.15rem var(--aar-control-padding-sm);
+  font-size: 0.6875rem;
+  border: none;
+  background: var(--aar-surface-subtle);
+  color: var(--aar-text);
+}
+.aar-studio :is(.aar-button, .aar-icon-button):not([data-variant]):hover:not(:disabled) {
+  background: var(--aar-surface-raised);
+}
+
+.aar-studio :is(.aar-button, .aar-icon-button)[data-size="xs"] {
+  min-height: var(--aar-control-height-xs);
+  padding: 0.075rem var(--aar-control-padding-xs);
+  font-size: 0.625rem;
+}
+
+.aar-studio .aar-button-group {
+  border: none;
+  background: var(--aar-surface-subtle);
+  border-radius: var(--aar-radius-md);
+  padding: 2px;
+}
+.aar-studio .aar-button-group[data-size="sm"] {
+  --aar-group-height: var(--aar-control-height-sm);
+  --aar-group-padding: var(--aar-control-padding-sm);
+  --aar-group-font-size: 0.6875rem;
+  --aar-group-block-padding: 0.15rem;
+}
+.aar-studio .aar-button-group > :is(.aar-button, .aar-icon-button, .aar-button-group-value) {
+  border: none;
+  background: transparent;
+}
+.aar-studio .aar-button-group > :is(.aar-button, .aar-icon-button):hover:not(:disabled) {
+  background: var(--aar-surface-raised);
+}
+.aar-studio .aar-button-group-value {
+  font-size: 0.6875rem;
+  min-width: 2.75rem;
+  padding: 0.15rem var(--aar-control-padding-sm);
+  background: transparent;
+  color: var(--aar-text);
+}
+
+.aar-studio .aar-statusbar {
+  min-height: 1.5rem;
+  height: 1.5rem;
+  padding: 0 var(--aar-space-3);
+  font-size: 0.625rem;
+  border-top: none;
+  background: var(--aar-surface-subtle);
+  color: var(--aar-text-muted);
+}
+
+}
+
+@layer utilities {
+  .aar-swatch { background: var(--aar-swatch-color); }
+  .aar-font-sample { font-family: var(--aar-preview-font, var(--aar-font-sans)); }
+}

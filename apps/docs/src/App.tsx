@@ -438,10 +438,12 @@ export default function App() {
         )}
       </main>
 
-      <footer className="aar-site-footer">
-        <span>TechAaroorian UI · The Arcane Atelier</span>
-        <span>Precision software ergonomics &amp; headless studio tools</span>
-      </footer>
+      {route !== "#/aar-loom" && (
+        <footer className="aar-site-footer">
+          <span>TechAaroorian UI · The Arcane Atelier</span>
+          <span>Precision software ergonomics &amp; headless studio tools</span>
+        </footer>
+      )}
     </div>
   );
 }

@@ -2,12 +2,16 @@
 @layer theme, base, components, utilities;
 @import "./tokens.css";
 @import "./components.css";
+@import "./button-groups.css";
 
 @import "./layouts.css";
 @import "./navigation.css";
 @import "./workspace.css";
+@import "./canvas.css";
 @import "./compositions.css";
 @import "./expression.css";
 @import "./code.css";
 @import "./magic-art.css";
+@import "./studio.css";
+@import "./application-utilities.css";
 @import "./utilities.css";

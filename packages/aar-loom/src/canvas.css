@@ -1,0 +1,189 @@
+/* Universal Canvas & Artboard Component: viewports, responsive frames, ribbons, and empty states. */
+@layer components {
+
+  /* Canvas Viewport: The backdrop container for creative artboards, image editors, and diagram viewports */
+  .aar-canvas-viewport {
+    background: var(--aar-background);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--aar-space-3);
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  /* Canvas Frame: Outer bounding container preserving aspect ratio or fixed dimensions */
+  .aar-canvas-frame {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--aar-canvas-frame-width, 100%);
+    height: var(--aar-canvas-frame-height, auto);
+    aspect-ratio: var(--aar-canvas-ratio, auto);
+    border-radius: var(--aar-radius-lg);
+    box-shadow: none;
+    border: 0;
+    outline: 0;
+    overflow: hidden;
+    transition: width 150ms ease-out, height 150ms ease-out;
+  }
+  .aar-canvas-frame[data-fit="true"] {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* Canvas Preview: Scaled inner rendering surface */
+  .aar-canvas-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--aar-canvas-width, 100%);
+    height: var(--aar-canvas-height, 100%);
+    transform: scale(var(--aar-canvas-zoom, 1));
+    transform-origin: top left;
+    overflow: hidden;
+    border-radius: inherit;
+    transition: transform 150ms ease-out;
+  }
+
+  /* Canvas Ribbon: Floating or docked toolstrip above/below the artwork */
+  .aar-canvas-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--aar-space-2);
+    width: 100%;
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    border-radius: var(--aar-radius-lg);
+    box-shadow: none;
+    background: var(--aar-surface-raised);
+    border: 1px solid var(--aar-border);
+    z-index: 20;
+  }
+  .aar-canvas-ribbon .aar-cluster,
+  .aar-canvas-ribbon .aar-u-flex {
+    flex-wrap: nowrap;
+  }
+  .aar-canvas-ribbon span {
+    white-space: nowrap;
+  }
+
+  /* Canvas Card: Specimen & preset card */
+  .aar-canvas-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 38rem;
+    margin: 0 auto var(--aar-space-3);
+    background: var(--aar-surface-raised);
+    border: 1px solid var(--aar-border);
+    border-radius: var(--aar-radius-lg);
+    box-shadow: none;
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 20;
+  }
+  .aar-canvas-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--aar-space-2);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    min-height: 2rem;
+    background: var(--aar-surface-raised);
+  }
+  .aar-canvas-card-header span {
+    white-space: nowrap;
+  }
+  .aar-canvas-card-tip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--aar-space-2);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.6875rem;
+    color: var(--aar-text-muted);
+    border-top: 1px solid var(--aar-border);
+    background: var(--aar-surface-subtle);
+  }
+
+  /* Canvas Tip Banner */
+  .aar-canvas-tip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--aar-space-2);
+    width: 100%;
+    max-width: 38rem;
+    margin: var(--aar-space-2) auto 0;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.6875rem;
+    flex-shrink: 0;
+    border-radius: var(--aar-radius-lg);
+    background: var(--aar-surface-subtle);
+    border: 1px solid var(--aar-border);
+    color: var(--aar-text-muted);
+    box-shadow: none;
+    z-index: 20;
+  }
+
+  /* Empty Canvas State */
+  .aar-canvas-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--aar-space-3);
+    max-width: 34rem;
+    margin: 0 auto;
+    text-align: center;
+    user-select: none;
+  }
+  .aar-canvas-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--aar-radius-lg);
+    background: color-mix(in srgb, var(--aar-primary) 15%, transparent);
+    color: var(--aar-brand-accent);
+    border: 1px solid var(--aar-border);
+  }
+  .aar-canvas-empty-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .aar-canvas-empty-text h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--aar-text);
+    line-height: 1.25;
+  }
+  .aar-canvas-empty-text p {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--aar-text-muted);
+    line-height: 1.45;
+    max-width: 28rem;
+  }
+  .aar-canvas-empty-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--aar-space-2);
+    margin-top: 0.25rem;
+  }
+
+}

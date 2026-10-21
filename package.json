@@ -12,7 +12,8 @@
     "release:ready": "node scripts/release-ready.mjs",
     "release": "npm run release:ready && changeset publish",
     "docs:ai": "node scripts/build-ai-docs.mjs",
-    "docs:ai:check": "node scripts/build-ai-docs.mjs --check"
+    "docs:ai:check": "node scripts/build-ai-docs.mjs --check",
+    "dev:pack:loom": "node scripts/pack-loom-local.mjs"
   },
   "workspaces": [
     "packages/*",

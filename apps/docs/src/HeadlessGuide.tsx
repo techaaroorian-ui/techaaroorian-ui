@@ -720,25 +720,25 @@ export default function HeadlessGuide({
               <FileIntakeSection />
             </div>
           )}
+
+          {/* Architectural Independence Footer Panel */}
+          <section className="aar-panel aar-section aar-mt-10">
+            <h2 className="aar-heading">
+              Zero-CSS Architecture &amp; Framework Decoupling
+            </h2>
+            <p>
+              These packages ship <strong>zero CSS</strong> and do not depend on Aar
+              Loom, Tailwind, or any design system. You can pair them with Aar Loom,
+              your existing design system, or raw inline styles.
+            </p>
+            <p className="aar-hint">
+              All packages run completely headless with pure state machines and
+              mathematical models, making them rock-solid across web workers,
+              Node.js scripts, and modern browser viewports.
+            </p>
+          </section>
         </section>
       </div>
-
-      {/* Architectural Independence Footer Panel */}
-      <section className="aar-panel aar-section aar-mt-10">
-        <h2 className="aar-heading">
-          Zero-CSS Architecture &amp; Framework Decoupling
-        </h2>
-        <p>
-          These packages ship <strong>zero CSS</strong> and do not depend on Aar
-          Loom, Tailwind, or any design system. You can pair them with Aar Loom,
-          your existing design system, or raw inline styles.
-        </p>
-        <p className="aar-hint">
-          All packages run completely headless with pure state machines and
-          mathematical models, making them rock-solid across web workers,
-          Node.js scripts, and modern browser viewports.
-        </p>
-      </section>
     </section>
   );
 }
